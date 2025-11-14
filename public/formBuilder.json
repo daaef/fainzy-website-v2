@@ -1,0 +1,4434 @@
+{
+  "id": 1,
+  "title": "CIT",
+  "schedules": [
+    {
+      "id": 1,
+      "title": "Income Statement",
+      "description": "The Income Statement shows a company’s revenue, expenses, and profit or loss over a specific period.",
+      "headers": [
+        {
+          "id": 1,
+          "title": "Revenue HELPER",
+          "isSummed": true,
+          "parents": [
+            {
+              "id": 7,
+              "title": "Wholesale & Retail Trade",
+              "name": "txtW&RT7",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 11,
+              "title": "Bank & Other Financial Activities",
+              "name": "txtB&OFA11",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 17,
+              "title": "Oil & Gas",
+              "name": "txtO&G17",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 12,
+              "title": "Insurance Activities",
+              "name": "txtIA12",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 10,
+              "title": "Communication & Information",
+              "name": "txtC&I10",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 18,
+              "title": "Ngos, Nfpos, Religious Institutions",
+              "name": "txtNNRI18",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 2,
+              "title": "Agriculture, Forestry & Fishing",
+              "name": "txtAF&F2",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 15,
+              "title": "Administrative & Support Activities",
+              "name": "txtA&SA15",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 13,
+              "title": "Real Estate Activities",
+              "name": "txtREA13",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 5,
+              "title": "Water Supply, Sewerage & Waste Management",
+              "name": "txtWSS&WM5",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 19,
+              "title": "Art, Entertainment & Recreation",
+              "name": "txtAE&R19",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 8,
+              "title": "Transportation & Haulage",
+              "name": "txtT&H8",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 6,
+              "title": "Construction",
+              "name": "txtC6",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 16,
+              "title": "Education",
+              "name": "txtE16",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 4,
+              "title": "Electricity",
+              "name": "txtE4",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 1,
+              "title": "Manufacturing",
+              "name": "txtM1",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 3,
+              "title": "Minning & Quarry",
+              "name": "txtM&Q3",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 14,
+              "title": "Professional, Scientific & Technical Activities",
+              "name": "txtPS&TA14",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 9,
+              "title": "Accomodation & Food Service Activities",
+              "name": "txtA&FSA9",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Direct Cost / Cost Of Sale",
+          "isSummed": true,
+          "parents": [
+            {
+              "id": 20,
+              "title": "OPENING INVENTORY",
+              "name": "txtOI20",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [
+                {
+                  "id": 2,
+                  "title": "Work in progress",
+                  "name": "txtWip2",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 3,
+                  "title": "Finished goods",
+                  "name": "txtFg3",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 1,
+                  "title": "Raw materials",
+                  "name": "txtRm1",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                }
+              ],
+              "inputSources": []
+            },
+            {
+              "id": 21,
+              "title": "PURCHASES( RAW MATERIALS/FINISHED GOODS)",
+              "name": "txtPRMG21",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [
+                {
+                  "id": 4,
+                  "title": "Local Purchases ",
+                  "name": "txtLP4",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 5,
+                  "title": "Import Purchases",
+                  "name": "txtIP5",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 6,
+                  "title": "Returns Outwards",
+                  "name": "txtRO6",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                }
+              ],
+              "inputSources": []
+            },
+            {
+              "id": 22,
+              "title": "OTHER DIRECT COST",
+              "name": "txtODC22",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [
+                {
+                  "id": 7,
+                  "title": "Direct wages",
+                  "name": "txtDw7",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 8,
+                  "title": "Direct expenses",
+                  "name": "txtDe8",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 9,
+                  "title": "Carriage Inwards",
+                  "name": "txtCI9",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 10,
+                  "title": "Depreciation",
+                  "name": "txtD10",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 11,
+                  "title": "Mining Cost",
+                  "name": "txtMC11",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 12,
+                  "title": "Direct construction cost",
+                  "name": "txtDcc12",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 13,
+                  "title": "Metal production cost",
+                  "name": "txtMpc13",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 14,
+                  "title": "Refinery cost",
+                  "name": "txtRc14",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 15,
+                  "title": "Mining by-product cost",
+                  "name": "txtMbc15",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 16,
+                  "title": "Cost of Storage",
+                  "name": "txtCoS16",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 17,
+                  "title": "Direct network and technology operating costs",
+                  "name": "txtDnatoc17",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 18,
+                  "title": "Costs of handsets and other accessories",
+                  "name": "txtCohaoa18",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 19,
+                  "title": "Interconnect and roaming costs",
+                  "name": "txtIarc19",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 20,
+                  "title": "Share of results of associates and joint ventures",
+                  "name": "txtSoroaajv20",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 21,
+                  "title": "Commodity inventory at fair value",
+                  "name": "txtCiafv21",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 22,
+                  "title": "Commodity inventory at lower of cost and Net realisable value",
+                  "name": "txtCialocaNrv22",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 23,
+                  "title": "Amortisation of intangible assets",
+                  "name": "txtAoia23",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 24,
+                  "title": "Other Direct costs",
+                  "name": "txtODc24",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                }
+              ],
+              "inputSources": []
+            },
+            {
+              "id": 23,
+              "title": "FACTORY OVERHEADS",
+              "name": "txtFO23",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [
+                {
+                  "id": 25,
+                  "title": "Factory Rent",
+                  "name": "txtFR25",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 26,
+                  "title": "Factory Rates",
+                  "name": "txtFR26",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 27,
+                  "title": "Fuel and Power",
+                  "name": "txtFaP27",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 28,
+                  "title": "Indirect Wages",
+                  "name": "txtIW28",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 29,
+                  "title": "Depreciation",
+                  "name": "txtD29",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 30,
+                  "title": "Other Factory Overheads",
+                  "name": "txtOFO30",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                }
+              ],
+              "inputSources": []
+            },
+            {
+              "id": 24,
+              "title": "CLOSING INVENTORY",
+              "name": "txtCI24",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [
+                {
+                  "id": 31,
+                  "title": "Raw materials",
+                  "name": "txtRm31",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 32,
+                  "title": "Work In Progress",
+                  "name": "txtWIP32",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 33,
+                  "title": "Finished goods",
+                  "name": "txtFg33",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                }
+              ],
+              "inputSources": []
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "title": "Retained Earnings Carried Forward",
+          "isSummed": false,
+          "parents": []
+        },
+        {
+          "id": 3,
+          "title": "Gross Profit  ",
+          "isSummed": false,
+          "parents": []
+        },
+        {
+          "id": 8,
+          "title": "Operating Profit Before Tax ",
+          "isSummed": false,
+          "parents": []
+        },
+        {
+          "id": 5,
+          "title": "Operating Income",
+          "isSummed": false,
+          "parents": []
+        },
+        {
+          "id": 10,
+          "title": "Profit After Tax ",
+          "isSummed": false,
+          "parents": []
+        },
+        {
+          "id": 12,
+          "title": "Profit For The Year ",
+          "isSummed": false,
+          "parents": []
+        },
+        {
+          "id": 6,
+          "title": "Administrative Expenses",
+          "isSummed": true,
+          "parents": [
+            {
+              "id": 106,
+              "title": "Corporate expenses and gift items",
+              "name": "txtCeagi106",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 120,
+              "title": "Electricity & Power",
+              "name": "txtE&P120",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 151,
+              "title": "Air Travel Expenses",
+              "name": "txtATE151",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 119,
+              "title": "Royalties",
+              "name": "txtR119",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 101,
+              "title": "Utilities",
+              "name": "txtU101",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 82,
+              "title": "Medical Expenses",
+              "name": "txtME82",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 137,
+              "title": "WHT on Dividend",
+              "name": "txtWoD137",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 168,
+              "title": "Direct Teaching and Laboratory Expenses",
+              "name": "txtDTaLE168",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 136,
+              "title": "Testing and Inspection Cost",
+              "name": "txtTaIC136",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 149,
+              "title": "AGM, annual report publication expenses etc",
+              "name": "txtAarpee149",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 93,
+              "title": "Service Charge",
+              "name": "txtSC93",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 135,
+              "title": "Storage expenses",
+              "name": "txtSe135",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 131,
+              "title": "Share based payments charges",
+              "name": "txtSbpc131",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 142,
+              "title": "Health, safety and environmental expenses",
+              "name": "txtHsaee142",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 66,
+              "title": "Government and regulatory costs",
+              "name": "txtGarc66",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 160,
+              "title": "Cost of gas re-injection wells",
+              "name": "txtCogrw160",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 89,
+              "title": "Repairs and renovations/service charge",
+              "name": "txtRarc89",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 109,
+              "title": "Subscription & Dues",
+              "name": "txtS&D109",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 57,
+              "title": "Staff uniform",
+              "name": "txtSu57",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 146,
+              "title": "Port and other clearing charges",
+              "name": "txtPaocc146",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 139,
+              "title": "Other Administrative and General expenses",
+              "name": "txtOAaGe139",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 143,
+              "title": "Landing, navigation & others charges",
+              "name": "txtLn&oc143",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 98,
+              "title": "Trade fairs & exhibitions",
+              "name": "txtTf&e98",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 167,
+              "title": "Food & Beverages cost",
+              "name": "txtF&Bc167",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 64,
+              "title": "Impairment of goodwill and investment in joint ventures",
+              "name": "txtIogaiijv64",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 145,
+              "title": "Other statutory charges & levies",
+              "name": "txtOsc&l145",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 104,
+              "title": "Software maintenance",
+              "name": "txtSm104",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 163,
+              "title": "Catering and in-flight service",
+              "name": "txtCais163",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 102,
+              "title": "Water supply expense",
+              "name": "txtWse102",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 71,
+              "title": "Rooms/ Accomodation cost",
+              "name": "txtRAc71",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 72,
+              "title": "Audit fees ",
+              "name": "txtAf72",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 83,
+              "title": "Meter reading expenses",
+              "name": "txtMre83",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 125,
+              "title": "Pipeline expenses ",
+              "name": "txtPe125",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 77,
+              "title": "Fund rating",
+              "name": "txtFr77",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 140,
+              "title": "Concession expenses",
+              "name": "txtCe140",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 153,
+              "title": "Aircraft handling cost",
+              "name": "txtAhc153",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 73,
+              "title": "Donations",
+              "name": "txtD73",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 56,
+              "title": "Staff Gratuity",
+              "name": "txtSG56",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 123,
+              "title": "Fraud and forgery ",
+              "name": "txtFaf123",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 91,
+              "title": "Security expenses",
+              "name": "txtSe91",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 165,
+              "title": "Aircraft lease cost",
+              "name": "txtAlc165",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 152,
+              "title": "Aircraft disinfectant cost",
+              "name": "txtAdc152",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 112,
+              "title": "other professional fees",
+              "name": "txtopf112",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 96,
+              "title": "Permits",
+              "name": "txtP96",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 107,
+              "title": "Corporate promotion ",
+              "name": "txtCp107",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 108,
+              "title": "Freight & Transport Expenses",
+              "name": "txtF&TE108",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 65,
+              "title": "Impairment loss on remeasurement of non-current assets held for sale",
+              "name": "txtIloronahfs65",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 52,
+              "title": "Directors Emoluments",
+              "name": "txtDE52",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 85,
+              "title": "Outsourcing Services expenses",
+              "name": "txtOSe85",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 164,
+              "title": "Aviation fuel & oil expense",
+              "name": "txtAf&oe164",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 78,
+              "title": "Generator expenses",
+              "name": "txtGe78",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 133,
+              "title": "Shareholders Expenses",
+              "name": "txtSE133",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 100,
+              "title": "Transport of supplies",
+              "name": "txtTos100",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 158,
+              "title": "Cash handling expenses",
+              "name": "txtChe158",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 113,
+              "title": "Fines",
+              "name": "txtF113",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 55,
+              "title": "Staff Loan written off",
+              "name": "txtSLwo55",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 68,
+              "title": "Bad Debt written off",
+              "name": "txtBDwo68",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 128,
+              "title": "Policy Acquisition Cost",
+              "name": "txtPAC128",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 129,
+              "title": "Production bonuses",
+              "name": "txtPb129",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 80,
+              "title": "Internet Cost",
+              "name": "txtIC80",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 110,
+              "title": "Sponsorship ",
+              "name": "txtS110",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 99,
+              "title": "Training and Development",
+              "name": "txtTaD99",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 94,
+              "title": "Public Relation",
+              "name": "txtPR94",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 162,
+              "title": "Aircraft maintenance cost",
+              "name": "txtAmc162",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 95,
+              "title": "Publication Cost",
+              "name": "txtPC95",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 122,
+              "title": "Environmental Remediation Fund",
+              "name": "txtERF122",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 62,
+              "title": "depreciation",
+              "name": "txtd62",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 127,
+              "title": "Police and other Security Agencies Services",
+              "name": "txtPaoSAS127",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 117,
+              "title": "Corporate Social Responsibilities",
+              "name": "txtCSR117",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 155,
+              "title": "Asset and customer remuneration",
+              "name": "txtAacr155",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 97,
+              "title": "Telephone",
+              "name": "txtT97",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 114,
+              "title": "penalties",
+              "name": "txtp114",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 156,
+              "title": "Aviation Fuel",
+              "name": "txtAF156",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 126,
+              "title": "PMS",
+              "name": "txtP126",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 132,
+              "title": "Shared costs",
+              "name": "txtSc132",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 67,
+              "title": "Advertisement & Promotion",
+              "name": "txtA&P67",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 50,
+              "title": "Salary and Wages",
+              "name": "txtSaW50",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 51,
+              "title": "Employee Benefit Expenses",
+              "name": "txtEBE51",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 76,
+              "title": "Fuel expenses",
+              "name": "txtFe76",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 69,
+              "title": "Bank charges",
+              "name": "txtBc69",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 81,
+              "title": "Loss on sale of property, plants and equipments",
+              "name": "txtLosoppae81",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 79,
+              "title": "Head office cost",
+              "name": "txtHoc79",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 90,
+              "title": "Research cost",
+              "name": "txtRc90",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 134,
+              "title": "Signature bonus",
+              "name": "txtSb134",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 59,
+              "title": "Expatriate Advances",
+              "name": "txtEA59",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 116,
+              "title": "Realized foreign exchange loss",
+              "name": "txtRfel116",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 84,
+              "title": "Newspaper & Periodicals",
+              "name": "txtN&P84",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 74,
+              "title": "Entertainment expenses",
+              "name": "txtEe74",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 159,
+              "title": "Central Administrative Expenditure",
+              "name": "txtCAE159",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 141,
+              "title": "CSCS eligibility charges",
+              "name": "txtCec141",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 138,
+              "title": "Intercompany expenses",
+              "name": "txtIe138",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 54,
+              "title": "Staff Allowances",
+              "name": "txtSA54",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 103,
+              "title": "Website Design & Maintenance",
+              "name": "txtWD&M103",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 115,
+              "title": "AMCON charges",
+              "name": "txtAc115",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 148,
+              "title": "Academic Expenditure",
+              "name": "txtAE148",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 53,
+              "title": "Directors expenses",
+              "name": "txtDe53",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 92,
+              "title": "Selling & Distribution Expenses",
+              "name": "txtS&DE92",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 58,
+              "title": "Pension and Gratuity ",
+              "name": "txtPaG58",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 111,
+              "title": "Stationeries expenses",
+              "name": "txtSe111",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 86,
+              "title": "Rates",
+              "name": "txtR86",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 70,
+              "title": "Interest Expense",
+              "name": "txtIE70",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 60,
+              "title": "Personnel Cost, academic and non- academic staff",
+              "name": "txtPCaanas60",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 105,
+              "title": "Cleaning & Janitory Services",
+              "name": "txtC&JS105",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 75,
+              "title": "Postages",
+              "name": "txtP75",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 124,
+              "title": "Payment for provident funds",
+              "name": "txtPfpf124",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 166,
+              "title": "Aircraft handling cost",
+              "name": "txtAhc166",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 61,
+              "title": "Other staff & related Cost",
+              "name": "txtOs&rC61",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 87,
+              "title": "Rent & Rates",
+              "name": "txtR&R87",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 169,
+              "title": "Other Administrative and General Expenses",
+              "name": "txtOAaGE169",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 147,
+              "title": "SEC supervisory charges",
+              "name": "txtSsc147",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 121,
+              "title": "Engineering studies expenses",
+              "name": "txtEse121",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 161,
+              "title": "Departmental Administrative Expenditure",
+              "name": "txtDAE161",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 157,
+              "title": "Branding & Rebranding costs",
+              "name": "txtB&Rc157",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 154,
+              "title": "Airline and shipping Consumables",
+              "name": "txtAasC154",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 150,
+              "title": "AGO-Diesel",
+              "name": "txtA150",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 63,
+              "title": "Amortisation of intangible assetsX",
+              "name": "txtAoia63",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 118,
+              "title": "Donations",
+              "name": "txtD118",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 88,
+              "title": "Repairs and Maintenance",
+              "name": "txtRaM88",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 130,
+              "title": "Restoration cost",
+              "name": "txtRc130",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 144,
+              "title": "Licences & leases charges",
+              "name": "txtL&lc144",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Other Income",
+          "isSummed": true,
+          "parents": [
+            {
+              "id": 25,
+              "title": "Commision IncomeX",
+              "name": "txtCI25",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 26,
+              "title": "Direct premiumX",
+              "name": "txtDp26",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 27,
+              "title": "Insurance claimX",
+              "name": "txtIc27",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 39,
+              "title": "Income from damages from customers",
+              "name": "txtIfdfc39",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 33,
+              "title": "Decrease in provision",
+              "name": "txtDip33",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 31,
+              "title": "Dividend IncomeX",
+              "name": "txtDI31",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 34,
+              "title": "Fair value gain on derivative",
+              "name": "txtFvgod34",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 47,
+              "title": "Other investment incomeX",
+              "name": "txtOii47",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 46,
+              "title": "Bad debt recovered ",
+              "name": "txtBdr46",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 40,
+              "title": "Income from non-pioneer business",
+              "name": "txtIfnb40",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 37,
+              "title": "Gain on forward exchange contract realised",
+              "name": "txtGofecr37",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 32,
+              "title": "Profit from disposal of investment in subsidiary income",
+              "name": "txtPfdoiisi32",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 38,
+              "title": "Gain on sale of asset",
+              "name": "txtGosoa38",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 48,
+              "title": "Other servicesX",
+              "name": "txtOs48",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 28,
+              "title": "Interest IncomeX",
+              "name": "txtII28",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 30,
+              "title": "Rental IncomeX",
+              "name": "txtRI30",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 42,
+              "title": "Non-taxable revenue",
+              "name": "txtNr42",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 29,
+              "title": "Lease Income-FinanceX",
+              "name": "txtLI29",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 41,
+              "title": "Income from pioneer business/ product",
+              "name": "txtIfpbp41",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 36,
+              "title": "Financial instrument",
+              "name": "txtFi36",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 44,
+              "title": "Unrealized foreign exchange gain",
+              "name": "txtUfeg44",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 49,
+              "title": "Other recoveries",
+              "name": "txtOr49",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 45,
+              "title": "Derivative income",
+              "name": "txtDi45",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 43,
+              "title": "Realized foreign exchange gain",
+              "name": "txtRfeg43",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 35,
+              "title": "Fair value on financial assests through P&L",
+              "name": "txtFvofatP35",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "title": "Retained Earnings Brought Forward",
+          "isSummed": true,
+          "parents": [
+            {
+              "id": 178,
+              "title": "Retained Earnings Brought Forward",
+              "name": "txtREBF178",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "title": "Other Comprehensive Income ",
+          "isSummed": true,
+          "parents": [
+            {
+              "id": 177,
+              "title": "Pension Plans Adustments",
+              "name": "txtPPA177",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 172,
+              "title": "Revaluation Gain/Loss",
+              "name": "txtRG172",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 175,
+              "title": "Cash Flow Hedge",
+              "name": "txtCFH175",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 174,
+              "title": "Currency Translation Adjustments",
+              "name": "txtCTA174",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 176,
+              "title": "Gain Or Loss On Derivative Contracts",
+              "name": "txtGOLODC176",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 173,
+              "title": "Unrealized foreign exchange gainX",
+              "name": "txtUfeg173",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "title": "Finance Cost (Excluding Interest Expense) ",
+          "isSummed": true,
+          "parents": [
+            {
+              "id": 170,
+              "title": "Finance Cost( Excluding Interest Expense) ",
+              "name": "txtFCEIE170",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "title": "Taxation",
+          "isSummed": true,
+          "parents": [
+            {
+              "id": 171,
+              "title": "Taxation",
+              "name": "txtT171",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Statement Of Financial Position",
+      "description": "This shows the company’s assets, liabilities, and equity at a specific date — a snapshot of its financial health.",
+      "headers": [
+        {
+          "id": 17,
+          "title": "Current Liabilities",
+          "isSummed": true,
+          "parents": [
+            {
+              "id": 193,
+              "title": "Total current Liabilities",
+              "name": "lblTcL193",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": "190+191+192",
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 190,
+              "title": "Trade Payables",
+              "name": "txtTP190",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 191,
+              "title": "Current tax liabilities",
+              "name": "txtCtl191",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 192,
+              "title": "Other  Current Liabilities",
+              "name": "lblOCL192",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [
+                {
+                  "id": 118,
+                  "title": "Other payables",
+                  "name": "txtOp118",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 119,
+                  "title": "Financial liabilities",
+                  "name": "txtFl119",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 120,
+                  "title": "Accruals",
+                  "name": "txtA120",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 121,
+                  "title": "Unearned income (advance from customers)",
+                  "name": "txtUi(fc121",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 122,
+                  "title": "Interest payable",
+                  "name": "txtIp122",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 123,
+                  "title": "Statutory liabilities",
+                  "name": "txtSl123",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 124,
+                  "title": "Short-term debt",
+                  "name": "txtSd124",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 125,
+                  "title": "Provision for warranty expenses",
+                  "name": "txtPfwe125",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 126,
+                  "title": "Provision for bonuses and employee benefit",
+                  "name": "txtPfbaeb126",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 127,
+                  "title": "Current portion of lease liability",
+                  "name": "txtCpoll127",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 128,
+                  "title": "Current portion of long-term debt",
+                  "name": "txtCpold128",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 129,
+                  "title": "Dividend payable",
+                  "name": "txtDp129",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 130,
+                  "title": "Deferred commission income",
+                  "name": "txtDci130",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 131,
+                  "title": "Derivative financial instruments",
+                  "name": "txtDfi131",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 132,
+                  "title": "Reinsurance payable",
+                  "name": "txtRp132",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 133,
+                  "title": "Mobile Money payables",
+                  "name": "txtMMp133",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 134,
+                  "title": "Interest-bearing liabilities",
+                  "name": "txtIl134",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 135,
+                  "title": "Lease liabilities",
+                  "name": "txtLl135",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 136,
+                  "title": "Provisions",
+                  "name": "txtP136",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 137,
+                  "title": "Liabilities directly associated with non-current assets held for sale",
+                  "name": "txtLdawnahfs137",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 138,
+                  "title": "AMCON payables",
+                  "name": "txtAp138",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 139,
+                  "title": "Electronic cards related payables",
+                  "name": "txtEcrp139",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 140,
+                  "title": "Other financial institutions payables",
+                  "name": "txtOfip140",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 141,
+                  "title": "Tax collections (FGN, States, etc)",
+                  "name": "txtTc(Se141",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 142,
+                  "title": "On lending liabilities",
+                  "name": "txtOll142",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 143,
+                  "title": "Reinsurance contract liablities",
+                  "name": "txtRcl143",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 144,
+                  "title": "Insurance contract liablities",
+                  "name": "txtIcl144",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 145,
+                  "title": "Short-term debt",
+                  "name": "txtSd145",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 146,
+                  "title": "Derivative financial instruments",
+                  "name": "txtDfi146",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 147,
+                  "title": "Income taxes payable",
+                  "name": "txtItp147",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 148,
+                  "title": "Decommissioning and other provisions",
+                  "name": "txtDaop148",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 149,
+                  "title": "Liabilities directly associated with assets classified as held for sale",
+                  "name": "txtLdawacahfs149",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 150,
+                  "title": "Refund liabilities",
+                  "name": "txtRl150",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 151,
+                  "title": "Other payables",
+                  "name": "txtOp151",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 152,
+                  "title": "Other current liabilities",
+                  "name": "txtOcl152",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                }
+              ],
+              "inputSources": []
+            },
+            {
+              "id": 194,
+              "title": "Non-current Liabilities",
+              "name": "lblNL194",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [
+                {
+                  "id": 153,
+                  "title": "Long Term Debt",
+                  "name": "txtLTD153",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 154,
+                  "title": "Non-current Portion of Lease Obligation",
+                  "name": "txtNPoLO154",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 155,
+                  "title": "Pension and Employee Benefit obligation",
+                  "name": "txtPaEBo155",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 156,
+                  "title": "Deferred Revenue (Long Term Portion)",
+                  "name": "txtDR(TP156",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 157,
+                  "title": "Contigent Liability (Long Term Provision)",
+                  "name": "txtCL(TP157",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 158,
+                  "title": "Deferred Grants and Subsidies",
+                  "name": "txtDGaS158",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 159,
+                  "title": "Policy Reserve",
+                  "name": "txtPR159",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 160,
+                  "title": "Loss Reserve",
+                  "name": "txtLR160",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 161,
+                  "title": "Stock warrant obligations",
+                  "name": "txtSwo161",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 162,
+                  "title": "Long term Borrowings ",
+                  "name": "txtLtB162",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 163,
+                  "title": "Lease liabilities",
+                  "name": "txtLl163",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 164,
+                  "title": "Derivaties liabilities held for risk Management",
+                  "name": "txtDlhfrM164",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 165,
+                  "title": "Deposit from Banks",
+                  "name": "txtDfB165",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 166,
+                  "title": "Deposit from Customers",
+                  "name": "txtDfC166",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 167,
+                  "title": "Deferred Tax Liabilities",
+                  "name": "txtDTL167",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 168,
+                  "title": "Employees Benefits obligations",
+                  "name": "txtEBo168",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 169,
+                  "title": "Debt Securities ",
+                  "name": "txtDS169",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 170,
+                  "title": "Long term subordinate bond",
+                  "name": "txtLtsb170",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 171,
+                  "title": "Other borrowed funds",
+                  "name": "txtObf171",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 172,
+                  "title": "Trade and Other payables",
+                  "name": "txtTaOp172",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 173,
+                  "title": "Derivative financial instruments liabilities",
+                  "name": "txtDfil173",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 174,
+                  "title": "Retirement benefits",
+                  "name": "txtRb174",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 175,
+                  "title": "Decommissioning and other provisions",
+                  "name": "txtDaop175",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 176,
+                  "title": "Other Non-Current Liabilties",
+                  "name": "txtONL176",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                }
+              ],
+              "inputSources": []
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "title": "Equity",
+          "isSummed": true,
+          "parents": [
+            {
+              "id": 200,
+              "title": "Capital reserve",
+              "name": "txtCr200",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 201,
+              "title": "Non-controlling interest",
+              "name": "txtNi201",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 195,
+              "title": "Issued Share Capital",
+              "name": "txtISC195",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 203,
+              "title": "Total Equity ",
+              "name": "lblTE203",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": "195+196+197+198+199+200+201+202",
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 196,
+              "title": "Share premium",
+              "name": "txtSp196",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 197,
+              "title": "Retained earnings",
+              "name": "txtRe197",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 202,
+              "title": "Other Reserves ",
+              "name": "lblOR202",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [
+                {
+                  "id": 177,
+                  "title": "Contigency reserve",
+                  "name": "txtCr177",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 178,
+                  "title": "Treasury shares",
+                  "name": "txtTs178",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 179,
+                  "title": "Shares held in Trust",
+                  "name": "txtShiT179",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 180,
+                  "title": "Cumulative Translation Adjustment",
+                  "name": "txtCTA180",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 181,
+                  "title": "Share based payment reserve",
+                  "name": "txtSbpr181",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 182,
+                  "title": "Fair value reserve",
+                  "name": "txtFvr182",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 183,
+                  "title": "Asset revaluation reserve",
+                  "name": "txtArr183",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 184,
+                  "title": "Reserve for bonus issue",
+                  "name": "txtRfbi184",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 185,
+                  "title": "Small scale investment reserve",
+                  "name": "txtSsir185",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 186,
+                  "title": "Regulatory risk reserve",
+                  "name": "txtRrr186",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 187,
+                  "title": "Other reserves",
+                  "name": "txtOr187",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 188,
+                  "title": "Equity contribution to shareholders/ Equity holders",
+                  "name": "txtEctsEh188",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                }
+              ],
+              "inputSources": []
+            },
+            {
+              "id": 198,
+              "title": "Revaluation surplus",
+              "name": "txtRs198",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 199,
+              "title": "Statutory reserve",
+              "name": "txtSr199",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 204,
+              "title": "Total Equity and Liabilities",
+              "name": "lblTEaL204",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": "193+194+203",
+              "children": [],
+              "inputSources": []
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "title": "Current Assets",
+          "isSummed": true,
+          "parents": [
+            {
+              "id": 185,
+              "title": "Trade recievables",
+              "name": "txtTr185",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 183,
+              "title": "Inventories",
+              "name": "txtI183",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 186,
+              "title": " Other current assets ",
+              "name": "lblOca186",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [
+                {
+                  "id": 76,
+                  "title": "Interbank Term Loans",
+                  "name": "txtITL76",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 77,
+                  "title": "Other Interbank Advances",
+                  "name": "txtOIA77",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 78,
+                  "title": "Withholding tax recievables ",
+                  "name": "txtWtr78",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 79,
+                  "title": "Other  receivables",
+                  "name": "txtOr79",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 80,
+                  "title": "Current portion of Long Term Loan",
+                  "name": "txtCpoLTL80",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 81,
+                  "title": "Insurance contract asset",
+                  "name": "txtIca81",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 82,
+                  "title": "Short Term Investments",
+                  "name": "txtSTI82",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 83,
+                  "title": "Accrued Income",
+                  "name": "txtAI83",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 84,
+                  "title": "Mobile Money deposits",
+                  "name": "txtMMd84",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 85,
+                  "title": "Restricted cash",
+                  "name": "txtRc85",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 86,
+                  "title": "Asset classified as held for sale",
+                  "name": "txtAcahfs86",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 87,
+                  "title": "Deposits and advances",
+                  "name": "txtDaa87",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 88,
+                  "title": "Withholding tax recievables ",
+                  "name": "txtWtr88",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 89,
+                  "title": "Advance payment to vendor",
+                  "name": "txtAptv89",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 90,
+                  "title": "Short-term rent prepaid",
+                  "name": "txtSrp90",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 91,
+                  "title": "Insurance prepaid",
+                  "name": "txtIp91",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 92,
+                  "title": "Prepaid Expenses",
+                  "name": "txtPE92",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 93,
+                  "title": "Other short-term prepayments",
+                  "name": "txtOsp93",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 94,
+                  "title": "Raw materials ",
+                  "name": "txtRm94",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 95,
+                  "title": "Packaging materials",
+                  "name": "txtPm95",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 96,
+                  "title": "Product in process ",
+                  "name": "txtPip96",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 97,
+                  "title": "Engineering spares ",
+                  "name": "txtEs97",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 98,
+                  "title": "Small Tools",
+                  "name": "txtST98",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 99,
+                  "title": "Goods in transit",
+                  "name": "txtGit99",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 100,
+                  "title": "Crude oil and products",
+                  "name": "txtCoap100",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 101,
+                  "title": "chemicals, materials supplies and others",
+                  "name": "txtcmsao101",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 102,
+                  "title": "Other inventories",
+                  "name": "txtOi102",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 103,
+                  "title": "Other current assets",
+                  "name": "txtOca103",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                }
+              ],
+              "inputSources": []
+            },
+            {
+              "id": 187,
+              "title": "Cash and Cash Equivalents",
+              "name": "lblCaCE187",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [
+                {
+                  "id": 104,
+                  "title": "Cash and Cash Equivalents",
+                  "name": "txtCaCE104",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 105,
+                  "title": "Cash and Balances with Central Bank ",
+                  "name": "txtCaBwCB105",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 106,
+                  "title": "Securities measured at fair value through profit & loss",
+                  "name": "txtSmafvtp&l106",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 107,
+                  "title": "Securities measured at fair value through other comprehensive income",
+                  "name": "txtSmafvtoci107",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 108,
+                  "title": "Securities measured at amortised cost",
+                  "name": "txtSmaac108",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 109,
+                  "title": "marketable securities",
+                  "name": "txtms109",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 110,
+                  "title": "Other securities",
+                  "name": "txtOs110",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 111,
+                  "title": "short term financial assets",
+                  "name": "txtstfa111",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 112,
+                  "title": "Reinsurance assets",
+                  "name": "txtRa112",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 113,
+                  "title": "Deferred acquisition cost",
+                  "name": "txtDac113",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 114,
+                  "title": "Premium Receivable",
+                  "name": "txtPR114",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 115,
+                  "title": "Reinsurance Recoverable",
+                  "name": "txtRR115",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 116,
+                  "title": "Derivative Financial Instruments",
+                  "name": "txtDFI116",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 117,
+                  "title": "Non-Pledged Trading Assets",
+                  "name": "txtNTA117",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                }
+              ],
+              "inputSources": []
+            },
+            {
+              "id": 189,
+              "title": "Total Assets",
+              "name": "lblTA189",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": "182+188",
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 188,
+              "title": "Total Current Assets ",
+              "name": "lblTCA188",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": "183+184+185+186+187",
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 184,
+              "title": "Other Receivables",
+              "name": "txtOR184",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "title": "Non Current Assets",
+          "isSummed": true,
+          "parents": [
+            {
+              "id": 182,
+              "title": "Total Non Current Assets ",
+              "name": "lblTNCA182",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": "179+180+181",
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 179,
+              "title": "Investments",
+              "name": "lblI179",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [
+                {
+                  "id": 34,
+                  "title": "Investment in securities",
+                  "name": "txtIis34",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 35,
+                  "title": "Investment in stock and bonds",
+                  "name": "txtIisab35",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 36,
+                  "title": "Investment in Properties",
+                  "name": "txtIiP36",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 37,
+                  "title": "Investment in Associate & Joint Ventures",
+                  "name": "txtIiA&JV37",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 38,
+                  "title": "Investment in Subsidiaries",
+                  "name": "txtIiS38",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 39,
+                  "title": "Investment in finance lease",
+                  "name": "txtIifl39",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 40,
+                  "title": "Investment in staff loan",
+                  "name": "txtIisl40",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 41,
+                  "title": "Investment in digital assets",
+                  "name": "txtIida41",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 42,
+                  "title": "Investment in Commodities",
+                  "name": "txtIiC42",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 43,
+                  "title": "Investment in Commodities",
+                  "name": "txtIiC43",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 44,
+                  "title": "Other investments ",
+                  "name": "txtOi44",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                }
+              ],
+              "inputSources": []
+            },
+            {
+              "id": 180,
+              "title": "Intangible assets ",
+              "name": "lblIa180",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [
+                {
+                  "id": 45,
+                  "title": "Goodwill",
+                  "name": "txtG45",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 46,
+                  "title": "Patent",
+                  "name": "txtP46",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 47,
+                  "title": "Trademarks",
+                  "name": "txtT47",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 48,
+                  "title": "Terminal and service concession rights",
+                  "name": "txtTascr48",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 49,
+                  "title": "Brands",
+                  "name": "txtB49",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 50,
+                  "title": "Customer relationships ",
+                  "name": "txtCr50",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 51,
+                  "title": "Right of use",
+                  "name": "txtRou51",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 52,
+                  "title": "Copyrights",
+                  "name": "txtC52",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 53,
+                  "title": "Other Intangible Assets",
+                  "name": "txtOIA53",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                }
+              ],
+              "inputSources": []
+            },
+            {
+              "id": 181,
+              "title": "Other non current assets ",
+              "name": "lblOnca181",
+              "layout": "VERTICAL",
+              "input": "LABEL",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [
+                {
+                  "id": 54,
+                  "title": "Lease-hold Land",
+                  "name": "txtLL54",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 55,
+                  "title": "Lease-hold Building",
+                  "name": "txtLB55",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 56,
+                  "title": "Lease of vessels and containers",
+                  "name": "txtLovac56",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 57,
+                  "title": "Building and Real estate lease",
+                  "name": "txtBaRel57",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 58,
+                  "title": "Vehicle lease",
+                  "name": "txtVl58",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 59,
+                  "title": "Other leases",
+                  "name": "txtOl59",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 60,
+                  "title": "Non-Current Loans & Advances",
+                  "name": "txtNL&A60",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 61,
+                  "title": "Non-Current Assets Held for Sale",
+                  "name": "txtNAHfS61",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 62,
+                  "title": "Contract assets",
+                  "name": "txtCa62",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 63,
+                  "title": "Deferred tax asset",
+                  "name": "txtDta63",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 64,
+                  "title": "Other financial assets",
+                  "name": "txtOfa64",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 65,
+                  "title": "Long-term trade and recievables",
+                  "name": "txtLtar65",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 66,
+                  "title": "Deposits and advances",
+                  "name": "txtDaa66",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 67,
+                  "title": "Advance payment to vendor",
+                  "name": "txtAptv67",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 68,
+                  "title": "Other long-term recievables",
+                  "name": "txtOlr68",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 69,
+                  "title": "Long-term rent prepaid",
+                  "name": "txtLrp69",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 70,
+                  "title": "Long-term Insurance prepaid",
+                  "name": "txtLIp70",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 71,
+                  "title": "Other long-term prepayments",
+                  "name": "txtOlp71",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 72,
+                  "title": "Derivative financial instrument",
+                  "name": "txtDfi72",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 73,
+                  "title": "Long-term borrowings and debts",
+                  "name": "txtLbad73",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 74,
+                  "title": "Defined Benefits Assets",
+                  "name": "txtDBA74",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                },
+                {
+                  "id": 75,
+                  "title": "Other long-term recievables",
+                  "name": "txtOlr75",
+                  "input": "TEXTFIELD",
+                  "validation": "NUMBER",
+                  "isRequired": false,
+                  "inputSources": []
+                }
+              ],
+              "inputSources": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Profit Adjustment",
+      "description": "This is a reconciliation statement between accounting profit and taxable profit.",
+      "headers": [
+        {
+          "id": 19,
+          "title": "Add Backs",
+          "isSummed": true,
+          "parents": [
+            {
+              "id": 205,
+              "title": "Expenses Related To Exempt Income",
+              "name": "txtERTEI205",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 208,
+              "title": "Loss On Disposal Of Fixed Assets",
+              "name": "txtLODOFA208",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 207,
+              "title": "Urealized Foreign Exchange Loss",
+              "name": "txtUFEL207",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 210,
+              "title": "Other Disallowable Expenses ",
+              "name": "txtODE210",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 209,
+              "title": "Entertainment Expenses(To The Extent Not Allowed)",
+              "name": "txtEETENA209",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 206,
+              "title": "Donations(To The Extent Not Allowed)",
+              "name": "txtDTENA206",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "title": "Deductions",
+          "isSummed": true,
+          "parents": [
+            {
+              "id": 214,
+              "title": "Other Non Taxable Income ",
+              "name": "txtONTI214",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 212,
+              "title": "Profit From Sales Of Fixed Assets",
+              "name": "txtPFSOFA212",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 213,
+              "title": "Frank Investment Income",
+              "name": "txtFII213",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            },
+            {
+              "id": 211,
+              "title": "Deduct Non Taxable Items",
+              "name": "txtDNTI211",
+              "layout": "VERTICAL",
+              "input": "TEXTFIELD",
+              "validation": "NUMBER",
+              "isRequired": false,
+              "formula": null,
+              "children": [],
+              "inputSources": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

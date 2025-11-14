@@ -1,0 +1,714 @@
+/* TaxFormBuilder.css */
+.tax-form-builder {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+/* Header */
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.form-header h1 {
+    margin: 0;
+    color: #333;
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.unsaved-indicator {
+    color: #ff9800;
+    font-size: 24px;
+}
+
+.save-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.save-button:hover:not(:disabled) {
+    background-color: #45a049;
+}
+
+.save-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Schedule Tabs */
+.schedule-tabs {
+    display: flex;
+    gap: 2px;
+    background-color: #f5f5f5;
+    padding: 4px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.schedule-tab {
+    flex: 1;
+    padding: 12px 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.schedule-tab:hover {
+    background-color: #e0e0e0;
+}
+
+.schedule-tab.active {
+    background-color: white;
+    color: #2196F3;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Schedule Content */
+.schedule-content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.schedule-description {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #2196F3;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.schedule-description p {
+    margin: 0;
+    color: #666;
+}
+
+/* Headers */
+.headers-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.header-section {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fafafa;
+}
+
+.header-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #2196F3;
+}
+
+.header-title h3 {
+    margin: 0;
+    color: #333;
+}
+
+.header-sum {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2196F3;
+}
+
+/* Parent Fields */
+.parents-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.parent-field-container {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.parent-field-header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+.expand-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 5px;
+    margin-right: 10px;
+    color: #666;
+    transition: transform 0.2s;
+}
+
+.expand-button:hover {
+    transform: scale(1.2);
+}
+
+.parent-field {
+    flex: 1;
+}
+
+/* Children Container */
+.children-container {
+    padding: 15px;
+    background-color: white;
+    border-top: 1px solid #e0e0e0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+/* Form Fields */
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-field label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-field .required {
+    color: #f44336;
+    margin-left: 4px;
+}
+
+.form-field input {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.form-field input:focus {
+    outline: none;
+    border-color: #2196F3;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+/* Computed Fields */
+.computed-field input {
+    background-color: #f0f0f0;
+    color: #333;
+    font-weight: 600;
+    cursor: not-allowed;
+    border-color: #ccc;
+}
+
+.computed-field label {
+    color: #888;
+}
+
+/* Editable Fields */
+.editable-field input {
+    background-color: white;
+    color: #000;
+}
+
+.editable-field input:hover:not(:disabled) {
+    border-color: #999;
+}
+
+/* Parent Sum Fields */
+.parent-field.computed-field input {
+    background-color: #e8f4f8;
+    font-weight: bold;
+    border-left: 3px solid #2196F3;
+}
+
+/* Child Fields */
+.child-field {
+    padding-left: 20px;
+    position: relative;
+}
+
+.child-field::before {
+    content: '└';
+    position: absolute;
+    left: 5px;
+    top: 32px;
+    color: #ccc;
+}
+
+/* Form Footer */
+.form-footer {
+    margin-top: 30px;
+    padding: 20px;
+    border-top: 2px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submit-button {
+    padding: 12px 30px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #1976D2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .schedule-tabs {
+        flex-direction: column;
+    }
+
+    .children-container {
+        grid-template-columns: 1fr;
+    }
+
+    .form-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .header-title {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+/* Loading State */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.loading::after {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #2196F3;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* New UX Enhancements */
+
+/* Header Actions */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.add-field-container {
+    display: flex;
+    align-items: center;
+}
+
+.add-field-button {
+    padding: 8px 16px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.add-field-button:hover {
+    background-color: #1976D2;
+}
+
+/* No Fields Message */
+.no-fields-message {
+    font-size: 13px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Field Selector */
+.field-selector {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.field-select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    cursor: pointer;
+    min-width: 200px;
+}
+
+.field-select:focus {
+    outline: none;
+    border-color: #2196F3;
+}
+
+.cancel-button {
+    padding: 8px 12px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.cancel-button:hover {
+    background-color: #d32f2f;
+}
+
+/* Parent Field Wrapper */
+.parent-field-wrapper {
+    position: relative;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 15px;
+    background-color: white;
+}
+
+.parent-field-wrapper:hover .remove-field-button {
+    opacity: 1;
+}
+
+/* Remove Field Button */
+.remove-field-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    opacity: 0.7;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-field-button:hover {
+    background-color: #d32f2f;
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border: 2px dashed #ccc;
+}
+
+.empty-state p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Mode System Styles */
+
+/* Mode Banners */
+.mode-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.builder-mode-banner {
+    background-color: #e3f2fd;
+    border: 2px solid #2196F3;
+    color: #1976D2;
+}
+
+.view-mode-banner {
+    background-color: #f3e5f5;
+    border: 2px solid #9c27b0;
+    color: #7b1fa2;
+}
+
+.mode-banner-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mode-icon {
+    font-size: 20px;
+}
+
+.mode-text {
+    font-size: 14px;
+}
+
+/* Edit Structure Button */
+.edit-structure-button {
+    padding: 8px 16px;
+    background-color: #9c27b0;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.edit-structure-button:hover {
+    background-color: #7b1fa2;
+}
+
+/* Save Structure Button */
+.save-structure-button {
+    padding: 10px 20px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.save-structure-button:hover {
+    background-color: #1976D2;
+}
+
+/* View Mode Specific Styles */
+.view-mode .parent-field-wrapper {
+    padding-right: 15px; /* No need for extra space for remove button */
+}
+
+.view-mode .empty-state {
+    border-style: solid;
+    background-color: #fff;
+}
+
+/* Builder Mode Specific Styles */
+.builder-mode .parent-field-wrapper {
+    padding-right: 45px; /* Make room for remove button */
+}
+
+/* View Mode Simple Form Styles */
+.view-mode-section {
+    margin-bottom: 30px;
+}
+
+.view-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.view-section-header h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.view-total {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2196F3;
+}
+
+.view-fields-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.view-field-item {
+    /* Clean field container - no borders or complex styling */
+}
+
+/* Override parent field styling in view mode for cleaner look */
+.view-mode .parent-field-container {
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.view-mode .parent-field-header {
+    background: transparent;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+/* Hide expand button in view mode */
+.view-mode .expand-button {
+    display: none;
+}
+
+/* Make parent field in view mode look like a section */
+.view-mode .parent-field .form-field label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+.view-mode .children-container {
+    padding: 10px 0;
+    border: none;
+    background: transparent;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.view-mode .form-field input {
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 14px;
+    background-color: white;
+}
+
+.view-mode .form-field input:focus {
+    outline: none;
+    border-color: #2196F3;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+.view-mode .form-field label {
+    font-weight: 500;
+    color: #555;
+    font-size: 14px;
+}
+
+/* Hide schedule description in view mode for cleaner look */
+.view-mode .schedule-description {
+    display: none;
+}
+
+/* Cleaner schedule content in view mode */
+.view-mode .schedule-content {
+    background: transparent;
+    box-shadow: none;
+    padding: 10px;
+}
+
+.view-mode .headers-container {
+    gap: 20px;
+}
+
+/* Responsive adjustments for new elements */
+@media (max-width: 768px) {
+    .header-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .field-selector {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .field-select {
+        width: 100%;
+    }
+
+    .remove-field-button {
+        opacity: 1;
+    }
+
+    .mode-banner {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .mode-banner-content {
+        flex-direction: column;
+    }
+
+    .edit-structure-button,
+    .save-structure-button {
+        width: 100%;
+    }
+
+    .view-fields-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .view-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .view-mode .children-container {
+        grid-template-columns: 1fr;
+    }
+}

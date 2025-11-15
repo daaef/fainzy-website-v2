@@ -1,37 +1,425 @@
 # Project Changes Log
 
+## [Date: 2025-11-15 HH:MM]
+
+### Summary
+
+Created Custom Solutions Carousel component using shadcn/ui carousel with 2/3 image width layout, 20px gaps, and matching screenshot proportions. Added 5 custom solutions with feature grids and contact buttons. Fixed products dropdown in navbar to be full-screen with background appearing on hover/toggle, matching Tesla-style mega menu design. Also fixed critical mobile menu rendering issues where menu was hidden behind navbar.
+
+### Files Created
+
+- `components/CustomSolutionsCarousel.tsx` - New carousel component for showcasing custom solutions with large images
+
+### Files Modified
+
+- `app/page.tsx` - Added CustomSolutionsCarousel with 5 solutions, each with 4 features displayed in grid layout
+- `components/CustomSolutionsCarousel.tsx` - Completely restructured layout to match screenshot proportions with features grid on left and contact button on right
+- `components/layout/navbar.tsx` - Updated navbar background logic, products dropdown implementation, and fixed mobile menu rendering issues
+
+### Custom Solutions Carousel Implementation
+
+#### Component Features
+
+- **shadcn/ui Carousel**: Leverages the official shadcn carousel component with embla-carousel
+- **2/3 Image Layout**: Images consume 2/3 of the viewport width as requested
+- **20px Gap Between Items**: Added `gap-5` class to CarouselContent for 20px spacing
+- **Responsive Grid**: Uses `grid-cols-1 lg:grid-cols-3` for proper content distribution
+  - Left column (1/3 width): Text content + features grid at bottom
+  - Right columns (2/3 width): Large product image (75% height) + Contact button (25% height)
+- **Features Grid**: 2x2 grid of features positioned at bottom left with title/subtitle pairs
+- **Contact Button**: White button with black text positioned at bottom right
+- **Smooth Animations**: Framer Motion animations on scroll and hover
+- **Auto-sizing**: Images use `fill` with `object-contain` for proper scaling
+- **Carousel Controls**: Previous/Next buttons positioned centrally below carousel
+- **Dynamic Basis**: Each carousel item uses `lg:basis-2/3` for proper slide width
+
+#### Layout Structure (Matching Screenshot)
+
+```tsx
+<Grid cols={3} className="h-full">
+  {/* Left Column - 1/3 width */}
+  <Column span={1} className="flex flex-col justify-between">
+    <TopSection>
+      <Category />
+      <Title />
+      <Description />
+    </TopSection>
+    <FeaturesGrid>
+      {" "}
+      {/* 2x2 grid at bottom left */}
+      <Feature>Health Robot / ALWAYS AVAILABLE</Feature>
+      <Feature>Cost Effective / REDUCED LABOR</Feature>
+      <Feature>Eco-Friendly / ZERO EMISSIONS</Feature>
+      <Feature>Reliable / CONSISTENT SERVICE</Feature>
+    </FeaturesGrid>
+  </Column>
+
+  {/* Right Column - 2/3 width */}
+  <Column span={2} className="flex flex-col justify-between">
+    <Image height="75%" />
+    <ContactButton height="25%" /> {/* White button bottom right */}
+  </Column>
+</Grid>
+```
+
+#### Solutions Data (All with Features)
+
+1. **Customized Robots**
+   - Category: "Custom Solution"
+   - Image: `/products/custom-solutions.png`
+   - Features: Health Robot, Cost Effective, Eco-Friendly, Reliable
+   - Description: Custom robot creation for specific needs
+
+2. **IoT Solutions**
+   - Category: "Custom Solution"
+   - Image: `/products/consultancy.jpg`
+   - Features: Web Development, Mobile Apps, Deep Learning, Autonomous Driving
+   - Description: Web dev, mobile dev, deep learning, autonomous driving
+
+3. **MiraX**
+   - Category: "Custom Solution"
+   - Image: `/products/mirax.png`
+   - Features: Contactless, Efficient, Smart Navigation, User-Friendly
+   - Description: In-restaurant delivery robot minimizing physical contact
+
+4. **Efficient Food Ordering System**
+   - Category: "Food Service"
+   - Image: `/products/efficient.jpg`
+   - Features: Unified Platform, Robot Fleet, Real-time Tracking, Seamless Integration
+   - Description: Unified platform connecting restaurants and customers with autonomous robot fleet
+
+5. **Hotel Robot Delivery System**
+   - Category: "Hospitality"
+   - Image: `/products/hotel.png`
+   - Features: Tablet Integration, Room Delivery, 24/7 Service, Precision Navigation
+   - Description: In-door hotel delivery robot with integrated tablet system
+
+#### Responsive Design
+
+- **Mobile (< 1024px)**: Single column layout, image below text
+- **Desktop (≥ 1024px)**: Grid layout with 1/3 text, 2/3 image split
+- **Image Heights**: Responsive scaling from 400px (mobile) to 600px (desktop)
+- **Typography**: Scales from text-3xl to text-6xl for headings
+
+#### Data Structure Update
+
+**Old Format:**
+
+```typescript
+interface Solution {
+  id: string;
+  label: string;
+  image: StaticImageData | string;
+  features: Feature[];
+}
+```
+
+**New Format:**
+
+```typescript
+interface Solution {
+  id: string;
+  category: string;
+  images: SolutionImage[];
+  features: Feature[];
+}
+
+interface SolutionImage {
+  src: string;
+  alt: string;
+}
+```
+
+**Key Changes:**
+
+- `label` → `category` for semantic clarity
+- `image` → `images` array to support multiple images per solution
+- Images now use string paths from `/products/` folder instead of static imports
+- Feature badges conditionally rendered with `{solution.features.length > 0 && ...}`
+
+#### Carousel Configuration
+
+```typescript
+opts={{
+  align: "start",
+  loop: true,
+}}
+```
+
+- Continuous looping through solutions
+- Smooth transitions with fade animations
+- Keyboard navigation support (from shadcn carousel)
+- 20px gap between slides via `gap-5` class
+
+#### Integration
+
+- Added between Products section and Metrics section on homepage
+- Full-width section without container restrictions
+- Matches overall dark theme with proper text colors
+
+---
+
+## [Date: 2025-11-15] (Navbar Fixes)
+
+### Summary
+
+Fixed products dropdown in navbar to be full-screen with background appearing on hover/toggle, matching Tesla-style mega menu design. Also fixed critical mobile menu rendering issues where menu was hidden behind navbar.
+
+### Files Modified
+
+- `components/layout/navbar.tsx` - Updated navbar background logic, products dropdown implementation, and fixed mobile menu rendering issues
+
+### Changes Include
+
+#### 1. Navbar Background Behavior (line 107)
+
+**Before:**
+
+- Background appeared only based on scroll position
+- Was transparent at top, solid when scrolled
+
+**After:**
+
+- Background now appears when:
+  - User scrolls down (existing behavior)
+  - Products dropdown is open (`isProductsMenuOpen`)
+  - Mobile menu is toggled (`isMobileMenuOpen`)
+- Condition: `isAtTop && !isProductsMenuOpen && !isMobileMenuOpen ? "bg-transparent" : "bg-background/95 backdrop-blur-sm"`
+
+#### 2. Full-Screen Products Dropdown (lines 149-207)
+
+**Before:**
+
+- Absolute positioning relative to Products link
+- Limited width: 760px
+- Simple dropdown panel
+
+**After:**
+
+- **Backdrop overlay**: Added dark backdrop with blur effect (`bg-black/20 backdrop-blur-sm`)
+  - Covers entire viewport below navbar
+  - Positioned at `top: 88px` (below navbar height)
+  - Closes dropdown when clicked
+- **Fixed positioning**: Changed from `absolute` to `fixed`
+- **Full-width**: Spans entire viewport (`left-0 right-0`)
+- **Consistent positioning**: Positioned below navbar at `top: 88px`
+- **Centered content**: Max-width container (`max-w-[1536px]`) centered within full-width dropdown
+- **Enhanced styling**:
+  - Background: `bg-background/98 backdrop-blur-md`
+  - Border bottom for separation
+  - Larger padding: `py-8` instead of `p-6`
+  - Increased product card sizing: `h-40` images, `p-6` padding
+  - Larger sidebar: `w-56` with `pl-8`
+- **Better interactions**:
+  - All links close dropdown on click
+  - Backdrop click closes dropdown
+  - Escape key already handled (existing functionality)
+
+#### 3. Product Card Enhancements
+
+- Larger image height: `h-32` → `h-40`
+- More padding: `p-4` → `p-6`
+- Larger text: `text-sm` → `text-base` for product names
+- Better spacing: `mb-3` → `mb-4` for images, `mb-1` → `mb-2` for names
+- Improved gaps: `gap-4` → `gap-6` in action links
+
+#### 4. Sidebar Improvements
+
+- Wider sidebar: `w-48` → `w-56`
+- More padding: `pl-6` → `pl-8`
+- Better spacing: `gap-3` → `gap-4` between links
+- Added transition-colors to all links for smooth hover effects
+
+#### 5. Mobile Menu Fixes (line 308-309)
+
+**Before:**
+
+- Z-index: `z-40` (lower than navbar's `z-50`) - navbar was covering menu
+- Background: `bg-[#101010]` (hardcoded, didn't match app background)
+- Positioning: `fixed inset-0 top-0` with `pt-[88px]` padding
+- Border: `border-[rgba(255,255,255,0.08)]` (hardcoded color)
+
+**After:**
+
+- Z-index: `z-[100]` - mobile menu now renders above navbar and content
+- Background: `bg-background` - matches app background (`#0A0A0B`)
+- Positioning: `fixed inset-x-0` with `style={{top: '88px', bottom: 0}}` - positions below navbar without padding hack
+- Border: `border-border` - uses theme color variable
+- Removed unnecessary `pt-[88px]` padding since container itself starts at 88px
+
+**Issues Fixed:**
+
+- Menu is now visible when toggled (was hidden behind navbar)
+- Background color matches app theme
+- Proper z-index stacking order
+- Cleaner positioning without padding workarounds
+
+### Technical Implementation
+
+**Backdrop Pattern:**
+
+```tsx
+<motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+  className="fixed inset-0 bg-black/20 backdrop-blur-sm"
+  style={{ top: "88px" }}
+  onClick={() => setIsProductsMenuOpen(false)}
+/>
+```
+
+**Full-Width Dropdown:**
+
+```tsx
+<motion.div
+  className="fixed left-0 right-0 bg-background/98 backdrop-blur-md"
+  style={{ top: "88px" }}
+>
+  <div className="max-w-[1536px] mx-auto px-4 sm:px-6 md:px-10 py-8">{/* Content */}</div>
+</motion.div>
+```
+
+**Mobile Menu Pattern:**
+
+```tsx
+{
+  isMobileMenuOpen && (
+    <div
+      className="lg:hidden fixed inset-x-0 bg-background overflow-auto z-[100]"
+      style={{ top: "88px", bottom: 0 }}
+    >
+      <div className="px-4 py-8 border-t border-border">{/* Menu content */}</div>
+    </div>
+  );
+}
+```
+
+### Design Inspiration
+
+Implemented Tesla-style mega menu pattern:
+
+- Full-screen dropdown spanning entire viewport
+- Backdrop overlay to focus attention
+- Content centered within max-width container
+- Navbar background appears on dropdown open
+- Smooth animations and transitions
+
+### Responsive Behavior
+
+- Dropdown uses same responsive padding as navbar (`px-4 sm:px-6 md:px-10`)
+- Content container matches site max-width (1536px)
+- Grid maintains 3 columns for products on desktop
+- Backdrop and dropdown both position below navbar height
+
+### User Experience Improvements
+
+1. **Visual Hierarchy**: Backdrop dims background content, focusing on dropdown
+2. **Consistent Behavior**: Navbar background appears whether scrolling or opening dropdown
+3. **Better Clickability**: Larger touch targets with increased padding
+4. **Clear Exit**: Multiple ways to close (backdrop click, link click, Escape key)
+5. **Professional Feel**: Matches modern mega menu patterns from major brands
+
+### Rationale
+
+The original dropdown was too small (760px) and didn't match the Tesla-inspired design shown in the screenshot. The navbar background only appeared on scroll, not when the dropdown opened. Additionally, the mobile menu had critical rendering issues where it was completely hidden behind the navbar due to incorrect z-index layering.
+
+By implementing a full-screen dropdown with backdrop overlay, updating the navbar background logic, and fixing the mobile menu z-index and positioning, we've created a more polished, professional navigation system that:
+
+- Provides better visual hierarchy with the backdrop
+- Gives the navbar a solid background when needed for readability
+- Offers more space to showcase products and links
+- Creates a more immersive browsing experience
+- Matches modern web design patterns from leading brands
+- **Fixes mobile menu visibility** - menu now properly appears above content with correct background color
+- **Improves mobile UX** - users can now actually see and interact with the mobile menu
+- **Uses theme variables** - consistent with app's color system
+
+---
+
+## [Date: 2025-11-14]
+
+### Summary
+
+Fixed TypeScript build error in JobDetailClient component by adding missing import for the Job type interface.
+
+### Files Modified
+
+- `app/careers/[id]/JobDetailClient.tsx` - Added missing import for `Job` type from `@/app/careers/jobs`
+
+### Issue Fixed
+
+The build was failing on Vercel with the error:
+
+```
+Type error: Cannot find name 'Job'.
+  > 17 |     job: Job;
+```
+
+The component was using the `Job` type in the `JobDetailClientProps` interface but wasn't importing it from the jobs.ts file where it's defined.
+
+### Solution
+
+Added the import statement:
+
+```typescript
+import { Job } from "@/app/careers/jobs";
+```
+
+### Build Verification
+
+- ✓ TypeScript compilation passed with no errors
+- ✓ Build completed successfully in 4.1s
+- ✓ All 18 pages generated successfully
+- ✓ Static generation working for all career detail pages
+
+### Rationale
+
+TypeScript requires all types to be explicitly imported before use. The `Job` interface is defined in `app/careers/jobs.ts` and exported, so it needed to be imported in `JobDetailClient.tsx` to resolve the type error. This was a simple missing import that prevented the Vercel build from succeeding.
+
+---
+
 ## [Date: 2025-11-13 16:45]
 
 ### Summary
+
 Cleaned up blog post detail page by removing custom navbar/footer, extracting state logic into a dedicated component, and adding comprehensive motion animations throughout all sections for an engaging user experience.
 
 ### Files Modified
+
 - `app/blog/[id]/page.tsx` - Complete refactor: removed custom navbar/footer (lines 58-125, 498-516), added original Navbar/Footer from layout components, replaced ImageWithFallback with Next.js Image, extracted like state logic to LikeButton component, added motion animations to all sections
 
 ### Files Created
+
 - `app/blog/[id]/LikeButton.tsx` - New client component handling like button state (likes count, isLiked state, handleLike function) with transition animations on heart icon
 
 ### Key Changes
 
 #### 1. Removed Custom Navbar and Footer
+
 **Before:**
+
 - Custom navbar with hardcoded navigation links (lines 68-125)
 - Used undefined imgLogo and svgPaths variables
 - Custom footer with hardcoded copyright (lines 498-516)
 
 **After:**
+
 - Imports `Navbar from "@/components/layout/navbar"`
 - Imports `Footer from "@/components/layout/footer"`
 - Consistent branding and navigation across all pages
 - No duplicate code or maintenance burden
 
 #### 2. Extracted State Logic
+
 **Before:**
+
 - Like button state managed in main BlogPost component
 - useState hooks for likes and isLiked
 - handleLike function inline
 
 **After:**
+
 - Dedicated `LikeButton.tsx` client component
 - Accepts `initialLikes` prop
 - Manages own state internally
@@ -39,20 +427,25 @@ Cleaned up blog post detail page by removing custom navbar/footer, extracting st
 - Main page component can be server component (better performance)
 
 #### 3. Added Motion Animations
+
 All sections now have scroll-triggered animations:
 
 **Hero Section:**
+
 - Container: Fade in (0.6s duration)
 - Back button + Badge + Title: Fade in + slide up (0.3s delay, 0.5s duration)
 
 **Metadata Section:**
+
 - Fade in + slide up (0.4s delay, 0.5s duration)
 - Contains date, read time, views, like button, share button
 
 **Introduction Section:**
+
 - Fade in + slide up (0.5s delay, 0.5s duration)
 
 **Content Sections (1-5 + Conclusion):**
+
 - All wrapped in `motion.section`
 - Uses `whileInView` for scroll-triggered animations
 - Initial: `{opacity: 0, y: 20}`
@@ -61,38 +454,47 @@ All sections now have scroll-triggered animations:
 - Duration: 0.5s
 
 **Stats Cards (Section 3):**
+
 - Each stat card has hover scale animation (1.02x)
 - Spring transition for natural feel
 
 **CTA Card (Conclusion):**
+
 - Hover scale animation (1.01x)
 - "Request a Demo" button inside animated card
 
 **Table of Contents (Sidebar):**
+
 - Right column: Fade in + slide from right (0.6s delay)
 - Each TOC link: Slide right on hover (x: 4px)
 - Spring transition (stiffness: 300)
 
 **Similar Articles:**
+
 - Section header: Fade in + slide up on scroll
-- Each article card: Staggered animation (0.1s * index delay)
+- Each article card: Staggered animation (0.1s \* index delay)
 - Hover: Slide up (y: -8) + scale (1.02x)
 
 **CTA Section:**
+
 - Fade in + slide up on scroll
 - Logo, heading, description, buttons all animate together
 
 #### 4. Fixed Image Handling
+
 **Before:**
+
 - Used undefined `ImageWithFallback` component
 - Used undefined `imgLogo` variable
 
 **After:**
+
 - Uses Next.js `Image` component with proper `fill` prop
 - Logo uses `/logo.png` with explicit width/height
 - All images have proper alt text and priority/loading attributes
 
 #### 5. Responsive Improvements
+
 - Added `pt-20` to main container (accounts for fixed navbar)
 - All image heights are responsive
 - Grid layout maintains proper spacing on all screen sizes
@@ -100,6 +502,7 @@ All sections now have scroll-triggered animations:
 ### Animation Patterns Applied
 
 **Scroll-Triggered Sections:**
+
 ```typescript
 <motion.section
   initial={{ opacity: 0, y: 20 }}
@@ -110,6 +513,7 @@ All sections now have scroll-triggered animations:
 ```
 
 **Hover Animations:**
+
 ```typescript
 <motion.div
   whileHover={{ scale: 1.02 }}
@@ -118,6 +522,7 @@ All sections now have scroll-triggered animations:
 ```
 
 **Staggered Animations:**
+
 ```typescript
 {articles.map((article, index) => (
   <motion.div
@@ -131,6 +536,7 @@ All sections now have scroll-triggered animations:
 ### Component Architecture
 
 **Server/Client Separation:**
+
 - Main page component: `"use client"` (uses motion animations)
 - LikeButton: `"use client"` (manages interactive state)
 - BackButtonClient: `"use client"` (uses router.back())
@@ -167,6 +573,7 @@ All sections now have scroll-triggered animations:
 ### Technical Implementation
 
 **LikeButton Component:**
+
 ```typescript
 interface LikeButtonProps {
   initialLikes: number;
@@ -181,6 +588,7 @@ export default function LikeButton({ initialLikes }: LikeButtonProps) {
 ```
 
 **Motion Configuration:**
+
 - Library: Framer Motion (`motion/react`)
 - Viewport margin: -100px (early trigger)
 - Once: true (no re-animation on scroll up)
@@ -190,6 +598,7 @@ export default function LikeButton({ initialLikes }: LikeButtonProps) {
 ### Design Preservation
 
 All visual design elements maintained:
+
 - Exact color scheme (#0a0a0b backgrounds, #e5e5e5 text)
 - Typography (Inter font family, specific tracking values)
 - Border radii (8px, 16px, 24px)
@@ -206,6 +615,7 @@ All visual design elements maintained:
 - Responsive design: Works on all screen sizes
 
 ### Build Verification
+
 - ✓ TypeScript compilation passed (no errors in blog post page)
 - ✓ Components properly imported
 - ✓ Motion animations working
@@ -228,9 +638,11 @@ The result is a professional, engaging blog post page that matches the quality o
 ## [Date: 2025-11-13 Current]
 
 ### Summary
+
 Made product pages fully responsive with comprehensive motion animations throughout all sections and components. Transformed the ZiBot product detail page from desktop-only to mobile-first responsive design while adding engaging scroll-triggered animations similar to the home page.
 
 ### Files Modified
+
 - `app/products/[id]/page.tsx` - Completely responsive with motion animations for all 23 sections
 - `components/zibot/RobotComparison.tsx` - Added responsive design and motion animations
 - `components/zibot/PricingSection.tsx` - Made fully responsive with staggered animations
@@ -245,6 +657,7 @@ Made product pages fully responsive with comprehensive motion animations through
 #### **Product Detail Page (app/products/[id]/page.tsx)**
 
 **Section 1 - Hero Section:**
+
 - Added motion animations for hero content (fade in, slide up, scale)
 - Responsive text: `text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl`
 - Responsive padding: `px-4 sm:px-6 py-12 sm:py-20`
@@ -253,16 +666,19 @@ Made product pages fully responsive with comprehensive motion animations through
 - Reduced button sizes on mobile
 
 **Sections 2-6 (Video and Carousel Sections):**
+
 - Updated all section padding to be responsive: `px-4 sm:px-6 py-12 sm:py-20`
 - Carousel components already handle responsiveness internally
 
 **Section 7, 10, 12 (Feature Sections):**
+
 - Wrapped content in `motion.div` with scroll-triggered animations
 - Responsive headings: `text-2xl sm:text-3xl md:text-4xl`
 - Responsive text: `text-sm sm:text-base`
 - Responsive margins: `mb-3 sm:mb-4`, `mb-8 sm:mb-12`
 
 **Section 17 - Business Operations:**
+
 - Added motion animations to video, heading, and stats
 - Made stats layout responsive: `flex-col sm:flex-row`
 - Stats scale individually with staggered delays
@@ -270,10 +686,12 @@ Made product pages fully responsive with comprehensive motion animations through
 - Video height: `h-[250px] sm:h-[300px] md:h-[400px]`
 
 **Section 21 - No Boundaries:**
+
 - Container height: `min-h-[50vh] sm:min-h-[70vh]`
 - Added motion animations for content fade in
 
 **Section 22 - Specifications:**
+
 - Main grid: `grid-cols-1 lg:grid-cols-[.6fr_1fr]` (single column on mobile)
 - All spec grids: `grid-cols-2 sm:grid-cols-3` (2 columns mobile, 3 desktop)
 - Responsive headings with flexible layout: `flex-col sm:flex-row`
@@ -282,6 +700,7 @@ Made product pages fully responsive with comprehensive motion animations through
 - Responsive spacing: `gap-4 sm:gap-6`, `space-y-6 sm:space-y-8`
 
 **Section 23 - Footer CTA:**
+
 - Layout: `flex-col md:flex-row` (stacks on mobile)
 - Text alignment: `text-center md:text-left`
 - Button alignment: `justify-center md:justify-start`
@@ -289,6 +708,7 @@ Made product pages fully responsive with comprehensive motion animations through
 - Smaller button/icon sizes on mobile
 
 #### **RobotComparison Component:**
+
 - Added motion import and animations
 - Robot image height: `h-[40vh] sm:h-[50vh] md:h-[55vh]`
 - Specs layout: `flex-col sm:flex-row` with responsive gaps
@@ -297,6 +717,7 @@ Made product pages fully responsive with comprehensive motion animations through
 - Responsive text: `text-3xl sm:text-4xl md:text-5xl`
 
 #### **PricingSection Component:**
+
 - Added motion import and animations
 - Robot image: `h-[40vh] sm:h-[45vh] md:h-[50vh]`
 - Pricing grid: `grid-cols-1 md:grid-cols-2` (single column on mobile)
@@ -308,6 +729,7 @@ Made product pages fully responsive with comprehensive motion animations through
 ### Motion Animations Added
 
 **Animation Patterns Used:**
+
 1. **Hero Animations (Section 1):**
    - Main container: Fade in + slide up (0.8s)
    - Heading: Fade in + scale (0.8s delay)
@@ -321,15 +743,16 @@ Made product pages fully responsive with comprehensive motion animations through
 
 3. **Stats and Metrics (Sections 17, RobotComparison):**
    - Individual items: Fade in + scale on scroll
-   - Staggered delays based on index (0.1s * index)
+   - Staggered delays based on index (0.1s \* index)
    - Duration: 0.5s per item
 
 4. **Pricing Tiers:**
    - Each tier: Fade in + slide up on scroll
-   - Staggered animation (0.3s + 0.1s * index)
+   - Staggered animation (0.3s + 0.1s \* index)
    - Duration: 0.5s per tier
 
 **Animation Configuration:**
+
 - Initial state: `{opacity: 0, y: 30}` or `{opacity: 0, scale: 0.9}`
 - Animated state: `{opacity: 1, y: 0}` or `{opacity: 1, scale: 1}`
 - Viewport margin: "-100px" (triggers before element fully visible)
@@ -338,6 +761,7 @@ Made product pages fully responsive with comprehensive motion animations through
 ### Responsive Breakpoint Strategy
 
 **Mobile-First Approach:**
+
 - Base styles for mobile (< 640px)
 - `sm:` (640px+) - Small tablets
 - `md:` (768px+) - Tablets
@@ -345,6 +769,7 @@ Made product pages fully responsive with comprehensive motion animations through
 - `xl:` (1280px+) - Large desktops
 
 **Common Patterns:**
+
 - Padding: `px-4 sm:px-6` or `py-12 sm:py-20`
 - Text: `text-xs sm:text-sm md:text-base`
 - Headings: `text-2xl sm:text-3xl md:text-4xl`
@@ -355,6 +780,7 @@ Made product pages fully responsive with comprehensive motion animations through
 ### Components Already Responsive
 
 The following components were already properly responsive and only needed to be used correctly in the parent page:
+
 - **LargeFeatureCarousel**: Uses `md:basis-1/2` for card sizing
 - **CardCarousel**: Uses dynamic basis classes based on `cardsPerView` prop
 - **RobotTopViewGrid**: Uses responsive grids (`grid-cols-1 md:grid-cols-2 lg:grid-cols-3`)
@@ -364,6 +790,7 @@ The following components were already properly responsive and only needed to be 
 ### Design Preservation
 
 **Maintained Desktop Design:**
+
 - All font sizes, spacing, and layouts remain unchanged on desktop (lg+ breakpoints)
 - Color scheme preserved exactly
 - Border radii maintained
@@ -372,6 +799,7 @@ The following components were already properly responsive and only needed to be 
 - All hover states preserved
 
 **Mobile Optimizations:**
+
 - Reduced font sizes proportionally
 - Smaller padding/margins
 - Stacked layouts instead of side-by-side
@@ -382,6 +810,7 @@ The following components were already properly responsive and only needed to be 
 ### Technical Implementation
 
 **Motion Library:**
+
 ```typescript
 import {motion} from "motion/react";
 
@@ -395,22 +824,25 @@ import {motion} from "motion/react";
 ```
 
 **Responsive Classes:**
+
 ```tsx
 // Mobile → Tablet → Desktop progression
-className="text-2xl sm:text-3xl md:text-4xl"
-className="px-4 sm:px-6 py-12 sm:py-20"
-className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-className="flex-col sm:flex-row"
+className = "text-2xl sm:text-3xl md:text-4xl";
+className = "px-4 sm:px-6 py-12 sm:py-20";
+className = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3";
+className = "flex-col sm:flex-row";
 ```
 
 ### Browser Compatibility
 
 **Animations:**
+
 - Uses Framer Motion (works on all modern browsers)
 - Hardware-accelerated transforms (opacity, scale, translateY)
 - Fallback: No animation in browsers without JS (progressive enhancement)
 
 **Responsive Design:**
+
 - CSS Grid and Flexbox (IE11+ with fallbacks)
 - Tailwind breakpoints (standard CSS media queries)
 - Mobile-first approach ensures compatibility
@@ -478,17 +910,22 @@ The result is a professional, engaging, fully responsive product showcase that w
 ## [Date: 2025-11-11 16:15]
 
 ### Summary
+
 Implemented dynamic job detail pages using UUID-based routing with data from jobs.ts. Replaced all hardcoded content with dynamic data fetching while preserving all animations and styling. Fixed build error by properly separating server and client components.
 
 ### Files Modified
+
 - `app/careers/jobs.ts` - Replaced all string IDs with UUIDs (kept old IDs as comments for reference)
 - `app/careers/[id]/page.tsx` - Converted to Server Component for data fetching and static generation
 
 ### Files Created
+
 - `app/careers/[id]/JobDetailClient.tsx` - Client component containing all UI and Framer Motion animations
 
 ### UUID Mapping
+
 All job IDs have been replaced with UUIDs:
+
 - `software-developer-full-stack` → `3f8a5c2e-1d4b-4e9f-a6c7-8b2d4e6f9a1c`
 - `robotics-engineer` → `7b4e9f2a-6c3d-4a1e-b8f5-9c6d2e4a7b3f`
 - `ai-ml-engineer` → `5d2e8f4a-9b6c-4e3d-a1f7-6c9b2e5d8a4f`
@@ -502,6 +939,7 @@ All job IDs have been replaced with UUIDs:
 ### Dynamic Job Detail Page Implementation
 
 #### Key Features
+
 1. **Dynamic Data Fetching**: Job data pulled from `jobs.ts` based on UUID parameter
 2. **404 Handling**: Uses Next.js `notFound()` for invalid job IDs
 3. **Static Generation**: Implements `generateStaticParams()` to pre-generate all job pages at build time
@@ -510,6 +948,7 @@ All job IDs have been replaced with UUIDs:
 6. **Preserved Animations**: All Framer Motion animations intact
 
 #### Sections Dynamically Populated
+
 - **Hero Section**: Job title, location, type, salary, posted date
 - **Job Description**: Dynamic description text
 - **Responsibilities**: Dynamic list (7 items per job)
@@ -521,7 +960,9 @@ All job IDs have been replaced with UUIDs:
 - **Application Form**: Preserved with all fields intact
 
 #### Technical Implementation
+
 **Server Component (page.tsx)**:
+
 ```typescript
 export default function JobDetailPage({ params }: PageProps) {
     const job = jobs.find((j) => j.id === params.id);
@@ -535,19 +976,22 @@ export async function generateStaticParams() {
 ```
 
 **Client Component (JobDetailClient.tsx)**:
+
 ```typescript
 "use client";
 export default function JobDetailClient({ job }: { job: Job }) {
-    // All UI and Framer Motion animations
+  // All UI and Framer Motion animations
 }
 ```
 
 This separation allows:
+
 - Server component to use `generateStaticParams` for static generation
 - Client component to use Framer Motion and interactive features
 - Proper Next.js 13+ App Router architecture
 
 #### Responsive Improvements
+
 - Hero padding: `px-4 sm:px-6 md:px-12 lg:px-[192px]`
 - Title sizing: `text-4xl sm:text-5xl md:text-[56px]`
 - Content padding: Scales from mobile to desktop
@@ -556,6 +1000,7 @@ This separation allows:
 - All meta info items wrap properly on mobile
 
 #### Benefits Over Hardcoded Approach
+
 1. **Single Source of Truth**: All job data in one file (jobs.ts)
 2. **Easy Updates**: Change job details in one place
 3. **Consistent Data**: No discrepancy between listing and detail pages
@@ -565,7 +1010,9 @@ This separation allows:
 7. **Maintainability**: Clean separation of data and presentation
 
 ### Rationale
+
 The previous implementation had all job content hardcoded in the detail page, making it impossible to show different jobs and requiring manual updates in multiple places. By implementing dynamic routing with UUIDs:
+
 - We can now view any job by navigating to `/careers/{uuid}`
 - All job data comes from the centralized jobs.ts file
 - The careers listing page automatically links to the correct detail pages
@@ -580,14 +1027,17 @@ This makes the careers section truly production-ready with a scalable, maintaina
 ## [Date: 2025-11-11 15:45]
 
 ### Summary
+
 Expanded all job listings in jobs.ts with comprehensive, detailed content including expanded descriptions, responsibilities, requirements, qualifications, benefits, and tech stacks to match the quality and depth shown in the job detail page.
 
 ### Files Modified
+
 - `app/careers/jobs.ts` - Updated all 9 job entries with detailed, professional content
 
 ### Changes Made to Each Job
 
 #### 1. Software Developer (Full-Stack)
+
 - Updated description to match hardcoded detail page content exactly
 - Expanded responsibilities from 3 to 7 items with specific technical details
 - Expanded requirements from 4 to 6 items with more specificity about Django DRF, caching, authentication
@@ -596,6 +1046,7 @@ Expanded all job listings in jobs.ts with comprehensive, detailed content includ
 - Expanded techStack from 6 to 8 items (added JavaScript, REST APIs)
 
 #### 2. Robotics Engineer
+
 - Completely rewrote description to focus on autonomous delivery robots in Nagoya
 - Expanded responsibilities from 3 to 7 items covering control algorithms, sensor integration, SLAM, HIL testing
 - Expanded requirements from 3 to 6 items with specific details on ROS/ROS2, sensor fusion, SLAM, path planning
@@ -604,6 +1055,7 @@ Expanded all job listings in jobs.ts with comprehensive, detailed content includ
 - Expanded techStack from 5 to 8 items (added ROS2, Python, Gazebo)
 
 #### 3. AI/ML Engineer
+
 - Rewrote description to emphasize bridging research and production for autonomous robotics
 - Expanded responsibilities from 3 to 7 items covering training, optimization, MLOps, monitoring, research
 - Expanded requirements from 3 to 6 items with details on model optimization, MLOps, deployment
@@ -612,6 +1064,7 @@ Expanded all job listings in jobs.ts with comprehensive, detailed content includ
 - Expanded techStack from 6 to 9 items (added TensorRT, Kubernetes, MLflow)
 
 #### 4. Hardware Engineer
+
 - Expanded description to focus on robotics hardware design and validation
 - Expanded responsibilities from 3 to 7 items covering PCB design, component selection, DFM, debugging, documentation
 - Expanded requirements from 2 to 6 items with analog/digital design, signal integrity, EMC/EMI, lab equipment
@@ -620,6 +1073,7 @@ Expanded all job listings in jobs.ts with comprehensive, detailed content includ
 - Expanded techStack from 3 to 6 items (added SPICE simulation, Logic Analyzers)
 
 #### 5. Product Designer
+
 - Rewrote description to emphasize robotics/logistics intersection
 - Expanded responsibilities from 3 to 7 items covering wireframing, research, design systems, multi-platform design
 - Expanded requirements from 2 to 6 items with portfolio emphasis, Figma proficiency, research methods
@@ -628,6 +1082,7 @@ Expanded all job listings in jobs.ts with comprehensive, detailed content includ
 - Expanded techStack from 3 to 7 items (added FigJam, Adobe Creative Suite, Maze, UserTesting)
 
 #### 6. DevOps Engineer
+
 - Rewrote description to focus on robotics platform infrastructure
 - Expanded responsibilities from 3 to 7 items covering CI/CD, AWS, Kubernetes, IaC, monitoring, incident response
 - Expanded requirements from 2 to 6 items with specific AWS services, Terraform, CI/CD tools, scripting languages
@@ -636,6 +1091,7 @@ Expanded all job listings in jobs.ts with comprehensive, detailed content includ
 - Expanded techStack from 5 to 9 items (added GitLab CI, Ansible, ELK Stack)
 
 #### 7. Senior Software Engineer
+
 - Rewrote description to emphasize leadership and scaling responsibilities
 - Expanded responsibilities from 3 to 7 items covering architecture, mentoring, technical strategy, incident response
 - Expanded requirements from 2 to 6 items with distributed systems, expert-level skills, microservices
@@ -644,6 +1100,7 @@ Expanded all job listings in jobs.ts with comprehensive, detailed content includ
 - Expanded techStack from 4 to 8 items (added Next.js, Redis, GraphQL)
 
 #### 8. Computer Vision Engineer
+
 - Rewrote description to focus on autonomous robot perception systems
 - Expanded responsibilities from 3 to 7 items covering pipelines, model optimization, CUDA, dataset management, benchmarking
 - Expanded requirements from 2 to 6 items with OpenCV, PyTorch/TensorFlow, CUDA, 3D vision, camera calibration
@@ -652,6 +1109,7 @@ Expanded all job listings in jobs.ts with comprehensive, detailed content includ
 - Expanded techStack from 4 to 8 items (added TensorFlow, TensorRT, ROS, Python)
 
 #### 9. UX Researcher
+
 - Rewrote description to emphasize user-centered product decisions
 - Expanded responsibilities from 3 to 7 items covering qualitative/quantitative research, synthesis, personas, journey maps
 - Expanded requirements from 2 to 6 items with specific research tools, analytics platforms, statistical analysis
@@ -660,6 +1118,7 @@ Expanded all job listings in jobs.ts with comprehensive, detailed content includ
 - Expanded techStack from 3 to 8 items (added Optimal Workshop, Mixpanel, Dovetail, Miro)
 
 ### Content Standards Applied
+
 - All descriptions now follow "We are seeking..." pattern with context about the role
 - Responsibilities are actionable and specific (7 items each on average)
 - Requirements are technical and measurable (6 items each on average)
@@ -668,7 +1127,9 @@ Expanded all job listings in jobs.ts with comprehensive, detailed content includ
 - Tech stacks are comprehensive and relevant (6-9 items each)
 
 ### Rationale
+
 The original jobs.ts had basic, placeholder-level content that didn't match the professional, detailed content shown in the job detail page. By expanding all job listings with comprehensive information, we ensure:
+
 1. Consistent professional quality across all job postings
 2. Clear expectations for candidates regarding responsibilities and requirements
 3. Detailed tech stacks that help candidates self-assess fit
@@ -682,14 +1143,17 @@ This makes the careers section production-ready with high-quality job descriptio
 ## [Date: 2025-11-10 22:30]
 
 ### Summary
+
 Completely rewrote the About page with a clean, professional, and fully responsive implementation using existing Navbar and Footer components. Replaced broken code with proper Next.js patterns, image placeholders, TypeScript types, and Framer Motion animations.
 
 ### Files Modified
+
 - `app/about/page.tsx` - Complete rewrite from 1192 lines to 291 lines of clean, maintainable code
 
 ### Issues Fixed
 
 **Critical Issues in Original Code:**
+
 1. **Missing Image Imports** - All image variables (imgStroke, imgSection, imgImageWithFallback, etc.) were undefined
 2. **Not Using Layout Components** - Custom navbar/footer instead of reusing existing components
 3. **Non-Responsive Design** - Fixed widths (1920px, 1536px) causing horizontal scroll on mobile
@@ -702,6 +1166,7 @@ Completely rewrote the About page with a clean, professional, and fully responsi
 ### New Implementation
 
 #### **1. Page Structure**
+
 - Clean, semantic HTML with proper sections
 - Fully responsive using Tailwind breakpoints (mobile-first)
 - Uses existing Navbar and Footer from `@/components/layout/`
@@ -709,6 +1174,7 @@ Completely rewrote the About page with a clean, professional, and fully responsi
 - Client component with "use client" directive for animations
 
 #### **2. Sections Created**
+
 1. **Hero Section**
    - Animated heading with "About Us"
    - Gradient background with pattern overlay
@@ -756,13 +1222,16 @@ Completely rewrote the About page with a clean, professional, and fully responsi
    - Hover animations on buttons
 
 #### **3. Image Placeholders**
+
 All images use gradient-based placeholders with text indicators:
+
 - Company image: `[Company Image Placeholder]`
 - Vision image: `[Vision Image Placeholder]`
 - Team photos: `[Photo]`
 - Background patterns: CSS gradients with repeating patterns
 
 **Placeholder Styles:**
+
 ```tsx
 <div className="bg-gradient-to-br from-[#1a1a1b] to-[#0a0a0b]">
   <div className="text-neutral-600">[Placeholder Text]</div>
@@ -770,6 +1239,7 @@ All images use gradient-based placeholders with text indicators:
 ```
 
 #### **4. Responsive Design**
+
 - Container max-widths and padding scale by breakpoint
 - Text sizes: sm (text-sm) → md (text-base) → lg (text-lg)
 - Heading sizes: 3xl → 4xl → 5xl → custom values
@@ -778,7 +1248,9 @@ All images use gradient-based placeholders with text indicators:
 - Spacing: gap-6 → gap-8 → gap-12/gap-16
 
 #### **5. Animations**
+
 All animations use Framer Motion:
+
 - **Hero**: Fade in + slide up on mount
 - **Company/Vision**: Fade in + slide from sides on scroll
 - **Banner**: Fade in + slide up on scroll
@@ -787,7 +1259,9 @@ All animations use Framer Motion:
 - **Buttons**: Scale on hover (1.02x) and tap (0.98x)
 
 #### **6. Design Consistency**
+
 Matches homepage design:
+
 - Same color scheme (#0a0a0b, neutral colors)
 - Same border-radius values (8px, 16px)
 - Same font weights and tracking
@@ -806,6 +1280,7 @@ Matches homepage design:
 7. **SEO**: Proper page structure with main element
 
 ### Team Members Data
+
 ```typescript
 const teamMembers: TeamMember[] = [
   { name: "Dr. Jude Nwadiuto", role: "Co-Founder & CEO" },
@@ -819,12 +1294,14 @@ const teamMembers: TeamMember[] = [
 ```
 
 ### Build Verification
+
 - ✓ TypeScript compilation passed
 - ✓ No ESLint errors
 - ✓ Static page generated successfully
 - ✓ Build completed in 5.2s
 
 ### Next Steps for User
+
 1. Replace image placeholders with actual images in `/public/` folder
 2. Update image paths in the placeholder divs to use Next.js `<Image />` component
 3. Test responsiveness on various devices
@@ -835,13 +1312,16 @@ const teamMembers: TeamMember[] = [
 ## [Date: 2025-11-10 21:45]
 
 ### Summary
+
 Implemented complete localization system with English/Japanese language switching and FAQ filtering based on selected language.
 
 ### Files Created
+
 - `contexts/LocaleContext.tsx` - Context provider for language state management with localStorage persistence
 - `components/Providers.tsx` - Client component wrapper for context providers
 
 ### Files Modified
+
 - `app/layout.tsx` - Wrapped app with Providers component for locale context
 - `components/layout/navbar.tsx` - Added language switcher dropdown with visual indicator on Globe icon
 - `app/page.tsx` - Added FAQ filtering based on selected locale
@@ -849,6 +1329,7 @@ Implemented complete localization system with English/Japanese language switchin
 ### Features Implemented
 
 #### **1. Locale Context (LocaleContext.tsx)**
+
 - React Context for global language state management
 - Supported locales: `"en"` (English) and `"ja"` (Japanese)
 - Auto-detects browser language on first visit
@@ -856,6 +1337,7 @@ Implemented complete localization system with English/Japanese language switchin
 - Prevents hydration mismatch with mounted state check
 
 #### **2. Language Switcher (Navbar)**
+
 - Globe icon serves as language switcher button
 - Small badge showing current language code (EN/JA)
 - Animated dropdown menu with language options:
@@ -866,6 +1348,7 @@ Implemented complete localization system with English/Japanese language switchin
 - Click outside to close (closes on scroll or language selection)
 
 #### **3. FAQ Filtering (page.tsx)**
+
 - FAQs filtered based on `content` field:
   - `content: 1` = English FAQs
   - `content: 2` = Japanese FAQs
@@ -889,6 +1372,7 @@ Implemented complete localization system with English/Japanese language switchin
 ### User Experience
 
 **Language Selection Flow:**
+
 1. User clicks Globe icon in navbar
 2. Dropdown appears with English/日本語 options
 3. Current language shows checkmark
@@ -898,6 +1382,7 @@ Implemented complete localization system with English/Japanese language switchin
 7. Dropdown closes automatically
 
 **Visual Indicators:**
+
 - Globe icon has small "EN" or "JA" badge
 - Dropdown shows checkmark next to active language
 - Smooth fade-in/out animations
@@ -908,12 +1393,13 @@ Implemented complete localization system with English/Japanese language switchin
 ```typescript
 // Locale filtering logic
 const filteredFaqs = useMemo(() => {
-    const contentId = locale === "en" ? 1 : 2;
-    return faqs.filter(faq => faq.content === contentId);
+  const contentId = locale === "en" ? 1 : 2;
+  return faqs.filter((faq) => faq.content === contentId);
 }, [locale, faqs]);
 ```
 
 ### Rationale
+
 Implementing proper localization allows Fainzy to serve both English and Japanese-speaking audiences effectively. The FAQ data already contained bilingual content but lacked a mechanism to display the appropriate language. This implementation follows React best practices with Context API, provides excellent UX with instant switching, and maintains user preferences across sessions. The Globe icon naturally serves as a language switcher, making the feature discoverable while maintaining the clean navbar design.
 
 ---
@@ -921,29 +1407,37 @@ Implementing proper localization allows Fainzy to serve both English and Japanes
 ## [Date: 2025-11-10 21:15]
 
 ### Summary
+
 Separated metrics/stats and FAQ sections into dedicated components for better organization and maintainability.
 
 ### Files Created
+
 - `components/Metrics.tsx` - Dedicated component for metrics and stats display (animated + static)
 - `components/Faq.tsx` - Dedicated component for FAQ accordion and contact form
 
 ### Files Modified
+
 - `app/page.tsx` - Updated to use separate `Metrics` and `Faq` components instead of combined `MetricsNFaq`
 
 ### Files Deleted
+
 - `components/MetricsNFaq.tsx` - Replaced by separate Metrics and Faq components
 
 ### Component Structure
 
 #### **Metrics.tsx**
+
 Contains:
+
 - "We'll keep making impact" header section
 - Animated stats grid (StatsCounter components with counting animation)
 - Static stats grid (Card components with icons)
 - Props: `animatedStats?: StatMetric[]`, `staticStats?: StaticStat[]`
 
 #### **Faq.tsx**
+
 Contains:
+
 - FAQ section with shadcn Accordion (questions & answers)
 - Contact form with Input, Textarea, and Button components
 - Two-column layout (FAQ left, form right) that stacks on mobile
@@ -959,6 +1453,7 @@ Contains:
 6. **Better Testing**: Isolated components are easier to test independently
 
 ### Layout Structure (page.tsx)
+
 ```tsx
 <section> <Product /> </section>        // Products showcase
 <section> <Metrics /> </section>         // Metrics/Stats section
@@ -966,6 +1461,7 @@ Contains:
 ```
 
 ### Rationale
+
 The combined `MetricsNFaq` component was handling two distinct responsibilities (metrics display and FAQ/contact form), which violated the Single Responsibility Principle. Separating them into dedicated components improves code organization, makes each component more maintainable, and provides flexibility for future layout changes.
 
 ---
@@ -973,9 +1469,11 @@ The combined `MetricsNFaq` component was handling two distinct responsibilities 
 ## [Date: 2025-11-10 20:30]
 
 ### Summary
+
 Comprehensive codebase optimization: Replaced custom components with shadcn/ui, added proper TypeScript types, made all components fully responsive, and integrated icons throughout the application while preserving the exact visual design.
 
 ### Files Created
+
 - `types/index.ts` - TypeScript interfaces for all data structures (FAQ, Product, Feature, StatMetric, StaticStat, ContactFormData)
 - `lib/constants.ts` - Design tokens, spacing constants, typography scale, icon mappings, and color definitions
 - `components/ui/accordion.tsx` - shadcn/ui Accordion component (via CLI)
@@ -987,6 +1485,7 @@ Comprehensive codebase optimization: Replaced custom components with shadcn/ui, 
 - `components/ui/label.tsx` - shadcn/ui Label component (via CLI)
 
 ### Files Modified
+
 - `components/StatsCounter.tsx` - Complete rewrite with shadcn Card, proper TypeScript types, icon support, fully responsive (mobile → desktop)
 - `components/Product.tsx` - Replaced custom buttons with shadcn Button, added icon support to features, proper TypeScript interfaces, fully responsive grid layout
 - `components/AboutSection.tsx` - Replaced custom buttons with shadcn Button, replaced @radix-ui Separator with shadcn Separator, fully responsive with mobile-first approach
@@ -995,16 +1494,19 @@ Comprehensive codebase optimization: Replaced custom components with shadcn/ui, 
 - `app/page.tsx` - Added proper TypeScript types to all data, integrated lucide-react icons (Clock, DollarSign, Leaf, Shield, Package, UtensilsCrossed, Hotel, MapPin, Globe2, CheckCircle), restructured data with StatMetric and StaticStat interfaces, updated component usage
 
 ### Files Deleted
+
 - `components/FAQItem.tsx` - Replaced entirely by shadcn Accordion component with better accessibility and functionality
 
 ### Key Improvements
 
 #### 1. TypeScript Type Safety
+
 - Eliminated all `any` types throughout the codebase
 - Created comprehensive interfaces: `FAQ`, `Product`, `Feature`, `StatMetric`, `StaticStat`, `ContactFormData`
 - Full type safety with proper generics and type inference
 
 #### 2. Responsiveness (Mobile → Desktop)
+
 - **StatsCounter**: `w-[480px]` → `w-full` with responsive padding and text sizing
 - **Product**: Fixed two-column → `grid-cols-1 lg:grid-cols-2`, text scales from `text-3xl` to `lg:text-[62px]`
 - **AboutSection**: All grids now responsive (`grid-cols-1 lg:grid-cols-[...]`), image heights scale `h-[300px] md:h-[500px] lg:h-[600px]`
@@ -1012,6 +1514,7 @@ Comprehensive codebase optimization: Replaced custom components with shadcn/ui, 
 - **MetricsNFaq**: Two-column FAQ/form layout → single column on mobile with `flex-col lg:flex-row`
 
 #### 3. Icon Integration
+
 - Product features: Clock (24/7), DollarSign (Cost), Leaf (Eco), Shield (Reliable)
 - Animated stats: Package (Robots), UtensilsCrossed (Restaurants), Hotel (Hotels)
 - Static stats: MapPin (Deployments), Globe2 (Countries), CheckCircle (Deliveries)
@@ -1019,6 +1522,7 @@ Comprehensive codebase optimization: Replaced custom components with shadcn/ui, 
 - FAQ: ChevronDown icon for expand/collapse
 
 #### 4. shadcn/ui Integration (Design Preserved)
+
 - **Accordion**: Custom FAQ component → shadcn Accordion with keyboard navigation and proper ARIA labels
 - **Card**: Wraps all stat metrics with consistent styling
 - **Button**: All CTA buttons now use shadcn Button with `asChild` for motion.a compatibility
@@ -1027,6 +1531,7 @@ Comprehensive codebase optimization: Replaced custom components with shadcn/ui, 
 - All components heavily customized to match exact design (colors, borders, spacing, typography)
 
 #### 5. Design Preservation
+
 - Exact color palette maintained: `#0A0A0B`, `#101010`, `#111112`, `rgba(255,255,255,0.08)`, etc.
 - All border radiuses preserved: `rounded-[4px]`, `rounded-[8px]`, `rounded-[12px]`, `rounded-[16px]`
 - Typography tracking values maintained: `tracking-[-1.12px]`, `tracking-[1px]`, etc.
@@ -1035,23 +1540,27 @@ Comprehensive codebase optimization: Replaced custom components with shadcn/ui, 
 - Uppercase labels with specific letter spacing preserved throughout
 
 #### 6. Bug Fixes
+
 - **FAQ Component**: Fixed critical bug where answers were never displayed - now using Accordion with proper question/answer display
 - **Type Mismatch**: Fixed FAQ data structure mismatch (was passing objects as strings)
 - **Hardcoded Positions**: Removed absolute positioning with fixed pixel values (e.g., `left-[552px]`)
 
 #### 7. Accessibility Improvements
+
 - shadcn Accordion provides keyboard navigation (Space, Enter, Arrow keys)
 - Proper ARIA attributes on all interactive elements
 - Button semantics instead of div onClick handlers
 - Form inputs ready for validation with proper labels
 
 #### 8. Code Quality
+
 - Removed all `font-['Inter:Bold',sans-serif]` in favor of Tailwind classes
 - Consistent responsive patterns using breakpoint prefixes (`sm:`, `md:`, `lg:`)
 - Design tokens in `lib/constants.ts` for maintainability
 - Removed hardcoded magic numbers replaced with semantic sizing
 
 ### Design System Created
+
 ```typescript
 // Spacing constants
 SPACING: { section, container, cardGap, gridGap }
@@ -1067,17 +1576,21 @@ COLORS: { background, cardBg, textPrimary, borders, etc. }
 ```
 
 ### Breaking Changes
+
 - None - All visual design preserved exactly
 - Component APIs improved with TypeScript but remain compatible
 
 ### Performance Optimizations
+
 - Responsive images with proper sizing at each breakpoint
 - Icons from lucide-react (tree-shakeable)
 - No unnecessary re-renders with proper React.memo candidates identified
 - Motion animations optimized with proper viewport triggers
 
 ### Rationale
+
 This comprehensive refactor transforms the codebase from a prototype with hardcoded values and poor mobile support into a production-ready, fully responsive, type-safe application. By integrating shadcn/ui components while preserving the exact visual design, we gain:
+
 1. Better accessibility (WCAG compliance)
 2. Keyboard navigation support
 3. Proper semantic HTML
@@ -1095,16 +1608,20 @@ The visual design remains pixel-perfect on desktop while gracefully adapting to 
 ## [Date: 2025-11-10 19:55]
 
 ### Summary
+
 Fixed incorrect image import paths in page.tsx causing Next.js errors.
 
 ### Files Modified
+
 - `app/page.tsx` - Updated image import paths from `/` prefix to `@/public/` prefix
 
 ### Changes Include
+
 - Changed `import LastMile from "/last-delivery.png"` to `import LastMile from "@/public/last-delivery.png"`
 - Changed `import Glide from "/glide.png"` to `import Glide from "@/public/glide.png"`
 
 ### Rationale
+
 In Next.js, the `/` prefix is for runtime URLs (like in `<img src="/image.png" />`), not for import statements. To import images from the `public` directory, you need to use the actual file path with the `@/` path alias. This resolves the Next.js compilation errors and follows the project's path alias conventions defined in tsconfig.json.
 
 ---
@@ -1112,12 +1629,15 @@ In Next.js, the `/` prefix is for runtime URLs (like in `<img src="/image.png" /
 ## [Date: 2025-11-10 00:10]
 
 ### Summary
+
 Added comprehensive Top 1% Fullstack Developer Persona to global Claude settings with expertise across JavaScript, CSS, React, Vue, Angular, and Dart/Flutter.
 
 ### Files Modified
+
 - `~/.claude/CLAUDE.md` - Added comprehensive developer persona covering all major frontend/fullstack technologies
 
 ### Persona Includes
+
 - **JavaScript Expertise**: ES2015+, TypeScript strict mode, functional programming, performance optimization, design patterns
 - **CSS Mastery**: Modern CSS (Grid, Flexbox, Container Queries), responsive design, architecture patterns (BEM, CSS Modules, Tailwind)
 - **React Excellence**: Hooks mastery, performance optimization, Server Components, state management
@@ -1132,6 +1652,7 @@ Added comprehensive Top 1% Fullstack Developer Persona to global Claude settings
 - **General Standards**: SOLID principles, meaningful naming, proper error handling, documentation
 
 ### Rationale
+
 Established a comprehensive development persona that will guide all code generation and architectural decisions across all projects. This ensures consistent, production-grade code that follows industry best practices across the entire modern web and mobile development stack. The persona emphasizes performance, security, accessibility, and maintainability while providing clear standards and proactive code review behavior.
 
 ---
@@ -1139,12 +1660,15 @@ Established a comprehensive development persona that will guide all code generat
 ## [Date: 2025-11-10 00:00]
 
 ### Summary
+
 Created Product component showcasing the ZIBOT robot delivery system with hero layout and features grid.
 
 ### Files Created
+
 - `components/Product.tsx` - New component featuring ZIBOT last mile delivery robot system with hero section and four feature cards
 
 ### Component Structure
+
 - **Hero Section**: Two-column layout (text left, robot image right)
   - Large heading: "ZIBOT LAST MILE DELIVERY ROBOT SYSTEM"
   - Descriptive text about the delivery system
@@ -1159,6 +1683,7 @@ Created Product component showcasing the ZIBOT robot delivery system with hero l
 - **No Background**: Component is transparent and inherits background from parent
 
 ### Rationale
+
 Created a reusable component for showcasing the ZIBOT delivery robot system. The component follows the project's TypeScript and Tailwind CSS v4 patterns, uses Next.js Image component for optimized image loading, and provides a fully responsive layout. The transparent design allows it to be placed on any background throughout the site.
 
 ---
@@ -1166,16 +1691,20 @@ Created a reusable component for showcasing the ZIBOT delivery robot system. The
 ## [Date: 2025-11-09 01:38]
 
 ### Summary
+
 Reorganized components directory into logical groups for better project structure.
 
 ### Files Modified
+
 - `app/page.tsx` - Updated import paths to use new component locations
 
 ### Files Moved
+
 - `components/navbar.tsx` → `components/layout/navbar.tsx`
 - `components/footer.tsx` → `components/layout/footer.tsx`
 
 ### Directory Structure Created
+
 ```
 components/
   layout/          # Layout components used across multiple pages
@@ -1185,7 +1714,9 @@ components/
 ```
 
 ### Rationale
+
 Organized components into logical groups for better maintainability and scalability:
+
 - **layout/** - Contains layout components like Navbar and Footer that are used across the entire application
 - **ui/** - Reserved for shadcn/ui components (as configured in components.json)
 
@@ -1196,18 +1727,22 @@ This structure separates layout components from page-specific components and reu
 ## [Date: 2025-11-09 01:37]
 
 ### Summary
+
 Fixed Footer Main Pages section to maintain 2-column layout across all screen sizes.
 
 ### Files Modified
+
 - `components/footer.tsx` - Updated Main Pages grid to always show 2 columns (Home/About/Products/Careers | Contact/Blog/Fainzy Business)
 
 ### Changes Include
+
 - Changed Main Pages inner grid from `grid-cols-1 xs:grid-cols-2` to `grid-cols-2`
 - Contact, Blog, and Fainzy Business now consistently appear in second column under Main Pages heading
 - Adjusted gap spacing to `gap-6 sm:gap-8` for better responsive spacing
 - 2-column layout maintained on all screen sizes including mobile
 
 ### Rationale
+
 Ensures the Main Pages section always displays as two distinct columns with proper content organization. The first column contains Home, About, Products, and Careers, while the second column contains Contact, Blog, and Fainzy Business. This layout is now consistent across all breakpoints.
 
 ---
@@ -1215,13 +1750,16 @@ Ensures the Main Pages section always displays as two distinct columns with prop
 ## [Date: 2025-11-09 01:35]
 
 ### Summary
+
 Made Footer and NavBar components fully responsive for mobile, tablet, and desktop screens.
 
 ### Files Modified
+
 - `components/footer.tsx` - Added responsive grid layouts, padding, and text sizing
 - `components/navbar.tsx` - Added mobile menu with hamburger icon, responsive navigation, and adaptive icon display
 
 ### Footer Responsive Changes
+
 - **Container padding**: `px-4 sm:px-6 md:px-10` adapts to screen size
 - **Main grid**: Single column on mobile, 5 columns on desktop (lg breakpoint)
 - **Columns wrapper**: `grid-cols-1 sm:grid-cols-2 lg:grid-cols-4` for smooth scaling
@@ -1232,6 +1770,7 @@ Made Footer and NavBar components fully responsive for mobile, tablet, and deskt
 - **Spacing**: Reduced gaps on mobile `gap-8 md:gap-12`
 
 ### NavBar Responsive Changes
+
 - **Mobile menu**: Hamburger icon (Menu/X) shows on screens < lg
 - **Mobile dropdown**: Full navigation menu appears below navbar when opened
 - **Desktop navigation**: Hidden on mobile (lg:hidden), visible on large screens
@@ -1246,6 +1785,7 @@ Made Footer and NavBar components fully responsive for mobile, tablet, and deskt
   - Icon visibility: < 640px (sm)
 
 ### Rationale
+
 Both components now provide optimal user experience across all device sizes. The footer gracefully stacks content on mobile while maintaining the multi-column layout on desktop. The navbar features a hamburger menu for mobile users, ensuring easy access to navigation without cluttering the small screen. Icons are strategically placed to remain accessible while conserving space on mobile devices.
 
 ---
@@ -1253,15 +1793,19 @@ Both components now provide optimal user experience across all device sizes. The
 ## [Date: 2025-11-09 01:32]
 
 ### Summary
+
 Created Footer component matching the design screenshot with same max-width as NavBar.
 
 ### Files Created
+
 - `components/footer.tsx` - New footer component with four-column layout, logo, and copyright section
 
 ### Files Modified
+
 - `app/page.tsx` - Added Footer component and flexbox layout to ensure footer stays at bottom
 
 ### Footer Structure
+
 - **Left section**: Fainzy logo and tagline "Pioneering the New Normal"
 - **Main Pages column**: Home, About, Products, Careers, Contact, Blog, Fainzy Business
 - **Business column**: Download, Help center, Blog, Jobs
@@ -1275,6 +1819,7 @@ Created Footer component matching the design screenshot with same max-width as N
   - Proper spacing and typography hierarchy
 
 ### Rationale
+
 Created a comprehensive footer component following the design screenshot. The footer provides important navigation links organized by category, social media links with icons, and legal information. Using the same max-width as the navbar ensures visual consistency across the layout. The flexbox layout on the page ensures the footer stays at the bottom even with minimal content.
 
 ---
@@ -1282,12 +1827,15 @@ Created a comprehensive footer component following the design screenshot. The fo
 ## [Date: 2025-11-09 01:30]
 
 ### Summary
+
 Added dynamic scroll behavior to NavBar with transparency at top and show/hide on scroll direction.
 
 ### Files Modified
+
 - `components/navbar.tsx` - Converted to client component with scroll event listeners and dynamic styling
 
 ### Changes Include
+
 - **Fixed positioning**: NavBar now stays at the top with `fixed` positioning and `z-50`
 - **Transparent at top**: Background is transparent when scrollY < 10px
 - **Scroll direction detection**:
@@ -1300,6 +1848,7 @@ Added dynamic scroll behavior to NavBar with transparency at top and show/hide o
 - **State management**: Three states tracked (isAtTop, isVisible, lastScrollY)
 
 ### Rationale
+
 Implemented modern navbar UX pattern where the navbar is transparent at the top, hides when scrolling down to give more screen space, and reappears when scrolling up for easy access to navigation. The backdrop blur effect when scrolled provides better readability while maintaining the dark theme aesthetic.
 
 ---
@@ -1307,17 +1856,21 @@ Implemented modern navbar UX pattern where the navbar is transparent at the top,
 ## [Date: 2025-11-09 01:28]
 
 ### Summary
+
 Configured container settings, replaced Geist with Inter font, and created NavBar component matching the design screenshot.
 
 ### Files Modified
+
 - `app/globals.css` - Added container configuration with max-width 1536px, centralized with responsive padding; updated font mapping from Geist to Inter
 - `app/layout.tsx` - Replaced Geist font with Inter font from Google Fonts; updated font variables
 - `app/page.tsx` - Added NavBar component import; simplified homepage content
 
 ### Files Created
+
 - `components/navbar.tsx` - New navigation bar component with logo, navigation links (ABOUT, PRODUCTS, CAREERS, CONTACT, BLOG, BUSINESS), and right-side icons (Bell, Globe, User)
 
 ### Changes Include
+
 - **Container**: Max-width 1536px, centralized with `mx-auto`, responsive padding (px-4 sm:px-6 lg:px-8)
 - **Font**: Inter font family as default, replacing Geist Sans and Geist Mono
 - **NavBar**:
@@ -1329,6 +1882,7 @@ Configured container settings, replaced Geist with Inter font, and created NavBa
   - Responsive design (navigation hidden on mobile with md: breakpoint)
 
 ### Rationale
+
 Updated the project to match the design requirements. Container is now properly configured for consistent max-width across the site. Inter font provides a clean, modern typography system. NavBar component implements the header design from the screenshot with all required navigation items and icons, using the logo from the public folder.
 
 ---
@@ -1336,13 +1890,16 @@ Updated the project to match the design requirements. Container is now properly 
 ## [Date: 2025-11-09 01:25]
 
 ### Summary
+
 Applied the custom dark theme throughout the project and created a demo homepage showcasing the theme colors.
 
 ### Files Modified
+
 - `app/layout.tsx` - Added `dark` class to html element to ensure dark mode is always active; updated metadata with Fainzy branding
 - `app/page.tsx` - Replaced Next.js template with custom homepage demonstrating theme colors, including hero section, demo cards, and styled buttons
 
 ### Changes Include
+
 - Background using `bg-background` (#0A0A0B)
 - Text using `text-foreground` (#fafafa)
 - Card components using `bg-card` and `bg-secondary` (#101010)
@@ -1351,6 +1908,7 @@ Applied the custom dark theme throughout the project and created a demo homepage
 - Responsive grid layout for demo cards (mobile to desktop)
 
 ### Rationale
+
 Applied the custom dark theme to make it active across the entire application. Created a demo homepage to showcase how the theme colors work together with various UI elements (cards, buttons, text hierarchy). This provides a starting point for building out the rest of the site and demonstrates the theme's visual design system.
 
 ---
@@ -1358,12 +1916,15 @@ Applied the custom dark theme to make it active across the entire application. C
 ## [Date: 2025-11-09 01:23]
 
 ### Summary
+
 Created custom dark-only theme using brand colors for Tailwind CSS and shadcn/ui components.
 
 ### Files Modified
+
 - `app/globals.css` - Updated all CSS color variables to use custom brand colors in OKLCH format
 
 ### Color Scheme Applied
+
 - **Background**: #0A0A0B (oklch(0.085 0 0)) - Primary dark background
 - **Secondary surfaces (cards, popover, sidebar)**: #101010 (oklch(0.15 0 0))
 - **Text/Foreground**: #fafafa (oklch(0.985 0 0)) - White text for all content
@@ -1372,6 +1933,7 @@ Created custom dark-only theme using brand colors for Tailwind CSS and shadcn/ui
 - **Muted elements**: oklch(0.2 0 0) - Slightly lighter than secondary for hierarchy
 
 ### Rationale
+
 User requested a dark-only theme (no light mode) using specific brand colors. The theme is configured in both `:root` and `.dark` with identical values to ensure consistency. All shadcn/ui components will automatically use these colors when installed. The color hierarchy provides visual depth while maintaining the minimalist dark aesthetic.
 
 ---
@@ -1379,13 +1941,17 @@ User requested a dark-only theme (no light mode) using specific brand colors. Th
 ## [Date: 2025-11-09 01:21]
 
 ### Summary
+
 Created project-specific CLAUDE.md file to provide guidance for future Claude Code sessions in this repository.
 
 ### Files Created
+
 - `.claude/CLAUDE.md` - Project-specific guidance for Claude Code including development commands, tech stack details, styling system documentation (Tailwind v4 with inline themes), shadcn/ui configuration, and key utilities.
 
 ### Rationale
+
 This file helps future Claude Code instances quickly understand the project architecture and specific configurations:
+
 - Documents the Tailwind CSS v4 inline theme system (different from v3)
 - Explains the OKLCH color system and CSS variable approach
 - Provides shadcn/ui usage instructions with "new-york" style configuration
@@ -1399,20 +1965,26 @@ This reduces the need to explore multiple files to understand the project setup 
 ## [Date: 2025-11-09 00:02]
 
 ### Summary
+
 Configured global Claude Code instructions for all projects on this device
 
 ### Files Modified
+
 None in this project
 
 ### Files Created
+
 - `CHANGES.md` - This change log file to track all future modifications
 
 ### External Files Created
+
 - `~/.claude/CLAUDE.md` - Global instruction file that applies to all projects
 - `~/SETUP_DOCUMENTATION.md` - Comprehensive documentation of the configuration
 
 ### Rationale
+
 User requested a setup where Claude Code would:
+
 1. Always provide a summary before implementing changes
 2. Wait for explicit approval before making modifications
 3. Document all changes in an MD file
@@ -1420,7 +1992,9 @@ User requested a setup where Claude Code would:
 This configuration ensures transparency, control, and maintains a complete audit trail of all changes across all projects on this device.
 
 ### How This Affects Future Work
+
 Starting from the next session, Claude will:
+
 - Automatically load these global instructions
 - Follow the summary → approval → implementation → documentation workflow
 - Create/update this CHANGES.md file for every modification made to this project

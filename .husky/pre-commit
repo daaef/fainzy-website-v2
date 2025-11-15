@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run lint-staged for quick checks on staged files
+echo "🔍 Checking staged files..."
+npx lint-staged
+
+# Run TypeScript type checking on entire project
+echo "📝 Running TypeScript type check..."
+npx tsc --noEmit || { echo "❌ Type check failed. Fix errors before committing."; exit 1; }
+
+echo "✅ All checks passed! Proceeding with commit..."
+

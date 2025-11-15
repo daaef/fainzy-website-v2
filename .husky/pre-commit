@@ -1,13 +1,20 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+# Pre-commit hook (Husky v10 compatible – removed deprecated shim lines)
+
+# Fail on error
+set -e
 
 # Run lint-staged for quick checks on staged files
 echo "🔍 Checking staged files..."
-npx lint-staged
+if ! npx lint-staged; then
+  echo "❌ lint-staged failed. Aborting commit." >&2
+  exit 1
+fi
 
 # Run TypeScript type checking on entire project
 echo "📝 Running TypeScript type check..."
-npx tsc --noEmit || { echo "❌ Type check failed. Fix errors before committing."; exit 1; }
+if ! npx tsc --noEmit; then
+  echo "❌ Type check failed. Fix errors before committing." >&2
+  exit 1
+fi
 
 echo "✅ All checks passed! Proceeding with commit..."
-

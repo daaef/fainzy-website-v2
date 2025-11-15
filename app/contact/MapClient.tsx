@@ -50,36 +50,38 @@ type GoogleMapsAPI = {
   };
 };
 
-function loadGoogleMaps(key: string): Promise<GoogleMapsAPI> {
-  // fast-path if already available
-  if (
-    (window as unknown as { google?: GoogleMapsAPI }).google &&
-    (window as unknown as { google?: GoogleMapsAPI }).google!.maps
-  ) {
-    return Promise.resolve(
-      (window as unknown as { google: GoogleMapsAPI }).google as GoogleMapsAPI
-    );
-  }
-  if (window.__fainzy_google_maps_promise) return window.__fainzy_google_maps_promise;
+// Remove global Window augmentation; use module-level cache instead.
+let googleMapsPromise: Promise<GoogleMapsAPI> | undefined;
 
-  window.__fainzy_google_maps_promise = new Promise<GoogleMapsAPI>((resolve, reject) => {
+function loadGoogleMaps(key: string): Promise<GoogleMapsAPI> {
+  // If SSR safeguard (shouldn't run because of "use client", but defensive)
+  if (typeof window === "undefined") {
+    return Promise.reject(new Error("Google Maps cannot load during SSR"));
+  }
+  const win = window as unknown as { google?: GoogleMapsAPI };
+  // fast-path if already available
+  if (win.google && win.google.maps) {
+    return Promise.resolve(win.google);
+  }
+  if (googleMapsPromise) return googleMapsPromise;
+
+  googleMapsPromise = new Promise<GoogleMapsAPI>((resolve, reject) => {
     const existing = document.querySelector(`script[src*="maps.googleapis.com/maps/api/js"]`);
     if (existing) {
       existing.addEventListener("load", () => {
-        const g = (window as unknown as { google?: GoogleMapsAPI }).google;
+        const g = win.google;
         if (g) resolve(g);
         else reject(new Error("Google Maps loaded but window.google is not available"));
       });
       existing.addEventListener("error", () => reject(new Error("Failed to load Google Maps")));
       return;
     }
-
     const script = document.createElement("script");
     script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(key)}`;
     script.async = true;
     script.defer = true;
     script.onload = () => {
-      const g = (window as unknown as { google?: GoogleMapsAPI }).google;
+      const g = win.google;
       if (g) resolve(g);
       else reject(new Error("Google Maps loaded but window.google is not available"));
     };
@@ -87,7 +89,7 @@ function loadGoogleMaps(key: string): Promise<GoogleMapsAPI> {
     document.head.appendChild(script);
   });
 
-  return window.__fainzy_google_maps_promise;
+  return googleMapsPromise;
 }
 
 export default function MapClient({

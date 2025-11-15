@@ -1,10 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import Product from "@/components/Product";
-import ProductsGrid from "@/components/ProductsGrid";
 import Faq from "@/components/Faq";
+import CustomSolutionsCarousel from "@/components/CustomSolutionsCarousel";
 import LastMile from "@/public/last-delivery.png";
 import Glide from "@/public/glide.png";
+import Consultancy from "@/public/products/consultancy.jpg";
 import { Clock, DollarSign, Leaf, Shield } from "lucide-react";
 import { Product as ProductType, FAQ } from "@/types";
 import { useLocale } from "@/contexts/LocaleContext";
@@ -41,22 +43,90 @@ export default function Home() {
       ],
       reverse: true,
     },
+    {
+      title: "Fainzy Consultancy Services",
+      description:
+        "The Last Mile Delivery System uses our robot to take food deliveries from restaurants to consumers' locations.",
+      image: Consultancy,
+      features: [
+        { title: "24/7 Operation", subtitle: "Always Available", icon: Clock },
+        { title: "Cost Effective", subtitle: "Reduced Labor", icon: DollarSign },
+        { title: "Eco-Friendly", subtitle: "Zero Emissions", icon: Leaf },
+        { title: "Reliable", subtitle: "Consistent Service", icon: Shield },
+      ],
+    },
   ];
 
-  const gridProducts = [
+  const customSolutions = [
     {
-      id: "zibot",
-      title: "ZiBot",
-      image: LastMile,
-      learnLink: "/products/zibot",
-      orderLink: "/contact?product=zibot",
+      id: "customized-robots",
+      category: "Custom Solution",
+      title: "Customized Robots",
+      description:
+        "Fainzy Technologies can make customized robots suitable for your needs. Please contact us for more details.",
+      features: [
+        { title: "Health Robot", subtitle: "ALWAYS AVAILABLE" },
+        { title: "Cost Effective", subtitle: "REDUCED LABOR" },
+        { title: "Eco-Friendly", subtitle: "ZERO EMISSIONS" },
+        { title: "Reliable", subtitle: "CONSISTENT SERVICE" },
+      ],
+      images: [{ src: "/products/custom-solutions.png", alt: "Customized Robots" }],
     },
     {
-      id: "glide",
-      title: "Glide",
-      image: Glide,
-      learnLink: "/products/glide",
-      orderLink: "/contact?product=glide",
+      id: "iot-solutions",
+      category: "Custom Solution",
+      title: "IoT Solutions",
+      description:
+        "Web Development, Mobile Application Development, Deep learning Algorithm development, Autonomous driving software solutions",
+      features: [
+        { title: "Web Development", subtitle: "MODERN SOLUTIONS" },
+        { title: "Mobile Apps", subtitle: "iOS & ANDROID" },
+        { title: "Deep Learning", subtitle: "AI ALGORITHMS" },
+        { title: "Autonomous Driving", subtitle: "SMART SOFTWARE" },
+      ],
+      images: [{ src: "/products/consultancy.jpg", alt: "IoT Solutions" }],
+    },
+    {
+      id: "mirax",
+      category: "Custom Solution",
+      title: "MiraX",
+      description:
+        "Our in-restaurant delivery robot designed to minimize physical contact between staff and customers, seamlessly delivering orders throughout your establishment.",
+      features: [
+        { title: "Contactless", subtitle: "MINIMAL CONTACT" },
+        { title: "Efficient", subtitle: "FAST DELIVERY" },
+        { title: "Smart Navigation", subtitle: "AUTONOMOUS" },
+        { title: "User-Friendly", subtitle: "EASY TO USE" },
+      ],
+      images: [{ src: "/products/mirax.png", alt: "MiraX" }],
+    },
+    {
+      id: "food-ordering",
+      category: "Food Service",
+      title: "Efficient Food Ordering System",
+      description:
+        "Connect restaurants and customers on a unified platform where orders are seamlessly processed and delivered by our autonomous robot fleet.",
+      features: [
+        { title: "Unified Platform", subtitle: "ONE SOLUTION" },
+        { title: "Robot Fleet", subtitle: "AUTONOMOUS DELIVERY" },
+        { title: "Real-time Tracking", subtitle: "LIVE UPDATES" },
+        { title: "Seamless Integration", subtitle: "EASY SETUP" },
+      ],
+      images: [{ src: "/products/efficient.jpg", alt: "Efficient Food Ordering" }],
+    },
+    {
+      id: "hotel-delivery",
+      category: "Hospitality",
+      title: "Hotel Robot Delivery System",
+      description:
+        "In-door hotel delivery robot that handles guest requests through an integrated tablet system, delivering items directly to rooms with precision.",
+      features: [
+        { title: "Tablet Integration", subtitle: "EASY REQUESTS" },
+        { title: "Room Delivery", subtitle: "DIRECT TO ROOM" },
+        { title: "24/7 Service", subtitle: "ALWAYS AVAILABLE" },
+        { title: "Precision Navigation", subtitle: "ACCURATE DELIVERY" },
+      ],
+      images: [{ src: "/products/hotel.png", alt: "Hotel Robot Delivery" }],
     },
   ];
 
@@ -219,26 +289,6 @@ export default function Home() {
       </header>
       <main className="py-16">
         <section>
-          <ProductsGrid
-            products={gridProducts}
-            title="Explore Our Products"
-            subtitle="Choose from our innovative autonomous delivery solutions"
-          />
-        </section>
-        <section id="features" className="container py-24">
-          <h2 className="text-3xl font-bold mb-6">Features</h2>
-          <p className="text-neutral-400 max-w-2xl">
-            Detailed feature breakdown coming soon. This placeholder section resolves in-page anchor
-            navigation.
-          </p>
-        </section>
-        <section id="pricing" className="container py-24">
-          <h2 className="text-3xl font-bold mb-6">Pricing</h2>
-          <p className="text-neutral-400 max-w-2xl">
-            Pricing information will be published shortly. Contact sales for current quotes.
-          </p>
-        </section>
-        <section>
           <div className="container min-h-[100vh] py-[100px]">
             {products.map((product, i) => (
               <div
@@ -248,6 +298,25 @@ export default function Home() {
                 <Product {...product} />
               </div>
             ))}
+          </div>
+        </section>
+        <section>
+          <CustomSolutionsCarousel solutions={customSolutions} />
+          <div className="container flex justify-center py-12">
+            <Link
+              href="/custom-solutions"
+              className="inline-flex items-center justify-center bg-white text-black hover:bg-neutral-200 px-8 py-4 rounded-md font-semibold text-base transition-all duration-300"
+            >
+              Explore Custom Solutions
+              <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </Link>
           </div>
         </section>
         <section>

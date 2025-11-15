@@ -9,7 +9,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { StaticImageData } from "next/image";
 
 interface Feature {
   title: string;

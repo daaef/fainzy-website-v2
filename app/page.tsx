@@ -305,7 +305,8 @@ export default function Home() {
         <Carousel
           plugins={[
             Autoplay({
-              delay: 2000,
+              delay: 4000,
+              stopOnMouseEnter: true,
             }),
           ]}
           className="w-full pb-[150px] pt-[200px] overflow-x-hidden"

@@ -7,6 +7,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  CarouselDots,
 } from "@/components/ui/carousel";
 import Product from "@/components/Product";
 import ZiBotSlide from "@/components/ZiBotSlide";
@@ -17,6 +18,7 @@ import LastMile from "@/public/last-delivery.png";
 import Consultancy from "@/public/products/consultancy.jpg";
 import Glide from "@/public/glide.png";
 import Autoplay from "embla-carousel-autoplay";
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
 import {
   Clock,
@@ -308,6 +310,7 @@ export default function Home() {
               delay: 4000,
               stopOnMouseEnter: true,
             }),
+            WheelGesturesPlugin(),
           ]}
           className="w-full pb-[150px] pt-[200px] overflow-x-hidden"
         >
@@ -324,6 +327,7 @@ export default function Home() {
           </CarouselContent>
           <CarouselPrevious />
           <CarouselNext />
+          <CarouselDots />
         </Carousel>
       </header>
       <main className="py-16">

@@ -9,6 +9,7 @@ import {
   CarouselPrevious,
   CarouselDots,
 } from "@/components/ui/carousel";
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
 interface Card {
   id: number;
@@ -59,6 +60,7 @@ export default function CardCarousel({
             align: "start",
             loop: true,
           }}
+          plugins={[WheelGesturesPlugin()]}
           className="w-full pb-24"
         >
           <CarouselContent className="-ml-6">

@@ -9,6 +9,7 @@ import {
   CarouselPrevious,
   CarouselDots,
 } from "@/components/ui/carousel";
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
 interface Feature {
   id: number;
@@ -28,6 +29,7 @@ export default function LargeFeatureCarousel({ features }: LargeFeatureCarouselP
         align: "start",
         loop: true,
       }}
+      plugins={[WheelGesturesPlugin()]}
       className="w-full pb-24"
     >
       <CarouselContent className="-ml-6">

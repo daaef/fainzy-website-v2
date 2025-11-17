@@ -5,10 +5,12 @@ import Image from "next/image";
 import {
   Carousel,
   CarouselContent,
+  CarouselDots,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
 interface Feature {
   title: string;
@@ -42,7 +44,8 @@ export default function CustomSolutionsCarousel({ solutions }: CustomSolutionsCa
             align: "start",
             loop: true,
           }}
-          className="w-full"
+          plugins={[WheelGesturesPlugin()]}
+          className="w-full pb-24"
         >
           <CarouselContent className="gap-5 rounded-[12px]">
             {solutions.map((solution, index) => (
@@ -133,9 +136,10 @@ export default function CustomSolutionsCarousel({ solutions }: CustomSolutionsCa
 
           {/* Carousel Controls */}
           <div className="flex justify-center gap-4 mt-8">
-            <CarouselPrevious className="relative inset-0 translate-x-0 translate-y-0" />
-            <CarouselNext className="relative inset-0 translate-x-0 translate-y-0" />
+            <CarouselPrevious className="hidden md:flex absolute bottom-4 left-4 top-auto -translate-y-0 text-white border-white hover:bg-white hover:text-black" />
+            <CarouselNext className="hidden md:flex absolute bottom-4 left-20 top-auto -translate-y-0 text-white border-white hover:bg-white hover:text-black" />
           </div>
+          <CarouselDots />
         </Carousel>
       </div>
     </section>

@@ -73,8 +73,8 @@ export default function Navbar() {
     { name: "CAREERS", href: "/careers" },
     { name: "CONTACT", href: "/contact" },
     { name: "BLOG", href: "/blog" },
-    { name: "BUSINESS", href: "http://localhost:3001/" },
-    { name: "LOGIN", href: "http://localhost:3001/login" },
+    { name: "BUSINESS", href: "https://dashboard-v2-inky.vercel.app/" },
+    { name: "LOGIN", href: "https://dashboard-v2-inky.vercel.app/login" },
   ];
 
   const productItems = [

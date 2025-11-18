@@ -8,17 +8,10 @@ interface ProductCardProps {
   title: string;
   image: StaticImageData | string;
   learnLink: string;
-  orderLink: string;
   className?: string;
 }
 
-export default function ProductCard({
-  title,
-  image,
-  learnLink,
-  orderLink,
-  className = "",
-}: ProductCardProps) {
+export default function ProductCard({ title, image, learnLink, className = "" }: ProductCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -53,13 +46,7 @@ export default function ProductCard({
           href={learnLink}
           className="text-neutral-300 hover:text-white underline underline-offset-4 transition-colors"
         >
-          Learn
-        </Link>
-        <Link
-          href={orderLink}
-          className="text-neutral-300 hover:text-white underline underline-offset-4 transition-colors"
-        >
-          Order
+          Learn more
         </Link>
       </div>
     </motion.div>

@@ -207,15 +207,13 @@ export default function Contact() {
         {/* Map */}
         <section className="py-8">
           <div className="container">
-            <div className="rounded-lg overflow-hidden">
-              <MapClient
-                address={
-                  locale === "ja"
-                    ? "〒464-0814 愛知県名古屋市千種区不老町 名古屋大学 インキュベーション施設"
-                    : "Nagoya University Incubation Facility, Furo-cho, Chikusa Ward, Nagoya, Aichi 464-0814, Japan"
-                }
-              />
-            </div>
+            <MapClient
+              address={
+                locale === "ja"
+                  ? "〒464-0814 愛知県名古屋市千種区不老町 名古屋大学 インキュベーション施設"
+                  : "Nagoya University Incubation Facility, Furo-cho, Chikusa Ward, Nagoya, Aichi 464-0814, Japan"
+              }
+            />
           </div>
         </section>
       </main>

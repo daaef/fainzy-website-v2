@@ -3,18 +3,86 @@
 import { useEffect, useRef } from "react";
 import { useLocale } from "@/contexts/LocaleContext";
 
+// Simplified dark mode styles - allows POI markers and controls to show properly
 const DARK_STYLE = [
-  { elementType: "geometry", stylers: [{ color: "#111113" }] },
-  { elementType: "labels.text.fill", stylers: [{ color: "#9e9e9e" }] },
-  { elementType: "labels.text.stroke", stylers: [{ color: "#111113" }] },
+  { elementType: "geometry", stylers: [{ color: "#0a0a0a" }] },
+  { elementType: "labels.text.stroke", stylers: [{ color: "#0a0a0a" }] },
+  { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
   {
-    featureType: "administrative",
-    elementType: "geometry",
-    stylers: [{ color: "#2b2b2b" }],
+    featureType: "administrative.locality",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#d59563" }],
   },
-  { featureType: "road", elementType: "geometry", stylers: [{ color: "#1c1c1c" }] },
-  { featureType: "poi", elementType: "labels.text.fill", stylers: [{ color: "#bdbdbd" }] },
-  { featureType: "water", elementType: "geometry", stylers: [{ color: "#0f1720" }] },
+  {
+    featureType: "poi",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#d59563" }],
+  },
+  {
+    featureType: "poi.park",
+    elementType: "geometry",
+    stylers: [{ color: "#263c3f" }],
+  },
+  {
+    featureType: "poi.park",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#6b9a76" }],
+  },
+  {
+    featureType: "road",
+    elementType: "geometry",
+    stylers: [{ color: "#38414e" }],
+  },
+  {
+    featureType: "road",
+    elementType: "geometry.stroke",
+    stylers: [{ color: "#212a37" }],
+  },
+  {
+    featureType: "road",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#9ca5b3" }],
+  },
+  {
+    featureType: "road.highway",
+    elementType: "geometry",
+    stylers: [{ color: "#746855" }],
+  },
+  {
+    featureType: "road.highway",
+    elementType: "geometry.stroke",
+    stylers: [{ color: "#1f2835" }],
+  },
+  {
+    featureType: "road.highway",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#f3d19c" }],
+  },
+  {
+    featureType: "transit",
+    elementType: "geometry",
+    stylers: [{ color: "#2f3948" }],
+  },
+  {
+    featureType: "transit.station",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#d59563" }],
+  },
+  {
+    featureType: "water",
+    elementType: "geometry",
+    stylers: [{ color: "#17263c" }],
+  },
+  {
+    featureType: "water",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#515c6d" }],
+  },
+  {
+    featureType: "water",
+    elementType: "labels.text.stroke",
+    stylers: [{ color: "#17263c" }],
+  },
 ];
 
 // Minimal shapes for map/marker instances we interact with
@@ -119,21 +187,28 @@ export default function MapClient({
       locale === "ja"
         ? "名古屋大学 インキュベーション施設"
         : "Nagoya University Incubation Facility";
-    const MAX_ZOOM = 21;
+    const INITIAL_ZOOM = 17; // Detailed zoom level showing nearby POIs
     loadGoogleMaps(key)
       .then((google) => {
         if (!mounted || !ref.current) return;
         if (!mapRef.current) {
           mapRef.current = new google.maps.Map(ref.current, {
             center: { lat, lng },
-            zoom: MAX_ZOOM,
+            zoom: INITIAL_ZOOM,
             styles: DARK_STYLE,
-            disableDefaultUI: true,
+            // Enable all default controls
+            disableDefaultUI: false,
+            zoomControl: true,
+            mapTypeControl: true,
+            scaleControl: true,
+            streetViewControl: true,
+            rotateControl: false,
+            fullscreenControl: true,
             gestureHandling: "auto",
           });
         } else {
           try {
-            mapRef.current.setZoom(MAX_ZOOM);
+            mapRef.current.setZoom(INITIAL_ZOOM);
           } catch {}
         }
         if (!markerRef.current) {
@@ -163,7 +238,7 @@ export default function MapClient({
                 const gLng = loc.lng();
                 try {
                   mapRef.current?.setCenter({ lat: gLat, lng: gLng });
-                  mapRef.current?.setZoom(MAX_ZOOM);
+                  mapRef.current?.setZoom(INITIAL_ZOOM);
                   markerRef.current?.setPosition({ lat: gLat, lng: gLng });
                 } catch {
                   // ignore minor update errors
@@ -180,7 +255,7 @@ export default function MapClient({
           try {
             google.maps.event.trigger(mapRef.current, "resize");
             mapRef.current?.setCenter({ lat, lng });
-            mapRef.current?.setZoom(MAX_ZOOM);
+            mapRef.current?.setZoom(INITIAL_ZOOM);
           } catch {}
         }, 0);
       })
@@ -198,13 +273,40 @@ export default function MapClient({
     };
   }, [lat, lng, address, locale]);
 
-  // Replace rigid fixed px height with responsive min-heights. Keeps the rounded container from the design.
+  const displayAddress =
+    locale === "ja"
+      ? "〒464-0814 愛知県名古屋市千種区不老町 名古屋大学 インキュベーション施設"
+      : "Nagoya University Incubation Facility, Furo-cho, Chikusa Ward, Nagoya, Aichi 464-0814, Japan";
+
+  // Google Maps URL with coordinates
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+
   return (
-    <div
-      ref={ref}
-      role="region"
-      aria-label={locale === "ja" ? "会社所在地地図" : "Company location map"}
-      className="bg-[#111113] w-full rounded-[16px] min-h-[240px] md:min-h-[420px] lg:min-h-[499px]"
-    />
+    <div className="relative w-full">
+      {/* Address overlay - top left - clickable */}
+      <a
+        href={googleMapsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute top-4 left-4 z-10 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg px-4 py-3 max-w-[calc(100%-2rem)] md:max-w-md hover:bg-white hover:shadow-xl transition-all duration-200 cursor-pointer group"
+        aria-label={locale === "ja" ? "Google マップで開く" : "Open in Google Maps"}
+      >
+        <p className="text-xs md:text-sm text-gray-900 font-medium leading-relaxed group-hover:text-blue-600 transition-colors">
+          {displayAddress}
+        </p>
+        <p className="text-[10px] md:text-xs text-gray-500 mt-1 group-hover:text-blue-500">
+          {locale === "ja" ? "Google マップで開く →" : "View in Google Maps →"}
+        </p>
+      </a>
+
+      {/* Map container - allow controls to be visible */}
+      <div
+        ref={ref}
+        role="region"
+        aria-label={locale === "ja" ? "会社所在地地図" : "Company location map"}
+        className="w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-[16px] overflow-hidden"
+        style={{ background: "#111113" }}
+      />
+    </div>
   );
 }

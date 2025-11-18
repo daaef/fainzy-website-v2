@@ -312,10 +312,10 @@ export default function Home() {
             }),
             WheelGesturesPlugin(),
           ]}
-          className="w-full pb-[150px] pt-[200px] overflow-x-hidden"
+          className="w-full mb-[150px] pb-[5vh] h-[calc(100vh-200px)] pt-[200px] overflow-x-hidden"
         >
           <CarouselContent>
-            <CarouselItem key={"ZibotSlide1"}>
+            <CarouselItem key={"ZibotSlide1"} className="h-[calc(95vh-200px-200px)]">
               <ZiBotSlide />
             </CarouselItem>
             <CarouselItem key={"GlideSlide"}>

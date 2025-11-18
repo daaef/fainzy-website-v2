@@ -98,6 +98,27 @@ export default function Navbar() {
     },
   ];
 
+  const customSolutionsItems = [
+    {
+      name: "Hotel Delivery",
+      href: "/custom-solutions/hotel",
+      image: "/products/hotel.png",
+      description: "Automated in-hotel service",
+    },
+    {
+      name: "Hospital Logistics",
+      href: "/custom-solutions/hospital",
+      image: "/products/custom-solutions.png",
+      description: "Medical supply automation",
+    },
+    {
+      name: "Enterprise Solutions",
+      href: "/custom-solutions/enterprise",
+      image: "/products/mirax.png",
+      description: "Custom robotics integration",
+    },
+  ];
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -135,22 +156,19 @@ export default function Navbar() {
                     onMouseEnter={() => setIsProductsMenuOpen(true)}
                     onMouseLeave={() => setIsProductsMenuOpen(false)}
                   >
-                    <motion.a
-                      href={link.href}
-                      initial={{ opacity: 0, y: -20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.1, duration: 0.5 }}
-                      whileHover={{ y: -2 }}
-                      className="text-sm font-medium text-foreground hover:text-primary transition-colors inline-block"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setIsProductsMenuOpen((v) => !v);
-                      }}
-                      aria-haspopup="true"
-                      aria-expanded={isProductsMenuOpen}
-                    >
-                      {link.name}
-                    </motion.a>
+                    <Link href={link.href}>
+                      <motion.span
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.1, duration: 0.5 }}
+                        whileHover={{ y: -2 }}
+                        className="text-sm font-medium text-foreground hover:text-primary transition-colors inline-block cursor-pointer"
+                        aria-haspopup="true"
+                        aria-expanded={isProductsMenuOpen}
+                      >
+                        {link.name}
+                      </motion.span>
+                    </Link>
                     <AnimatePresence>
                       {isProductsMenuOpen && (
                         <>
@@ -176,45 +194,79 @@ export default function Navbar() {
                           >
                             <div className="max-w-[1536px] mx-auto px-4 sm:px-6 md:px-10 py-8">
                               <div className="flex gap-8">
-                                <div className="grid grid-cols-3 gap-6 flex-1">
-                                  {productItems.map((product) => (
-                                    <div
-                                      key={product.name}
-                                      className="group flex flex-col items-center p-6 rounded-xl hover:bg-[rgba(255,255,255,0.05)] transition-colors"
-                                    >
-                                      <div className="relative w-full h-40 mb-4">
-                                        <Image
-                                          src={product.image}
-                                          alt={product.name}
-                                          fill
-                                          className="object-contain group-hover:scale-105 transition-transform"
-                                        />
-                                      </div>
-                                      <h3 className="text-base font-semibold text-white mb-2">
-                                        {product.name}
-                                      </h3>
-                                      <p className="text-sm text-neutral-400 text-center mb-4">
-                                        {product.description}
-                                      </p>
-                                      <div className="flex gap-6 text-sm">
+                                <div className="flex-1">
+                                  {/* Products Grid */}
+                                  <div className="grid grid-cols-3 gap-6 mb-8">
+                                    {productItems.map((product) => (
+                                      <Link
+                                        key={product.name}
+                                        href={product.href}
+                                        className="group flex flex-col items-center p-6 rounded-xl hover:bg-[rgba(255,255,255,0.05)] transition-colors"
+                                        onClick={() => setIsProductsMenuOpen(false)}
+                                      >
+                                        <div className="relative w-full h-40 mb-4">
+                                          <Image
+                                            src={product.image}
+                                            alt={product.name}
+                                            fill
+                                            className="object-contain group-hover:scale-105 transition-transform"
+                                          />
+                                        </div>
+                                        <h3 className="text-base font-semibold text-white mb-2">
+                                          {product.name}
+                                        </h3>
+                                        <p className="text-sm text-neutral-400 text-center mb-4">
+                                          {product.description}
+                                        </p>
+                                        <div className="flex gap-6 text-sm">
+                                          <span className="text-neutral-400 hover:text-white underline underline-offset-4">
+                                            Learn more
+                                          </span>
+                                        </div>
+                                      </Link>
+                                    ))}
+                                  </div>
+
+                                  {/* Divider */}
+                                  <div className="border-t border-[rgba(255,255,255,0.08)] mb-6" />
+
+                                  {/* Custom Solutions Section */}
+                                  <div className="mb-4">
+                                    <h4 className="text-xs font-semibold tracking-wider text-neutral-300 uppercase mb-4 px-6">
+                                      Custom Solutions
+                                    </h4>
+                                    <div className="grid grid-cols-3 gap-6">
+                                      {customSolutionsItems.map((solution) => (
                                         <Link
-                                          href={product.href}
-                                          className="text-neutral-400 hover:text-white underline underline-offset-4"
+                                          key={solution.name}
+                                          href={solution.href}
+                                          className="group flex flex-col items-center p-6 rounded-xl hover:bg-[rgba(255,255,255,0.05)] transition-colors"
                                           onClick={() => setIsProductsMenuOpen(false)}
                                         >
-                                          Learn
+                                          <div className="relative w-full h-32 mb-4">
+                                            <Image
+                                              src={solution.image}
+                                              alt={solution.name}
+                                              fill
+                                              className="object-contain group-hover:scale-105 transition-transform"
+                                            />
+                                          </div>
+                                          <h3 className="text-sm font-semibold text-white mb-2">
+                                            {solution.name}
+                                          </h3>
+                                          <p className="text-xs text-neutral-400 text-center mb-3">
+                                            {solution.description}
+                                          </p>
+                                          <span className="text-xs text-neutral-400 hover:text-white underline underline-offset-4">
+                                            Explore
+                                          </span>
                                         </Link>
-                                        <Link
-                                          href={`/contact?product=${product.name.toLowerCase()}`}
-                                          className="text-neutral-400 hover:text-white underline underline-offset-4"
-                                          onClick={() => setIsProductsMenuOpen(false)}
-                                        >
-                                          Order
-                                        </Link>
-                                      </div>
+                                      ))}
                                     </div>
-                                  ))}
+                                  </div>
                                 </div>
+
+                                {/* Sidebar */}
                                 <div className="w-56 border-l border-[rgba(255,255,255,0.08)] pl-8 flex flex-col gap-4">
                                   <h4 className="text-xs font-semibold tracking-wider text-neutral-300 uppercase mb-2">
                                     More
@@ -231,11 +283,8 @@ export default function Navbar() {
                                     className="text-sm text-neutral-400 hover:text-white transition-colors"
                                     onClick={() => setIsProductsMenuOpen(false)}
                                   >
-                                    Custom Solutions
+                                    All Custom Solutions
                                   </Link>
-                                  {/*<Link href="/products#features" className="text-sm text-neutral-400 hover:text-white transition-colors" onClick={() => setIsProductsMenuOpen(false)}>Features</Link>
-                                                                    <Link href="/products#pricing" className="text-sm text-neutral-400 hover:text-white transition-colors" onClick={() => setIsProductsMenuOpen(false)}>Pricing</Link>
-                                                                    <Link href="/contact" className="text-sm text-neutral-400 hover:text-white transition-colors" onClick={() => setIsProductsMenuOpen(false)}>Contact Sales</Link>*/}
                                 </div>
                               </div>
                             </div>
@@ -268,9 +317,9 @@ export default function Navbar() {
             <div className="hidden sm:flex items-center gap-2">
               <button
                 className="p-2 hover:bg-secondary rounded-lg transition-colors"
-                aria-label="Notifications"
+                aria-label="Support"
               >
-                <Bell className="w-5 h-5 text-foreground" />
+                <Headset className="w-5 h-5 text-foreground" />
               </button>
               <div className="relative">
                 <button
@@ -379,6 +428,7 @@ export default function Navbar() {
                               className="overflow-hidden"
                             >
                               <div className="pl-2 mt-3 grid grid-cols-1">
+                                {/* Products */}
                                 {productItems.map((product) => (
                                   <Link
                                     key={product.name}
@@ -403,6 +453,44 @@ export default function Navbar() {
                                       </p>
                                       <p className="text-xs text-neutral-400">
                                         {product.description}
+                                      </p>
+                                    </div>
+                                  </Link>
+                                ))}
+
+                                {/* Divider */}
+                                <div className="border-t border-[rgba(255,255,255,0.08)] my-3" />
+
+                                {/* Custom Solutions Header */}
+                                <p className="text-xs font-semibold tracking-wider text-neutral-300 uppercase px-3 mb-2">
+                                  Custom Solutions
+                                </p>
+
+                                {/* Custom Solutions */}
+                                {customSolutionsItems.map((solution) => (
+                                  <Link
+                                    key={solution.name}
+                                    href={solution.href}
+                                    onClick={() => {
+                                      setIsMobileMenuOpen(false);
+                                      setIsMobileProductsOpen(false);
+                                    }}
+                                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-[rgba(255,255,255,0.05)] transition-colors"
+                                  >
+                                    <div className="relative w-20 h-14 flex-shrink-0">
+                                      <Image
+                                        src={solution.image}
+                                        alt={solution.name}
+                                        fill
+                                        className="object-contain"
+                                      />
+                                    </div>
+                                    <div>
+                                      <p className="text-sm font-medium text-white">
+                                        {solution.name}
+                                      </p>
+                                      <p className="text-xs text-neutral-400">
+                                        {solution.description}
                                       </p>
                                     </div>
                                   </Link>

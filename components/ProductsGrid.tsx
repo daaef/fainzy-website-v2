@@ -66,7 +66,6 @@ export default function ProductsGrid({ products, title, subtitle }: ProductsGrid
               title={product.title}
               image={product.image}
               learnLink={product.learnLink}
-              orderLink={product.orderLink}
             />
           ))}
         </motion.div>

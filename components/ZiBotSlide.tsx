@@ -6,13 +6,13 @@ import { Button } from "@/components/ui/button";
 
 export default function ZiBotSlide() {
   return (
-    <div className="p-1 h-[calc(95vh-200px)]">
+    <div className="p-1">
       <div className="relative h-full">
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[131px] text-center text-white absolute w-full top-[-20px] sm:top-[-30px] md:top-[-40px] lg:top-[-45px]"
+          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl md:top-0 top-[10vh] xl:text-[131px] text-center text-white absolute w-full "
         >
           <h2 className="font-bold text-center font-zibot">ZiBot</h2>
         </motion.div>
@@ -20,10 +20,11 @@ export default function ZiBotSlide() {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
+          className="h-[35vh] top-[10vh] w-full relative"
         >
           <Image
             src="/slides/zibot.png"
-            className="h-[50vh] w-full object-contain mt-10 relative"
+            className="h-full w-full object-contain"
             alt="ZiBot"
             height={1000}
             width={3000}
@@ -33,7 +34,7 @@ export default function ZiBotSlide() {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="absolute w-full text-center top-[40%] sm:top-[45%] md:top-[50%] px-4"
+          className="absolute w-full text-center px-4 top-[30vh]"
         >
           <p className="text-2xl sm:text-3xl md:text-4xl text-shadow-lg">
             Anything Anytime Anywhere

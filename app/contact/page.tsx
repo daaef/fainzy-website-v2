@@ -208,6 +208,9 @@ export default function Contact() {
         <section className="py-8">
           <div className="container">
             <MapClient
+              lat={35.157308228381325}
+              lng={136.96488391534322}
+              lockToCoordinates={true}
               address={
                 locale === "ja"
                   ? "〒464-0814 愛知県名古屋市千種区不老町 名古屋大学 インキュベーション施設"

@@ -164,10 +164,12 @@ export default function MapClient({
   lat = 35.1538,
   lng = 136.9699,
   address,
+  lockToCoordinates = false,
 }: {
   lat?: number;
   lng?: number;
   address?: string;
+  lockToCoordinates?: boolean;
 }) {
   const { locale } = useLocale();
   const ref = useRef<HTMLDivElement | null>(null);
@@ -225,8 +227,7 @@ export default function MapClient({
             console.warn("[MapClient] marker update failed", err);
           }
         }
-        // Geocode if address provided & not yet attempted
-        if (address && !pendingGeocode.current) {
+        if (address && !pendingGeocode.current && !lockToCoordinates) {
           pendingGeocode.current = true;
           try {
             const geocoder = new google.maps.Geocoder();

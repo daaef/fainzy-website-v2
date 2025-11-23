@@ -1,4 +1,4 @@
-import { blogPosts } from "../page";
+import { blogPosts } from "@/data/blogPosts";
 import BlogPostClient from "./BlogPostClient";
 
 // Generate static params for all blog posts at build time

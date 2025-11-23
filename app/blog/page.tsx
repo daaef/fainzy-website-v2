@@ -1,13 +1,11 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
-import { motion } from "motion/react";
 import { blogPosts } from "@/data/blogPosts";
+import BlogCard from "./BlogCard";
+import Newsletter from "./Newsletter";
 
 function HeroSection() {
   return (
@@ -84,92 +82,14 @@ function FeaturedPost() {
   );
 }
 
-function BlogCard({ post }: { post: (typeof blogPosts)[0] }) {
-  return (
-    <Link href={`/blog/${post.id}`} className="block">
-      <motion.article
-        className="bg-[#0a0a0b] overflow-hidden group cursor-pointer"
-        style={{ borderRadius: 16 }}
-        whileHover={{ scale: 0.992, borderRadius: 20, boxShadow: "0 12px 30px rgba(0,0,0,0.6)" }}
-        transition={{ type: "spring", stiffness: 280, damping: 30, duration: 0.18 }}
-      >
-        <div className="relative h-48 md:h-56 rounded-[20px] w-full overflow-hidden">
-          <Image
-            src={post.image}
-            alt={post.title}
-            fill
-            className="object-cover transform transition-transform duration-300 ease-out group-hover:scale-105"
-            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          />
-        </div>
-
-        <div className="p-6 space-y-3">
-          <Badge className="bg-[rgba(250,250,250,0.12)] text-white border-0 hover:bg-[rgba(250,250,250,0.16)]">
-            {post.category}
-          </Badge>
-
-          <h3 className="font-bold text-lg text-white">{post.title}</h3>
-
-          <p className="text-sm text-neutral-400">{post.description}</p>
-
-          <div className="flex items-center gap-4 text-sm text-neutral-400">
-            <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-neutral-400" />
-              <span>{post.date}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-neutral-400" />
-              <span>{post.readTime}</span>
-            </div>
-          </div>
-        </div>
-      </motion.article>
-    </Link>
-  );
-}
-
 function RecentPosts() {
   return (
     <section className="py-12 md:py-20 lg:py-[100px]">
       <div className="container">
-        {/* <div className="flex items-center justify-between mb-8">
-                    <h2 className="font-bold text-3xl text-white">Recent Posts</h2>
-                    <Button variant="ghost" className="h-9 rounded-[8px] text-neutral-50 hover:bg-[rgba(250,250,250,0.04)]">
-                        <span className="font-bold text-sm">View All</span>
-                    </Button>
-                </div>*/}
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post) => (
             <BlogCard key={post.id} post={post} />
           ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Newsletter() {
-  return (
-    <section className="py-12 md:py-20 lg:py-[100px]">
-      <div className="container">
-        <div className="bg-gradient-to-b py-20 from-[#0e0e0f] to-[#0a0a0b] rounded-xl p-8 text-center">
-          <h3 className="font-bold text-5xl text-white mb-2">Subscribe to Our Newsletter</h3>
-          <p className="text-neutral-400 mb-6">
-            Stay updated with the latest news, insights, and innovations from Fainzy Technologies.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Input placeholder="Enter your email address" className="w-full sm:w-auto" />
-            <Button className="bg-[rgba(250,250,250,0.18)] hover:bg-[rgba(250,250,250,0.24)] rounded-[8px] px-6 py-2 text-white">
-              Subscribe
-            </Button>
-          </div>
-
-          <p className="text-xs text-neutral-500 mt-4">
-            By subscribing, you agree to our Privacy Policy and provide consent to receive updates
-            from our company.
-          </p>
         </div>
       </div>
     </section>

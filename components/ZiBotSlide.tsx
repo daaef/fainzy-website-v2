@@ -28,6 +28,8 @@ export default function ZiBotSlide() {
             alt="ZiBot"
             height={1000}
             width={3000}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+            priority
           />
         </motion.div>
         <motion.div

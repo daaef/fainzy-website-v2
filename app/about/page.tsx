@@ -22,17 +22,23 @@ interface TeamMember {
   name: string;
   role: string;
   imageUrl?: StaticImageData;
+  linkedin?: string;
 }
 
 export default function AboutPage() {
   const teamMembers: TeamMember[] = [
-    { name: "Dr. Jude Nwadiuto", role: "Co-Founder & CEO", imageUrl: Jude },
-    { name: "Emmanuel Omeogah", role: "Co-Founder & Tech Lead", imageUrl: Emma },
-    { name: "Patric John", role: "Co-Founder & Design Lead", imageUrl: Patric },
-    { name: "Michael Nwadiuto", role: "Co-Founder & Project Lead", imageUrl: Mike },
-    { name: "Lazarus Nwankwo", role: "Developer", imageUrl: Laz },
-    { name: "Prof. Tatsuya Suzuki", role: "Special Advisor", imageUrl: Tatsuya },
-    { name: "Assoc. Prof Hiroyuki Okuda", role: "Technical Advisor", imageUrl: Hiroyuki },
+    { name: "Dr. Jude Nwadiuto", role: "Co-Founder & CEO", imageUrl: Jude, linkedin: "#" },
+    { name: "Emmanuel Omeogah", role: "Co-Founder & Tech Lead", imageUrl: Emma, linkedin: "#" },
+    { name: "Patric John", role: "Co-Founder & Design Lead", imageUrl: Patric, linkedin: "#" },
+    { name: "Michael Nwadiuto", role: "Co-Founder & Project Lead", imageUrl: Mike, linkedin: "#" },
+    { name: "Lazarus Nwankwo", role: "Developer", imageUrl: Laz, linkedin: "#" },
+    { name: "Prof. Tatsuya Suzuki", role: "Special Advisor", imageUrl: Tatsuya, linkedin: "#" },
+    {
+      name: "Assoc. Prof Hiroyuki Okuda",
+      role: "Technical Advisor",
+      imageUrl: Hiroyuki,
+      linkedin: "#",
+    },
   ];
 
   return (
@@ -46,16 +52,12 @@ export default function AboutPage() {
             width={1000}
             alt="about banner"
           />
-          {/* Background Image Placeholder */}
           <div className="absolute inset-0">
             <div className="absolute inset-0 opacity-20">
               <div className="w-full h-full bg-[repeating-linear-gradient(90deg,rgba(255,255,255,0.03)_0px,rgba(255,255,255,0.03)_1px,transparent_1px,transparent_96px),repeating-linear-gradient(0deg,rgba(255,255,255,0.03)_0px,rgba(255,255,255,0.03)_1px,transparent_1px,transparent_96px)]" />
             </div>
           </div>
-
-          {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-[rgba(10,10,11,0.3)] via-[rgba(10,10,11,0.5)] to-[rgba(10,10,11,0.7)]" />
-
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -71,15 +73,10 @@ export default function AboutPage() {
           </motion.div>
         </section>
       </header>
-
       <main>
-        {/* Hero Section */}
-
-        {/* Company Story Section */}
         <section className="py-12 md:py-20 lg:py-[100px]">
           <div className="container">
             <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12 lg:gap-16">
-              {/* Image Placeholder */}
               <motion.div
                 initial={{ opacity: 0, x: -50, scale: 0.95 }}
                 whileInView={{ opacity: 1, x: 0, scale: 1 }}
@@ -97,8 +94,6 @@ export default function AboutPage() {
                   />
                 </div>
               </motion.div>
-
-              {/* Content */}
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -154,10 +149,7 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-
-        {/* People Behind Innovation Banner */}
         <section className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[567px] flex items-end overflow-hidden relative">
-          {/* Background Image Placeholder */}
           <Image
             className="absolute w-full h-full object-cover"
             src={PeopleBanner}
@@ -165,10 +157,7 @@ export default function AboutPage() {
             width={1000}
             height={1000}
           />
-
-          {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,10,11,0.95)] via-[rgba(10,10,11,0.6)] to-[rgba(10,10,11,0.3)]" />
-
           <div className="relative z-10 container pb-12 md:pb-16 lg:pb-[64px]">
             <div className="flex flex-col lg:flex-row items-end gap-8 lg:gap-16">
               <motion.h2
@@ -195,12 +184,9 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-
-        {/* Vision Section */}
         <section className="py-12 md:py-20 lg:py-[100px]">
           <div className="container">
             <div className="flex flex-col lg:flex-row-reverse items-center gap-8 md:gap-12 lg:gap-16">
-              {/* Image Placeholder */}
               <motion.div
                 initial={{ opacity: 0, x: 50, scale: 0.95 }}
                 whileInView={{ opacity: 1, x: 0, scale: 1 }}
@@ -212,8 +198,6 @@ export default function AboutPage() {
                   <Image src={Vision} alt="Vision" height={1000} width={1000} />
                 </div>
               </motion.div>
-
-              {/* Content */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -256,8 +240,6 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-
-        {/* Team Section */}
         <section className="py-12 md:py-20 lg:py-[100px] bg-[#0a0a0b]">
           <div className="container">
             <motion.div
@@ -267,15 +249,13 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="text-center mb-12 md:mb-16 lg:mb-20"
             >
-              <h2 className="font-bold text-3xl sm:text-4xl lg:text-[48px] text-white tracking-[-0.96px] mb-4">
-                Meet The Dream Team!
+              <h2 className="font-bold text-3xl sm:text-4xl lg:text-[32px] text-white tracking-[-0.6px] mb-4">
+                Our leadership
               </h2>
               <p className="text-neutral-400 text-base sm:text-lg">
                 The brilliant minds driving innovation at Fainzy Technologies
               </p>
             </motion.div>
-
-            {/* Team Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
               {teamMembers.map((member, index) => (
                 <motion.div
@@ -283,21 +263,13 @@ export default function AboutPage() {
                   initial={{ opacity: 0, y: 30, scale: 0.95 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, margin: "-50px" }}
-                  transition={{
-                    duration: 0.5,
-                    delay: index * 0.15,
-                    ease: "easeOut",
-                  }}
-                  whileHover={{
-                    scale: 1.03,
-                    transition: { duration: 0.2 },
-                  }}
+                  transition={{ duration: 0.5, delay: index * 0.15, ease: "easeOut" }}
+                  whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
                 >
                   <Card className="bg-[#0a0a0b] p-0 border-0 rounded-[16px] overflow-hidden h-full">
                     <CardContent className="p-0 relative">
-                      {/* Image Placeholder */}
-                      <div className="relative w-full h-[280px] sm:h-[300px] lg:h-[320px] bg-gradient-to-br from-[#2a2a2b] to-[#1a1a1b] overflow-hidden">
-                        <div className="absolute inset-0 h-full flex items-center justify-center text-neutral-700 text-xs">
+                      <div className="relative w-full h-[300px] sm:h-[320px] lg:h-[340px] bg-gradient-to-br from-[#2a2a2b] to-[#1a1a1b] overflow-hidden rounded-[16px]">
+                        <div className="absolute inset-0 h-full flex items-center justify-center">
                           <Image
                             src={member?.imageUrl ?? ""}
                             className="w-full h-full object-cover"
@@ -306,16 +278,12 @@ export default function AboutPage() {
                             width={1000}
                           />
                         </div>
-                        {/* Gradient Overlay for text readability */}
-                        <div className="absolute bottom-0 left-0 right-0 h-[140px] bg-gradient-to-t from-[rgba(10,10,11,0.98)] via-[rgba(10,10,11,0.75)] to-transparent pointer-events-none" />
-                      </div>
-
-                      {/* Member Info - Always Visible */}
-                      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 z-10">
-                        <h3 className="font-semibold text-base sm:text-lg text-white mb-1 leading-tight">
-                          {member.name}
-                        </h3>
-                        <p className="text-sm text-neutral-400 leading-snug">{member.role}</p>
+                        <div className="absolute bottom-0 left-0 right-0 p-4 w-full">
+                          <div className="px-4 py-3 rounded-[12px] bg-[rgba(10,10,11,0.6)] backdrop-blur-sm text-white">
+                            <div className="text-sm font-semibold leading-tight">{member.name}</div>
+                            <div className="text-[12px] text-neutral-300">{member.role}</div>
+                          </div>
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
@@ -324,10 +292,7 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-
-        {/* CTA Section */}
         <section className="min-h-[400px] relative md:min-h-[500px] lg:min-h-[551px] flex items-center justify-center overflow-hidden">
-          {/* Background Image Placeholder */}
           <Image
             src={Join}
             alt="join us"
@@ -335,11 +300,8 @@ export default function AboutPage() {
             height={1000}
             width={1000}
           />
-
-          {/* Gradient Overlays */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgb(10,10,11)]" />
           <div className="absolute inset-0 bg-gradient-to-r from-[rgba(10,10,11,0.95)] via-[rgba(10,10,11,0.7)] to-[rgba(10,10,11,0.95)]" />
-
           <div className="relative z-10 container px-4 sm:px-6 text-center">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}

@@ -1,5 +1,6 @@
 "use client";
 
+import { use } from "react";
 import { Button } from "@/components/ui/button";
 import { Apple, Play } from "lucide-react";
 import Image from "next/image";
@@ -13,7 +14,13 @@ import PricingSection from "@/components/zibot/PricingSection";
 import { Separator } from "@/components/ui/separator";
 import { motion } from "motion/react";
 
-export default function ProductPage() {
+export default function ProductPage({ params }: { params: Promise<{ id: string }> }) {
+  // Unwrap params promise (Next.js 15+)
+  const { id } = use(params);
+
+  // For now, all product IDs default to showing ZiBot content
+  // This can be expanded later to handle different products
+  const productId = id || "zibot";
   // Section 4: Main Features (3 features for carousel)
   const mainFeatures = [
     {

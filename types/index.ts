@@ -22,6 +22,7 @@ export interface Product {
   image: StaticImageData;
   features: Feature[];
   reverse?: boolean;
+  link?: string;
 }
 
 export interface StatMetric {

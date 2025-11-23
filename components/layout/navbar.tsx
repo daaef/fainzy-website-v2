@@ -263,9 +263,18 @@ export default function Navbar() {
 
                                   {/* Custom Solutions Section */}
                                   <div className="mb-4">
-                                    <h4 className="text-xs font-semibold tracking-wider text-neutral-300 uppercase mb-4 px-6">
-                                      Custom Solutions
-                                    </h4>
+                                    <div className="flex justify-between mb-6 items-center">
+                                      <h4 className="text-xs font-semibold tracking-wider text-neutral-300 uppercase px-6">
+                                        Custom Solutions
+                                      </h4>
+                                      <Link
+                                        href="/custom-solutions#contact"
+                                        className="inline-flex items-center justify-center bg-white text-black hover:bg-neutral-200 px-3 py-1 rounded-md font-semibold text-sm transition-all duration-300"
+                                        onClick={() => setIsProductsMenuOpen(false)}
+                                      >
+                                        Contact Us
+                                      </Link>
+                                    </div>
                                     <div>
                                       <Carousel
                                         plugins={[
@@ -309,9 +318,6 @@ export default function Navbar() {
                                                 <p className="text-xs text-neutral-400 text-center mb-3 line-clamp-3">
                                                   {solution.description}
                                                 </p>
-                                                <span className="text-xs text-neutral-400 hover:text-white underline underline-offset-4">
-                                                  Explore
-                                                </span>
                                               </Link>
                                             </CarouselItem>
                                           ))}
@@ -319,15 +325,6 @@ export default function Navbar() {
                                         <CarouselPrevious className="hidden md:flex text-white border-white hover:bg-white hover:text-black" />
                                         <CarouselNext className="hidden md:flex text-white border-white hover:bg-white hover:text-black" />
                                       </Carousel>
-                                      <div className="flex justify-end mt-6">
-                                        <Link
-                                          href="/custom-solutions#contact"
-                                          className="inline-flex items-center justify-center bg-white text-black hover:bg-neutral-200 px-6 py-3 rounded-md font-semibold text-sm transition-all duration-300"
-                                          onClick={() => setIsProductsMenuOpen(false)}
-                                        >
-                                          Contact Us
-                                        </Link>
-                                      </div>
                                     </div>
                                   </div>
                                 </div>

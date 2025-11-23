@@ -27,9 +27,10 @@ export default function ConsultancySlide() {
           <Image
             src="/slides/consultancy.png"
             className="h-[35vh] w-full object-contain mt-10 relative"
-            alt="ZiBot"
+            alt="Consultancy"
             height={1000}
             width={3000}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
           />
         </motion.div>
         <motion.div
@@ -42,7 +43,11 @@ export default function ConsultancySlide() {
             className="mt-6 md:mt-10 py-3 md:py-4 px-6 md:px-8 border border-white rounded-[4px] bg-transparent hover:bg-white hover:text-black text-white md:text-lg lg:text-xl font-normal transition-all duration-500 ease-in-out"
             asChild
           >
-            <motion.a href="#" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.a
+              href="/products#consultancy"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               Learn More
             </motion.a>
           </Button>

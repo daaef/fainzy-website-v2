@@ -93,6 +93,18 @@ interface MapInstance {
 interface MarkerInstance {
   setPosition(position: { lat: number; lng: number }): void;
   setMap(map: MapInstance | null): void;
+  setIcon(
+    icon:
+      | string
+      | {
+          url: string;
+          scaledSize?: { width: number; height: number };
+          labelOrigin?: { x: number; y: number };
+        }
+  ): void;
+  setLabel(
+    label: string | { text: string; color: string; fontSize: string; fontWeight: string }
+  ): void;
 }
 
 // Minimal typed shape for the parts we use from the Google Maps API
@@ -104,6 +116,15 @@ type GoogleMapsAPI = {
       position: { lat: number; lng: number };
       map?: MapInstance;
       title?: string;
+      icon?:
+        | string
+        | {
+            url: string;
+            scaledSize?: { width: number; height: number };
+            labelOrigin?: { x: number; y: number };
+          };
+      animation?: number;
+      label?: string | { text: string; color: string; fontSize: string; fontWeight: string };
     }) => MarkerInstance;
     Geocoder: new () => {
       geocode: (
@@ -115,13 +136,17 @@ type GoogleMapsAPI = {
       ) => void;
     };
     event: { trigger(map: MapInstance | null, ev: string): void };
+    Animation: {
+      DROP: number;
+      BOUNCE: number;
+    };
   };
 };
 
 // Remove global Window augmentation; use module-level cache instead.
 let googleMapsPromise: Promise<GoogleMapsAPI> | undefined;
 
-function loadGoogleMaps(key: string): Promise<GoogleMapsAPI> {
+function loadGoogleMaps(key: string, language: string = "en"): Promise<GoogleMapsAPI> {
   // If SSR safeguard (shouldn't run because of "use client", but defensive)
   if (typeof window === "undefined") {
     return Promise.reject(new Error("Google Maps cannot load during SSR"));
@@ -145,7 +170,7 @@ function loadGoogleMaps(key: string): Promise<GoogleMapsAPI> {
       return;
     }
     const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(key)}`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(key)}&language=${encodeURIComponent(language)}`;
     script.async = true;
     script.defer = true;
     script.onload = () => {
@@ -190,7 +215,8 @@ export default function MapClient({
         ? "名古屋大学 インキュベーション施設"
         : "Nagoya University Incubation Facility";
     const INITIAL_ZOOM = 17; // Detailed zoom level showing nearby POIs
-    loadGoogleMaps(key)
+    const mapLanguage = locale === "ja" ? "ja" : "en";
+    loadGoogleMaps(key, mapLanguage)
       .then((google) => {
         if (!mounted || !ref.current) return;
         if (!mapRef.current) {
@@ -218,10 +244,33 @@ export default function MapClient({
             position: { lat, lng },
             map: mapRef.current,
             title: markerTitle,
+            animation: google.maps.Animation.DROP,
+            icon: {
+              url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
+              scaledSize: { width: 32, height: 32 },
+              labelOrigin: { x: 60, y: 16 },
+            },
+            label: {
+              text: markerTitle,
+              color: "#d59563",
+              fontSize: "14px",
+              fontWeight: "bold",
+            },
           });
         } else {
           try {
             markerRef.current.setPosition({ lat, lng });
+            markerRef.current.setIcon({
+              url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
+              scaledSize: { width: 32, height: 32 },
+              labelOrigin: { x: 60, y: 16 },
+            });
+            markerRef.current.setLabel({
+              text: markerTitle,
+              color: "#d59563",
+              fontSize: "14px",
+              fontWeight: "bold",
+            });
             markerRef.current.setMap(mapRef.current);
           } catch (err) {
             console.warn("[MapClient] marker update failed", err);

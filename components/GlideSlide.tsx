@@ -24,9 +24,10 @@ export default function ZiBotSlide() {
           <Image
             src="/slides/glide.png"
             className="h-[35vh] top-[10vh] w-full object-contain relative"
-            alt="ZiBot"
+            alt="Glide"
             height={1000}
             width={3000}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
           />
         </motion.div>
         <motion.div
@@ -44,7 +45,7 @@ export default function ZiBotSlide() {
             asChild
           >
             <motion.a
-              href="/products/zibot"
+              href="/products#glide"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

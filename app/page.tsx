@@ -48,6 +48,7 @@ export default function Home() {
       description:
         "The Last Mile Delivery System uses our robot to take food deliveries from restaurants to consumers' locations.",
       image: LastMile,
+      link: "/products/zibot",
       features: [
         { title: "24/7 Operation", subtitle: "Always Available", icon: Clock },
         { title: "Cost Effective", subtitle: "Reduced Labor", icon: DollarSign },
@@ -60,6 +61,7 @@ export default function Home() {
       description:
         "Introducing Fainzy's Glide, an innovative autonomous scooter that you can summon just like an Uber. Glide offers a seamless travel experience, allowing you to navigate your surroundings effortlessly while minimizing physical contact. Simply request a ride via the app, and your personal scooter will arrive to take you wherever you need to go!",
       image: Glide,
+      link: "/products#glide",
       features: [
         { title: "24/7 Operation", subtitle: "Always Available", icon: Clock },
         { title: "Cost Effective", subtitle: "Reduced Labor", icon: DollarSign },
@@ -73,6 +75,7 @@ export default function Home() {
       description:
         "The Last Mile Delivery System uses our robot to take food deliveries from restaurants to consumers' locations.",
       image: Consultancy,
+      link: "/products#consultancy",
       features: [
         { title: "24/7 Operation", subtitle: "Always Available", icon: Clock },
         { title: "Cost Effective", subtitle: "Reduced Labor", icon: DollarSign },

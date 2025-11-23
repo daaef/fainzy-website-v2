@@ -23,6 +23,7 @@ export default function Home() {
       description:
         "The Last Mile Delivery System uses our robot to take food deliveries from restaurants to consumers' locations.",
       image: LastMile,
+      link: "/products/zibot",
       features: [
         { title: "24/7 Operation", subtitle: "Always Available", icon: Clock },
         { title: "Cost Effective", subtitle: "Reduced Labor", icon: DollarSign },
@@ -35,6 +36,7 @@ export default function Home() {
       description:
         "Introducing Fainzy's Glide, an innovative autonomous scooter that you can summon just like an Uber. Glide offers a seamless travel experience, allowing you to navigate your surroundings effortlessly while minimizing physical contact. Simply request a ride via the app, and your personal scooter will arrive to take you wherever you need to go!",
       image: Glide,
+      link: "#glide",
       features: [
         { title: "24/7 Operation", subtitle: "Always Available", icon: Clock },
         { title: "Cost Effective", subtitle: "Reduced Labor", icon: DollarSign },
@@ -48,6 +50,7 @@ export default function Home() {
       description:
         "The Last Mile Delivery System uses our robot to take food deliveries from restaurants to consumers' locations.",
       image: Consultancy,
+      link: "#consultancy",
       features: [
         { title: "24/7 Operation", subtitle: "Always Available", icon: Clock },
         { title: "Cost Effective", subtitle: "Reduced Labor", icon: DollarSign },
@@ -300,6 +303,50 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        {/* Glide Anchor Section */}
+        <section id="glide" className="container py-20">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-white">
+              Glide - Autonomous Scooter
+            </h2>
+            <p className="text-lg sm:text-xl text-neutral-300 mb-8 leading-relaxed">
+              Introducing Fainzy&apos;s Glide, an innovative autonomous scooter that you can summon
+              just like an Uber. Glide offers a seamless travel experience, allowing you to navigate
+              your surroundings effortlessly while minimizing physical contact. Simply request a
+              ride via the app, and your personal scooter will arrive to take you wherever you need
+              to go!
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center bg-white text-black hover:bg-neutral-200 px-8 py-4 rounded-md font-semibold text-base transition-all duration-300"
+            >
+              Contact Us for Demo
+            </Link>
+          </div>
+        </section>
+
+        {/* Consultancy Anchor Section */}
+        <section id="consultancy" className="container py-20">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-white">
+              Fainzy Consultancy Services
+            </h2>
+            <p className="text-lg sm:text-xl text-neutral-300 mb-8 leading-relaxed">
+              Expert robotics and AI consulting services to help transform your business. Our
+              experienced team provides comprehensive solutions including autonomous driving
+              systems, robot development, mobile and web application development, and AI
+              applications using deep learning.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center bg-white text-black hover:bg-neutral-200 px-8 py-4 rounded-md font-semibold text-base transition-all duration-300"
+            >
+              Learn More About Our Services
+            </Link>
+          </div>
+        </section>
+
         <section>
           <CustomSolutionsCarousel solutions={customSolutions} />
           <div className="container flex justify-center py-12">

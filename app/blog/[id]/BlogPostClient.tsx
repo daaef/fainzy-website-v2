@@ -52,7 +52,7 @@ const tableOfContents = [
 export default function BlogPostClient() {
   return (
     <>
-      <div className="min-h-screen w-full bg-[#0a0a0b]">
+      <div className="min-h-screen w-full bg-background">
         {/* Hero Section with Image */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -67,7 +67,7 @@ export default function BlogPostClient() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-[rgba(10,10,11,0.5)] to-[rgba(10,10,11,.7)]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/70" />
 
           <div className="absolute bottom-0 left-0 right-0">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
@@ -78,11 +78,11 @@ export default function BlogPostClient() {
               >
                 <BackButtonClient />
 
-                <Badge className="mb-4 bg-[rgba(250,250,250,0.2)] text-white border-0 hover:bg-[rgba(250,250,250,0.3)]">
+                <Badge className="mb-4 bg-accent/20 text-foreground border-0 hover:bg-accent/30">
                   Business
                 </Badge>
 
-                <h1 className="font-['Inter:Bold',sans-serif] font-bold text-white text-3xl sm:text-4xl lg:text-5xl max-w-4xl mb-6">
+                <h1 className="font-bold text-foreground text-3xl sm:text-4xl lg:text-5xl max-w-4xl mb-6">
                   5 Ways Autonomous Robots Are Transforming the Hospitality Industry
                 </h1>
               </motion.div>
@@ -100,36 +100,30 @@ export default function BlogPostClient() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
-                className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-6 md:pb-8 mb-8 md:mb-12 border-b border-[#3a3a3a] gap-4"
+                className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-6 md:pb-8 mb-8 md:mb-12 border-b border-border gap-4"
               >
                 <div className="flex flex-wrap items-center gap-4 md:gap-8">
                   <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 md:w-[18px] md:h-[18px] text-[#c9c9c9]" />
-                    <span className="font-['Inter:Regular',sans-serif] text-sm md:text-base text-[#c9c9c9]">
+                    <Calendar className="w-4 h-4 md:w-[18px] md:h-[18px] text-muted-foreground" />
+                    <span className="text-sm md:text-base text-muted-foreground">
                       October 20, 2025
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 md:w-[18px] md:h-[18px] text-[#c9c9c9]" />
-                    <span className="font-['Inter:Regular',sans-serif] text-sm md:text-base text-[#c9c9c9]">
-                      6 min read
-                    </span>
+                    <Clock className="w-4 h-4 md:w-[18px] md:h-[18px] text-muted-foreground" />
+                    <span className="text-sm md:text-base text-muted-foreground">6 min read</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Eye className="w-4 h-4 md:w-[18px] md:h-[18px] text-[#c9c9c9]" />
-                    <span className="font-['Inter:Regular',sans-serif] text-sm md:text-base text-[#c9c9c9]">
-                      12.5k views
-                    </span>
+                    <Eye className="w-4 h-4 md:w-[18px] md:h-[18px] text-muted-foreground" />
+                    <span className="text-sm md:text-base text-muted-foreground">12.5k views</span>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3 md:gap-4">
                   <LikeButton initialLikes={3542} />
-                  <button className="flex items-center gap-2 px-3 md:px-4 py-2 rounded-lg bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] transition-colors border border-[#3a3a3a]">
-                    <Share2 className="w-4 h-4 md:w-[18px] md:h-[18px] text-[#c9c9c9]" />
-                    <span className="font-['Inter:Medium',sans-serif] text-sm text-white">
-                      Share
-                    </span>
+                  <button className="flex items-center gap-2 px-3 md:px-4 py-2 rounded-lg bg-accent/5 hover:bg-accent/10 transition-colors border border-border">
+                    <Share2 className="w-4 h-4 md:w-[18px] md:h-[18px] text-muted-foreground" />
+                    <span className="font-medium text-sm text-foreground">Share</span>
                   </button>
                 </div>
               </motion.div>
@@ -142,13 +136,13 @@ export default function BlogPostClient() {
                 className="mb-8 md:mb-12"
                 id="introduction"
               >
-                <p className="font-['Inter:Regular',sans-serif] text-base md:text-lg leading-relaxed text-[#e5e5e5] mb-6">
+                <p className="text-base md:text-lg leading-relaxed text-foreground/90 mb-6">
                   The hospitality industry is experiencing a technological revolution, with
                   autonomous robots leading the charge in transforming guest experiences and
                   operational efficiency. From luxury hotels to bustling restaurants, service robots
                   like ZiBot are becoming integral parts of the modern hospitality landscape.
                 </p>
-                <p className="font-['Inter:Regular',sans-serif] text-base md:text-lg leading-relaxed text-[#e5e5e5]">
+                <p className="text-base md:text-lg leading-relaxed text-foreground/90">
                   In this comprehensive guide, we&apos;ll explore five key ways autonomous delivery
                   robots are reshaping the hospitality sector, improving both guest satisfaction and
                   business outcomes.
@@ -164,16 +158,16 @@ export default function BlogPostClient() {
                 className="mb-8 md:mb-12"
                 id="revolutionizing-room-service"
               >
-                <h2 className="font-['Inter:Bold',sans-serif] font-bold text-2xl md:text-3xl leading-tight text-white mb-6">
+                <h2 className="font-bold text-2xl md:text-3xl leading-tight text-foreground mb-6">
                   1. Revolutionizing Room Service Delivery
                 </h2>
-                <p className="font-['Inter:Regular',sans-serif] text-base md:text-lg leading-relaxed text-[#e5e5e5] mb-6">
+                <p className="text-base md:text-lg leading-relaxed text-foreground/90 mb-6">
                   Traditional room service often involves long wait times and requires significant
                   staff resources. Autonomous robots like ZiBot are changing this dynamic by
                   providing fast, reliable, and contactless delivery directly to guest rooms.
                 </p>
-                <div className="bg-[#0e0e0f] rounded-2xl p-6 md:p-8 border border-[#3a3a3a] mb-6">
-                  <h3 className="font-['Inter:Semi_Bold',sans-serif] font-semibold text-lg md:text-xl text-white mb-4">
+                <div className="bg-card rounded-2xl p-6 md:p-8 border border-border mb-6">
+                  <h3 className="font-semibold text-lg md:text-xl text-foreground mb-4">
                     Key Benefits:
                   </h3>
                   <ul className="space-y-3">
@@ -184,15 +178,15 @@ export default function BlogPostClient() {
                       "Real-time tracking for both guests and management",
                     ].map((item, index) => (
                       <li key={index} className="flex items-start gap-3">
-                        <div className="size-1.5 rounded-full bg-[#6366f1] mt-3 flex-shrink-0" />
-                        <span className="font-['Inter:Regular',sans-serif] text-sm md:text-base leading-relaxed text-[#c9c9c9]">
+                        <div className="size-1.5 rounded-full bg-primary mt-3 flex-shrink-0" />
+                        <span className="text-sm md:text-base leading-relaxed text-muted-foreground">
                           {item}
                         </span>
                       </li>
                     ))}
                   </ul>
                 </div>
-                <p className="font-['Inter:Regular',sans-serif] text-base md:text-lg leading-relaxed text-[#e5e5e5]">
+                <p className="text-base md:text-lg leading-relaxed text-foreground/90">
                   Hotels implementing robot delivery systems report guest satisfaction scores
                   increasing by an average of 25%, with many guests specifically requesting robot
                   delivery for its novelty and efficiency.
@@ -208,7 +202,7 @@ export default function BlogPostClient() {
                 className="mb-8 md:mb-12"
                 id="enhanced-guest-experiences"
               >
-                <h2 className="font-['Inter:Bold',sans-serif] font-bold text-2xl md:text-3xl leading-tight text-white mb-6">
+                <h2 className="font-bold text-2xl md:text-3xl leading-tight text-foreground mb-6">
                   2. Enhanced Guest Experiences Through Technology
                 </h2>
                 <div className="relative w-full h-64 md:h-80 lg:h-96 rounded-2xl overflow-hidden mb-6">
@@ -219,12 +213,12 @@ export default function BlogPostClient() {
                     className="object-cover"
                   />
                 </div>
-                <p className="font-['Inter:Regular',sans-serif] text-base md:text-lg leading-relaxed text-[#e5e5e5] mb-6">
+                <p className="text-base md:text-lg leading-relaxed text-foreground/90 mb-6">
                   Today&apos;s travelers, especially millennials and Gen Z guests, actively seek out
                   technology-enhanced experiences. Autonomous robots provide a unique,
                   Instagram-worthy interaction that adds memorable moments to their stay.
                 </p>
-                <p className="font-['Inter:Regular',sans-serif] text-base md:text-lg leading-relaxed text-[#e5e5e5]">
+                <p className="text-base md:text-lg leading-relaxed text-foreground/90">
                   Robots can be customized with hotel branding, programmed to greet guests in
                   multiple languages, and even display promotional content during deliveries,
                   creating opportunities for enhanced engagement and upselling.
@@ -240,10 +234,10 @@ export default function BlogPostClient() {
                 className="mb-8 md:mb-12"
                 id="streamlined-operations"
               >
-                <h2 className="font-['Inter:Bold',sans-serif] font-bold text-2xl md:text-3xl leading-tight text-white mb-6">
+                <h2 className="font-bold text-2xl md:text-3xl leading-tight text-foreground mb-6">
                   3. Streamlined Operations and Staff Optimization
                 </h2>
-                <p className="font-['Inter:Regular',sans-serif] text-base md:text-lg leading-relaxed text-[#e5e5e5] mb-6">
+                <p className="text-base md:text-lg leading-relaxed text-foreground/90 mb-6">
                   Rather than replacing human staff, autonomous robots free up team members to focus
                   on high-value tasks that require personal interaction and problem-solving. This
                   optimization leads to better resource allocation and improved service quality.
@@ -252,39 +246,35 @@ export default function BlogPostClient() {
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 300 }}
-                    className="bg-[#0e0e0f] rounded-2xl p-6 border border-[#3a3a3a]"
+                    className="bg-card rounded-2xl p-6 border border-border"
                   >
-                    <div className="size-12 rounded-xl bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] flex items-center justify-center mb-4">
-                      <span className="font-['Inter:Bold',sans-serif] text-2xl text-white">
-                        40%
-                      </span>
+                    <div className="size-12 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center mb-4">
+                      <span className="text-2xl text-primary-foreground font-bold">40%</span>
                     </div>
-                    <h4 className="font-['Inter:Semi_Bold',sans-serif] font-semibold text-lg text-white mb-2">
+                    <h4 className="font-semibold text-lg text-foreground mb-2">
                       Efficiency Increase
                     </h4>
-                    <p className="font-['Inter:Regular',sans-serif] text-sm leading-relaxed text-[#c9c9c9]">
+                    <p className="text-sm leading-relaxed text-muted-foreground">
                       Average improvement in delivery efficiency across hospitality venues
                     </p>
                   </motion.div>
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 300 }}
-                    className="bg-[#0e0e0f] rounded-2xl p-6 border border-[#3a3a3a]"
+                    className="bg-card rounded-2xl p-6 border border-border"
                   >
-                    <div className="size-12 rounded-xl bg-gradient-to-br from-[#ec4899] to-[#f43f5e] flex items-center justify-center mb-4">
-                      <span className="font-['Inter:Bold',sans-serif] text-2xl text-white">
-                        85%
-                      </span>
+                    <div className="size-12 rounded-xl bg-gradient-to-br from-accent to-accent/80 flex items-center justify-center mb-4">
+                      <span className="text-2xl text-accent-foreground font-bold">85%</span>
                     </div>
-                    <h4 className="font-['Inter:Semi_Bold',sans-serif] font-semibold text-lg text-white mb-2">
+                    <h4 className="font-semibold text-lg text-foreground mb-2">
                       Staff Satisfaction
                     </h4>
-                    <p className="font-['Inter:Regular',sans-serif] text-sm leading-relaxed text-[#c9c9c9]">
+                    <p className="text-sm leading-relaxed text-muted-foreground">
                       Of staff report higher job satisfaction with robot assistance
                     </p>
                   </motion.div>
                 </div>
-                <p className="font-['Inter:Regular',sans-serif] text-base md:text-lg leading-relaxed text-[#e5e5e5]">
+                <p className="text-base md:text-lg leading-relaxed text-foreground/90">
                   Staff can dedicate more time to personalized guest interactions, concierge
                   services, and addressing complex requests, ultimately enhancing the overall
                   service quality of the establishment.
@@ -300,10 +290,10 @@ export default function BlogPostClient() {
                 className="mb-8 md:mb-12"
                 id="cost-efficiency-and-roi"
               >
-                <h2 className="font-['Inter:Bold',sans-serif] font-bold text-2xl md:text-3xl leading-tight text-white mb-6">
+                <h2 className="font-bold text-2xl md:text-3xl leading-tight text-foreground mb-6">
                   4. Cost Efficiency and Strong ROI
                 </h2>
-                <p className="font-['Inter:Regular',sans-serif] text-base md:text-lg leading-relaxed text-[#e5e5e5] mb-6">
+                <p className="text-base md:text-lg leading-relaxed text-foreground/90 mb-6">
                   While the initial investment in autonomous robots may seem significant, the return
                   on investment is compelling. Hotels and restaurants typically see payback periods
                   of 12-18 months, with ongoing operational savings continuing well beyond that
@@ -317,7 +307,7 @@ export default function BlogPostClient() {
                     className="object-cover"
                   />
                 </div>
-                <p className="font-['Inter:Regular',sans-serif] text-base md:text-lg leading-relaxed text-[#e5e5e5]">
+                <p className="text-base md:text-lg leading-relaxed text-foreground/90">
                   Energy-efficient designs, low maintenance requirements, and the ability to operate
                   continuously without breaks make robots like ZiBot a cost-effective solution for
                   modern hospitality businesses looking to optimize their operations.
@@ -333,16 +323,16 @@ export default function BlogPostClient() {
                 className="mb-8 md:mb-12"
                 id="24-7-availability"
               >
-                <h2 className="font-['Inter:Bold',sans-serif] font-bold text-2xl md:text-3xl leading-tight text-white mb-6">
+                <h2 className="font-bold text-2xl md:text-3xl leading-tight text-foreground mb-6">
                   5. 24/7 Availability and Consistency
                 </h2>
-                <p className="font-['Inter:Regular',sans-serif] text-base md:text-lg leading-relaxed text-[#e5e5e5] mb-6">
+                <p className="text-base md:text-lg leading-relaxed text-foreground/90 mb-6">
                   One of the most significant advantages of autonomous robots is their ability to
                   provide consistent, round-the-clock service. Whether it&apos;s a late-night room
                   service request or early morning amenity delivery, robots are always ready to
                   serve.
                 </p>
-                <p className="font-['Inter:Regular',sans-serif] text-base md:text-lg leading-relaxed text-[#e5e5e5]">
+                <p className="text-base md:text-lg leading-relaxed text-foreground/90">
                   This reliability ensures that guest needs are met promptly regardless of the time
                   of day, contributing to higher satisfaction ratings and positive reviews across
                   booking platforms.
@@ -358,10 +348,10 @@ export default function BlogPostClient() {
                 className="mb-8 md:mb-12"
                 id="future-of-hospitality"
               >
-                <h2 className="font-['Inter:Bold',sans-serif] font-bold text-2xl md:text-3xl leading-tight text-white mb-6">
+                <h2 className="font-bold text-2xl md:text-3xl leading-tight text-foreground mb-6">
                   The Future of Hospitality is Here
                 </h2>
-                <p className="font-['Inter:Regular',sans-serif] text-base md:text-lg leading-relaxed text-[#e5e5e5] mb-6">
+                <p className="text-base md:text-lg leading-relaxed text-foreground/90 mb-6">
                   As we look toward the future, it&apos;s clear that autonomous robots will play an
                   increasingly central role in hospitality operations. The technology continues to
                   evolve, with advancements in AI, navigation, and human-robot interaction making
@@ -370,21 +360,21 @@ export default function BlogPostClient() {
                 <motion.div
                   whileHover={{ scale: 1.01 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  className="bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] rounded-2xl p-6 md:p-8 mb-6"
+                  className="bg-gradient-to-br from-accent to-accent/80 rounded-2xl p-6 md:p-8 mb-6"
                 >
-                  <h3 className="font-['Inter:Bold',sans-serif] font-bold text-xl md:text-2xl text-white mb-4">
+                  <h3 className="font-bold text-xl md:text-2xl text-foreground mb-4">
                     Ready to Transform Your Hospitality Business?
                   </h3>
-                  <p className="font-['Inter:Regular',sans-serif] text-sm md:text-base leading-relaxed text-white mb-6">
+                  <p className="text-sm md:text-base leading-relaxed text-foreground/90 mb-6">
                     Discover how ZiBot can revolutionize your guest experience and operational
                     efficiency. Contact our team today for a personalized demonstration.
                   </p>
-                  <Button className="bg-white text-[#6366f1] hover:bg-[#f5f5f5] rounded-lg">
+                  <Button className="bg-background text-foreground hover:bg-background/90 rounded-lg">
                     Request a Demo
                     <ChevronRight className="ml-2 size-4" />
                   </Button>
                 </motion.div>
-                <p className="font-['Inter:Regular',sans-serif] text-base md:text-lg leading-relaxed text-[#e5e5e5]">
+                <p className="text-base md:text-lg leading-relaxed text-foreground/90">
                   The hospitality industry is transforming, and those who embrace innovative
                   technologies like autonomous delivery robots will be best positioned to thrive in
                   this new era of service excellence.
@@ -399,10 +389,8 @@ export default function BlogPostClient() {
               transition={{ delay: 0.6, duration: 0.5 }}
               className="sticky top-24 h-fit hidden lg:block"
             >
-              <div className="bg-[#0e0e0f] rounded-2xl p-6 border border-[#3a3a3a]">
-                <h3 className="font-['Inter:Bold',sans-serif] font-bold text-lg text-white mb-6">
-                  Table of Contents
-                </h3>
+              <div className="bg-card rounded-2xl p-6 border border-border">
+                <h3 className="font-bold text-lg text-foreground mb-6">Table of Contents</h3>
                 <nav className="space-y-4">
                   {tableOfContents.map((item, index) => (
                     <motion.a
@@ -410,10 +398,10 @@ export default function BlogPostClient() {
                       href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
                       whileHover={{ x: 4 }}
                       transition={{ type: "spring", stiffness: 300 }}
-                      className="group flex items-start gap-3 transition-colors hover:text-white"
+                      className="group flex items-start gap-3 transition-colors hover:text-foreground"
                     >
-                      <ChevronRight className="size-4 text-[#6366f1] mt-1 flex-shrink-0" />
-                      <span className="font-['Inter:Regular',sans-serif] text-sm leading-relaxed text-[#c9c9c9] group-hover:text-white transition-colors">
+                      <ChevronRight className="size-4 text-primary mt-1 flex-shrink-0" />
+                      <span className="text-sm leading-relaxed text-muted-foreground group-hover:text-foreground transition-colors">
                         {item}
                       </span>
                     </motion.a>
@@ -422,24 +410,18 @@ export default function BlogPostClient() {
               </div>
 
               {/* Author Info */}
-              <div className="bg-[#0e0e0f] rounded-2xl p-6 border border-[#3a3a3a] mt-6">
-                <h3 className="font-['Inter:Bold',sans-serif] font-bold text-lg text-white mb-4">
-                  Author
-                </h3>
+              <div className="bg-card rounded-2xl p-6 border border-border mt-6">
+                <h3 className="font-bold text-lg text-foreground mb-4">Author</h3>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="size-12 rounded-full bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] flex items-center justify-center">
-                    <span className="font-['Inter:Bold',sans-serif] text-lg text-white">FT</span>
+                  <div className="size-12 rounded-full bg-gradient-to-br from-accent to-accent/80 flex items-center justify-center">
+                    <span className="text-lg text-foreground font-bold">FT</span>
                   </div>
                   <div>
-                    <p className="font-['Inter:Semi_Bold',sans-serif] font-semibold text-base text-white">
-                      Fainzy Technologies
-                    </p>
-                    <p className="font-['Inter:Regular',sans-serif] text-sm text-[#c9c9c9]">
-                      Editorial Team
-                    </p>
+                    <p className="font-semibold text-base text-foreground">Fainzy Technologies</p>
+                    <p className="text-sm text-muted-foreground">Editorial Team</p>
                   </div>
                 </div>
-                <p className="font-['Inter:Regular',sans-serif] text-sm leading-relaxed text-[#c9c9c9]">
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   Exploring the future of autonomous robotics and delivery technology.
                 </p>
               </div>
@@ -448,7 +430,7 @@ export default function BlogPostClient() {
         </div>
 
         {/* Similar Articles Section */}
-        <div className="border-t border-[#3a3a3a] bg-[#0e0e0f]">
+        <div className="border-t border-border bg-card">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -457,12 +439,12 @@ export default function BlogPostClient() {
               transition={{ duration: 0.5 }}
               className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 md:mb-12 gap-4"
             >
-              <h2 className="font-['Inter:Bold',sans-serif] font-bold text-2xl md:text-3xl lg:text-4xl text-white">
+              <h2 className="font-bold text-2xl md:text-3xl lg:text-4xl text-foreground">
                 Similar Articles
               </h2>
               <Button
                 variant="ghost"
-                className="text-[#6366f1] hover:text-[#8b5cf6] hover:bg-[rgba(99,102,241,0.1)]"
+                className="text-primary hover:text-primary/80 hover:bg-accent"
               >
                 View All Posts
                 <ChevronRight className="ml-2 size-4" />
@@ -478,7 +460,7 @@ export default function BlogPostClient() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   whileHover={{ y: -8, scale: 1.02 }}
-                  className="bg-[#0a0a0b] rounded-2xl overflow-hidden border border-[#3a3a3a] cursor-pointer"
+                  className="bg-background rounded-2xl overflow-hidden border border-border cursor-pointer"
                 >
                   <Link href={`/blog/${article.id}`}>
                     <div className="relative w-full h-48 md:h-52">
@@ -490,18 +472,16 @@ export default function BlogPostClient() {
                       />
                     </div>
                     <div className="p-6">
-                      <Badge className="mb-3 bg-[rgba(250,250,250,0.2)] text-white border-0">
+                      <Badge className="mb-3 bg-accent/20 text-foreground border-0">
                         {article.category}
                       </Badge>
-                      <h3 className="font-['Inter:Bold',sans-serif] font-bold text-lg md:text-xl leading-tight text-white mb-4">
+                      <h3 className="font-bold text-lg md:text-xl leading-tight text-foreground mb-4">
                         {article.title}
                       </h3>
                       <div className="flex items-center gap-4">
                         <div className="flex items-center gap-2">
-                          <Eye className="size-4 text-[#c9c9c9]" />
-                          <span className="font-['Inter:Regular',sans-serif] text-sm text-[#c9c9c9]">
-                            {article.views}
-                          </span>
+                          <Eye className="size-4 text-muted-foreground" />
+                          <span className="text-sm text-muted-foreground">{article.views}</span>
                         </div>
                       </div>
                     </div>
@@ -518,12 +498,12 @@ export default function BlogPostClient() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="bg-[#0a0a0b] border-t border-[#3a3a3a]"
+          className="bg-background border-t border-border"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20">
-            <div className="bg-gradient-to-br from-[#0e0e0f] to-[#0a0a0b] rounded-2xl md:rounded-3xl p-8 md:p-12 lg:p-16 border border-[#3a3a3a] text-center">
+            <div className="bg-gradient-to-br from-card to-background rounded-2xl md:rounded-3xl p-8 md:p-12 lg:p-16 border border-border text-center">
               <div className="max-w-3xl mx-auto">
-                <div className="size-16 md:size-20 rounded-full bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] flex items-center justify-center mx-auto mb-6">
+                <div className="size-16 md:size-20 rounded-full bg-gradient-to-br from-accent to-accent/80 flex items-center justify-center mx-auto mb-6">
                   <Image
                     alt="Logo"
                     src="/logo.png"
@@ -532,22 +512,22 @@ export default function BlogPostClient() {
                     className="object-contain"
                   />
                 </div>
-                <h2 className="font-['Inter:Bold',sans-serif] font-bold text-2xl md:text-3xl lg:text-4xl leading-tight text-white mb-4">
+                <h2 className="font-bold text-2xl md:text-3xl lg:text-4xl leading-tight text-foreground mb-4">
                   Be Part of the Future Tech Revolution
                 </h2>
-                <p className="font-['Inter:Regular',sans-serif] text-base md:text-lg leading-relaxed text-[#c9c9c9] mb-8">
+                <p className="text-base md:text-lg leading-relaxed text-muted-foreground mb-8">
                   Discover how Fainzy Technologies can transform your business with cutting-edge
                   autonomous delivery solutions. Join hundreds of hotels and restaurants already
                   revolutionizing their operations.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <Button className="w-full sm:w-auto bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] hover:from-[#4f46e5] hover:to-[#7c3aed] text-white rounded-lg px-6 md:px-8 py-5 md:py-6">
+                  <Button className="w-full sm:w-auto bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground rounded-lg px-6 md:px-8 py-5 md:py-6">
                     Get Started Today
                     <ChevronRight className="ml-2 size-4 md:size-5" />
                   </Button>
                   <Button
                     variant="outline"
-                    className="w-full sm:w-auto border-[#3a3a3a] text-white hover:bg-[rgba(255,255,255,0.05)] rounded-lg px-6 md:px-8 py-5 md:py-6"
+                    className="w-full sm:w-auto border-border text-foreground hover:bg-accent rounded-lg px-6 md:px-8 py-5 md:py-6"
                   >
                     Learn More
                   </Button>

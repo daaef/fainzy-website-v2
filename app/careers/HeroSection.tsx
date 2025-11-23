@@ -12,7 +12,7 @@ export default function HeroSection() {
         alt="careers banner"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[rgba(10,10,11,0.3)] to-[rgba(10,10,11,0.7)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[rgba(10,10,11,0.6)] to-[rgba(10,10,11,0.7)]" />
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -22,7 +22,7 @@ export default function HeroSection() {
         <h1 className="font-bold text-4xl sm:text-5xl md:text-6xl lg:text-[56px] text-white tracking-[-1.12px] mb-4">
           Join Us in Building the Future
         </h1>
-        <p className="text-neutral-400 text-base sm:text-lg max-w-2xl mx-auto">
+        <p className="text-neutral-200 text-base sm:text-lg max-w-2xl mx-auto">
           At Fainzy Technologies, we&apos;re pioneering the next generation of robotics and AI
           solutions that will transform industries worldwide.
         </p>

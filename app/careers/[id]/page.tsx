@@ -3,26 +3,28 @@ import { jobs } from "../jobs";
 import JobDetailClient from "./JobDetailClient";
 
 interface PageProps {
-    params: {
-        id: string;
-    };
+  params: Promise<{
+    id: string;
+  }>;
 }
 
-export default function ProductDetailPage({ params }: PageProps) {
-    // Find the job by ID
-    const job = jobs.find((j) => j.id === params.id);
+export default async function ProductDetailPage({ params }: PageProps) {
+  // Await params to unwrap the Promise (Next.js 15+)
+  const { id } = await params;
 
-    // If job not found, show 404
-    if (!job) {
-        notFound();
-    }
+  // Find the job by ID
+  const job = jobs.find((j) => j.id === id);
+  // If job not found, show 404
+  if (!job) {
+    notFound();
+  }
 
-    return <JobDetailClient job={job} />;
+  return <JobDetailClient job={job} />;
 }
 
 // Generate static params for all jobs at build time
 export async function generateStaticParams() {
-    return jobs.map((job) => ({
-        id: job.id,
-    }));
+  return jobs.map((job) => ({
+    id: job.id,
+  }));
 }

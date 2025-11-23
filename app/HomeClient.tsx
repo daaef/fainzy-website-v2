@@ -85,137 +85,243 @@ export default function HomeClient() {
     },
   ];
 
-  const industryData = [
+  const animatedStats: StatMetric[] = [
+    { value: 150, label: "Robots in active service", icon: Package, delay: 0 },
     {
-      icon: Package,
-      title: locale === "ja" ? "ラストマイル配送" : "Last-Mile Delivery",
-      description:
-        locale === "ja"
-          ? "ホテル、レストラン、住宅地などのラストマイル配送を効率化し、配送コストを削減。"
-          : "Efficient last-mile delivery for hotels, restaurants, and residential areas with reduced delivery costs.",
-    },
-    {
+      value: 45,
+      label: "Restaurants using the robot delivery system",
       icon: UtensilsCrossed,
-      title: locale === "ja" ? "飲食業界" : "Food & Beverage",
-      description:
-        locale === "ja"
-          ? "レストランやホテルの配膳、下膳作業を自動化し、スタッフの負担を軽減。"
-          : "Automated table service and bussing for restaurants and hotels, lightening staff workload.",
+      delay: 0.1,
+    },
+    { value: 30, label: "Hotels using the robot delivery system", icon: Hotel, delay: 0.2 },
+  ];
+
+  const staticStats: StaticStat[] = [
+    { value: "25+", label: "Active Deployments", icon: MapPin },
+    { value: "8+", label: "Countries Served", icon: Globe2 },
+    { value: "500K+", label: "Deliveries Completed", icon: CheckCircle },
+  ];
+
+  const faqs: FAQ[] = [
+    {
+      id: 14,
+      created: "2022-08-11T06:12:58.011000+09:00",
+      modified: "2022-12-06T01:04:40.138262+09:00",
+      question: "ファインジー・テクノロジーへの投資・提携を希望します。",
+      answer:
+        "Fainzy Technologies は、常に新しい戦略的パートナーシップを模索しています。お問い合わせフォームからご連絡ください（その際、必ず「投資・パートナーシップ」を理由に選択してください）。",
+      content: 2,
     },
     {
-      icon: Hotel,
-      title: locale === "ja" ? "ホスピタリティ" : "Hospitality",
-      description:
-        locale === "ja"
-          ? "ホテルのルームサービスやアメニティ配送を24時間自動化。"
-          : "24/7 automated room service and amenity delivery for hotels.",
+      id: 13,
+      created: "2022-08-11T06:11:26.474000+09:00",
+      modified: "2022-12-06T01:04:46.975079+09:00",
+      question: "I would like to invest or partner with Fainzy Technologies",
+      answer:
+        'Fainzy Technologies is always looking new strategic partnerships. Therefore, please contact using the Contact US Form, (Make sure to select "Invest/Partnership" as the Reason)',
+      content: 1,
     },
     {
-      icon: MapPin,
-      title: locale === "ja" ? "住宅地・オフィス" : "Residential & Office",
-      description:
-        locale === "ja"
-          ? "住宅地やオフィスビル内での荷物配送を自動化し、利便性を向上。"
-          : "Automated package delivery within residential and office buildings for improved convenience.",
+      id: 12,
+      created: "2022-08-11T06:10:07.908000+09:00",
+      modified: "2022-12-06T01:04:54.552230+09:00",
+      question: "カスタムロボットの製作に興味があるのですが、どうすればよいですか？",
+      answer:
+        "お問い合わせフォームよりお問い合わせください（理由は必ず「カスタムロボット」を選択してください）。",
+      content: 2,
     },
     {
-      icon: Globe2,
-      title: locale === "ja" ? "その他多様な業界" : "Versatile Industries",
-      description:
-        locale === "ja"
-          ? "病院、学校、商業施設など、様々な場所で活用可能な汎用性。"
-          : "Versatile enough to be used in hospitals, schools, commercial facilities, and more.",
+      id: 11,
+      created: "2022-08-11T06:06:27.756000+09:00",
+      modified: "2022-12-06T01:05:01.914229+09:00",
+      question: "I am interested in making a custom robot, what do I do?",
+      answer:
+        'Please contact us using the Contact Us Form, (make sure to select "Custom Robot" as the Reason)',
+      content: 1,
+    },
+    {
+      id: 10,
+      created: "2022-06-23T01:07:45.496000+09:00",
+      modified: "2022-12-06T01:05:10.408127+09:00",
+      question: "カスタムロボットは作れますか？",
+      answer: "はい、お客様のニーズやご要望に合わせたカスタムロボットの製作が可能です。",
+      content: 2,
+    },
+    {
+      id: 1,
+      created: "2022-06-23T01:02:23.487000+09:00",
+      modified: "2022-12-06T01:05:34.467257+09:00",
+      question: "What is Fainzy Technologies' specialty?",
+      answer:
+        "We specialize on (1)advanced autonomous driving systems, (2)making robots, (3)mobile app and website development, and, (4)AI applications using deep learning",
+      content: 1,
+    },
+    {
+      id: 2,
+      created: "2022-06-23T01:02:43.270000+09:00",
+      modified: "2022-12-06T01:05:46.489298+09:00",
+      question: "ファインジー・テクノロジーズの得意分野は何ですか？",
+      answer:
+        "(1)高度な自律走行システム、(2)ロボット製作、(3)モバイルアプリ・ウェブサイト開発、(4)ディープラーニングによるAIアプリケーションに特化した事業展開を行っています。",
+      content: 2,
+    },
+    {
+      id: 3,
+      created: "2022-06-23T01:03:19.303000+09:00",
+      modified: "2022-12-06T01:06:03.884077+09:00",
+      question: "How can I apply for a role?",
+      answer:
+        'Please contact us using the Contact Us Form, (make sure to select "Apply For A Role" as the Reason.',
+      content: 1,
+    },
+    {
+      id: 4,
+      created: "2022-06-23T01:05:13.969000+09:00",
+      modified: "2022-12-06T01:06:14.896997+09:00",
+      question: "どのように応募すればよいのですか？",
+      answer: "お問い合わせフォームよりご連絡ください（必ず「応募する」を選択してください）。",
+      content: 2,
+    },
+    {
+      id: 5,
+      created: "2022-06-23T01:05:35.495000+09:00",
+      modified: "2022-12-06T01:06:36.446826+09:00",
+      question: "What type of robots do you have?",
+      answer: "Restaurant robot and last-mile delivery robot.",
+      content: 1,
+    },
+    {
+      id: 6,
+      created: "2022-06-23T01:06:02.372000+09:00",
+      modified: "2022-12-06T01:06:49.085976+09:00",
+      question: "どのようなロボットをお持ちですか？",
+      answer: "レストランロボットとラストワンマイルデリバリーロボット。",
+      content: 2,
+    },
+    {
+      id: 7,
+      created: "2022-06-23T01:06:19.302000+09:00",
+      modified: "2022-12-06T01:07:00.780299+09:00",
+      question: "I am interested in a robot, what do I do?",
+      answer:
+        'Please contact us using the Contact Us Form, (make sure to select "Robot Sales" as the Reason)',
+      content: 1,
+    },
+    {
+      id: 8,
+      created: "2022-06-23T01:06:40.541000+09:00",
+      modified: "2022-12-06T01:07:14.966906+09:00",
+      question: "ロボットに興味があるのですが、どうしたらいいですか？",
+      answer:
+        "お問い合わせフォームよりお問い合わせください（理由は必ず「ロボット販売」を選択してください）。",
+      content: 2,
+    },
+    {
+      id: 9,
+      created: "2022-06-23T01:07:27.037000+09:00",
+      modified: "2022-12-06T01:07:23.440005+09:00",
+      question: "Can you make custom robots?",
+      answer: "Yes, we can make custom robots to fit your needs and requirements.",
+      content: 1,
     },
   ];
 
+  // Filter FAQs based on locale: content: 1 = English, content: 2 = Japanese
+  const filteredFaqs = useMemo(() => {
+    const contentId = locale === "en" ? 1 : 2;
+    return faqs.filter((faq) => faq.content === contentId);
+  }, [locale, faqs]);
   return (
     <>
-      <main>
+      <header className="bg-background text-foreground flex flex-col mb-[150px]">
         <Carousel
-          opts={{
-            loop: true,
-            align: "start",
-          }}
           plugins={[
             Autoplay({
-              delay: 5000,
-              stopOnInteraction: true,
+              delay: 4000,
               stopOnMouseEnter: true,
             }),
             WheelGesturesPlugin(),
           ]}
-          className="w-full relative"
+          className="w-full pt-[20vh] min-h-[90vh] overflow-y-hidden overflow-x-hidden"
         >
           <CarouselContent>
-            <CarouselItem>
+            <CarouselItem key={"ZibotSlide1"} className="h-[60vh]">
               <ZiBotSlide />
             </CarouselItem>
-
-            <CarouselItem>
+            <CarouselItem key={"GlideSlide"} className="h-[60vh]">
               <GlideSlide />
             </CarouselItem>
-
-            <CarouselItem>
+            <CarouselItem key={"ConsultancySlide"} className="h-[60vh]">
               <ConsultancySlide />
             </CarouselItem>
           </CarouselContent>
-          <CarouselPrevious className="left-4 sm:left-8" />
-          <CarouselNext className="right-4 sm:right-8" />
-          <CarouselDots className="bottom-8" />
+          <CarouselPrevious />
+          <CarouselNext />
+          <CarouselDots />
         </Carousel>
-
-        <AboutSection />
-
-        <section className="py-12 md:py-20 lg:py-[100px]">
-          <div className="container">
-            <div className="text-center mb-12">
-              <h2 className="font-bold text-3xl sm:text-4xl lg:text-[40px] mb-4 text-white">
-                {locale === "ja" ? "製品ラインナップ" : "Our Products"}
-              </h2>
-              <p className="text-neutral-400 max-w-3xl mx-auto">
-                {locale === "ja"
-                  ? "Fainzyは、最先端の自律走行ロボットソリューションを提供し、様々な業界の課題を解決します。"
-                  : "Fainzy provides cutting-edge autonomous robot solutions that solve challenges across various industries."}
-              </p>
+      </header>
+      <main className="py-16">
+        <section id="video">
+          <div className="container pb-[100px]">
+            <div className="flex justify-center">
+              <video
+                width="640"
+                height="360"
+                className="max-w-[1200px] w-full rounded-[23px]"
+                autoPlay
+                muted
+                playsInline
+                loop
+                controls
+                preload="none"
+              >
+                <source src="/videos/zibot.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
-            {products.map((product, index) => (
-              <Product key={index} {...product} reverse={product.reverse} />
+          </div>
+        </section>
+        <AboutSection />
+        <section>
+          <div className="container min-h-[100vh] py-[100px]">
+            {products.map((product, i) => (
+              <div
+                key={i}
+                className="flex gap-6 md:gap-8 lg:gap-[55px] items-center relative shrink-0 w-full"
+              >
+                <Product {...product} />
+              </div>
             ))}
           </div>
         </section>
-
-        <section className="py-12 md:py-20 lg:py-[100px] bg-gradient-to-b from-[#0a0a0b] to-[#1a1a1b]">
-          <div className="container">
-            <div className="text-center mb-12">
-              <h2 className="font-bold text-3xl sm:text-4xl lg:text-[40px] mb-4 text-white">
-                {locale === "ja" ? "対応業界" : "Industries We Serve"}
-              </h2>
-              <p className="text-neutral-400 max-w-3xl mx-auto">
-                {locale === "ja"
-                  ? "ZiBotは様々な業界での導入実績があり、それぞれの現場に最適化されたソリューションを提供します。"
-                  : "ZiBot has been successfully deployed across various industries, providing optimized solutions for each environment."}
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {industryData.map((item, idx) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={idx}
-                    className="bg-[#0a0a0b] border border-[rgba(250,250,250,0.08)] p-6 rounded-[16px] hover:border-[rgba(250,250,250,0.16)] transition-all"
-                  >
-                    <Icon className="w-10 h-10 text-neutral-50 mb-4" />
-                    <h3 className="font-bold text-lg text-white mb-2">{item.title}</h3>
-                    <p className="text-neutral-400 text-sm">{item.description}</p>
-                  </div>
-                );
-              })}
-            </div>
+        <section>
+          <CustomSolutionsCarousel solutions={customSolutions} />
+          <div className="container flex justify-center py-12">
+            <Link
+              href="/custom-solutions"
+              className="inline-flex items-center justify-center bg-white text-black hover:bg-neutral-200 px-8 py-4 rounded-md font-semibold text-base transition-all duration-300"
+            >
+              Explore Custom Solutions
+              <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </Link>
           </div>
         </section>
-
-        <section className="py-12 md:py-20 lg:py-[100px]">
-          <CustomSolutionsCarousel solutions={customSolutions} />
+        <section>
+          <div className="container min-h-[100vh] py-[100px]">
+            <Metrics animatedStats={animatedStats} staticStats={staticStats} />
+          </div>
+        </section>
+        <section>
+          <div className="container min-h-[100vh] py-[100px]">
+            <Faq faqs={filteredFaqs} />
+          </div>
         </section>
       </main>
     </>

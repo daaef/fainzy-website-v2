@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Instagram, Twitter, Facebook, Linkedin } from "lucide-react";
+import { Instagram, X, Facebook, Linkedin } from "lucide-react";
+import CookieBanner from "@/components/CookieBanner";
 
 export default function Footer() {
   return (
@@ -156,8 +157,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-foreground/80 hover:text-foreground transition-colors text-sm"
                   >
-                    <Twitter className="w-4 h-4" />
-                    Twitter
+                    <X className="w-4 h-4" />X
                   </Link>
                 </li>
                 <li>
@@ -192,17 +192,7 @@ export default function Footer() {
           <p className="text-foreground/60 text-xs sm:text-sm">
             Copyright © 2025 Fainzy Technologies LTD. All rights reserved
           </p>
-          <div className="flex items-center gap-6">
-            <p className="text-foreground/60 text-xs sm:text-sm">
-              We use cookies for better service.
-            </p>
-            <a
-              href="#"
-              className="py-1 px-4 font-bold inline-block border-2 border-white rounded-[4px] text-sm hover:text-black cursor-pointer hover:bg-white transition-all duration-500 ease-in-out uppercase"
-            >
-              Accept
-            </a>
-          </div>
+          <CookieBanner />
         </div>
       </div>
     </footer>

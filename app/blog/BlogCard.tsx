@@ -11,9 +11,9 @@ export default function BlogCard({ post }: { post: (typeof blogPosts)[0] }) {
   return (
     <Link href={`/blog/${post.id}`} className="block">
       <motion.article
-        className="bg-[#0a0a0b] overflow-hidden group cursor-pointer"
+        className="bg-card overflow-hidden group cursor-pointer border border-border"
         style={{ borderRadius: 16 }}
-        whileHover={{ scale: 0.992, borderRadius: 20, boxShadow: "0 12px 30px rgba(0,0,0,0.6)" }}
+        whileHover={{ scale: 0.992, borderRadius: 20, boxShadow: "0 12px 30px rgba(0,0,0,0.3)" }}
         transition={{ type: "spring", stiffness: 280, damping: 30, duration: 0.18 }}
       >
         <div className="relative h-48 md:h-56 rounded-[20px] w-full overflow-hidden">
@@ -27,21 +27,21 @@ export default function BlogCard({ post }: { post: (typeof blogPosts)[0] }) {
         </div>
 
         <div className="p-6 space-y-3">
-          <Badge className="bg-[rgba(250,250,250,0.12)] text-white border-0 hover:bg-[rgba(250,250,250,0.16)]">
+          <Badge className="bg-accent/20 text-foreground border-0 hover:bg-accent/30 w-fit">
             {post.category}
           </Badge>
 
-          <h3 className="font-bold text-lg text-white">{post.title}</h3>
+          <h3 className="font-bold text-lg text-foreground">{post.title}</h3>
 
-          <p className="text-sm text-neutral-400">{post.description}</p>
+          <p className="text-sm text-muted-foreground">{post.description}</p>
 
-          <div className="flex items-center gap-4 text-sm text-neutral-400">
+          <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-neutral-400" />
+              <Calendar className="w-4 h-4 text-muted-foreground" />
               <span>{post.date}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-neutral-400" />
+              <Clock className="w-4 h-4 text-muted-foreground" />
               <span>{post.readTime}</span>
             </div>
           </div>

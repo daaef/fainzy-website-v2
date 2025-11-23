@@ -23,6 +23,7 @@ export interface Product {
   features: Feature[];
   reverse?: boolean;
   link?: string;
+  id?: string;
 }
 
 export interface StatMetric {

@@ -113,13 +113,13 @@ export default function Navbar() {
     },
     {
       name: "Glide",
-      href: "/products/glide",
+      href: "/products#glide",
       image: "/glide.png",
       description: "Autonomous Scooter",
     },
     {
       name: "Consultancy",
-      href: "/products/consultancy",
+      href: "/products#consultancy",
       image: "/slides/consultancy.png",
       description: "Robotics & AI Advisory",
     },
@@ -378,12 +378,15 @@ export default function Navbar() {
           <div className="flex items-center gap-2 sm:gap-4">
             {/* Desktop Icons */}
             <div className="hidden sm:flex items-center gap-2">
-              <button
+              <Link
+                href="https://dashboard-v2-inky.vercel.app/support"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 hover:bg-secondary rounded-lg transition-colors"
                 aria-label="Support"
               >
                 <Headset className="w-5 h-5 text-foreground" />
-              </button>
+              </Link>
               <div className="relative">
                 <button
                   className="p-2 hover:bg-secondary rounded-lg transition-colors relative"
@@ -429,12 +432,15 @@ export default function Navbar() {
                   )}
                 </AnimatePresence>
               </div>
-              <button
+              <Link
+                href="https://dashboard-v2-inky.vercel.app/login"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 hover:bg-secondary rounded-lg transition-colors"
                 aria-label="Profile"
               >
                 <User className="w-5 h-5 text-foreground" />
-              </button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -586,24 +592,69 @@ export default function Navbar() {
 
                 {/* Mobile Icons */}
                 <div className="flex sm:hidden items-center gap-4 pt-4 border-t border-border">
-                  <button
+                  <Link
+                    href="https://dashboard-v2-inky.vercel.app/support"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-2 hover:bg-secondary rounded-lg transition-colors"
                     aria-label="Support"
                   >
                     <Headset className="w-5 h-5 text-foreground" />
-                  </button>
-                  <button
-                    className="p-2 hover:bg-secondary rounded-lg transition-colors"
-                    aria-label="Language"
-                  >
-                    <Globe className="w-5 h-5 text-foreground" />
-                  </button>
-                  <button
+                  </Link>
+                  <div className="relative">
+                    <button
+                      className="p-2 hover:bg-secondary rounded-lg transition-colors relative"
+                      aria-label="Language"
+                      onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+                    >
+                      <Globe className="w-5 h-5 text-foreground" />
+                      <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-foreground text-[10px] text-background font-bold rounded-full flex items-center justify-center">
+                        {locale.toUpperCase()}
+                      </span>
+                    </button>
+
+                    <AnimatePresence>
+                      {isLangMenuOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute left-0 mt-2 w-32 bg-[#101010] border border-[rgba(255,255,255,0.08)] rounded-lg shadow-lg overflow-hidden z-50"
+                        >
+                          <button
+                            onClick={() => {
+                              setLocale("en");
+                              setIsLangMenuOpen(false);
+                            }}
+                            className="w-full px-4 py-2.5 text-left text-sm hover:bg-[rgba(255,255,255,0.05)] transition-colors flex items-center justify-between"
+                          >
+                            <span>English</span>
+                            {locale === "en" && <Check className="w-4 h-4 text-primary" />}
+                          </button>
+                          <button
+                            onClick={() => {
+                              setLocale("ja");
+                              setIsLangMenuOpen(false);
+                            }}
+                            className="w-full px-4 py-2.5 text-left text-sm hover:bg-[rgba(255,255,255,0.05)] transition-colors flex items-center justify-between"
+                          >
+                            <span>日本語</span>
+                            {locale === "ja" && <Check className="w-4 h-4 text-primary" />}
+                          </button>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                  <Link
+                    href="https://dashboard-v2-inky.vercel.app/login"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-2 hover:bg-secondary rounded-lg transition-colors"
                     aria-label="Profile"
                   >
                     <User className="w-5 h-5 text-foreground" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -13,7 +13,7 @@ import Jude from "@/public/about/jude.jpg";
 import Emma from "@/public/about/emmanuel.jpg";
 import Patric from "@/public/about/patrick.jpg";
 import Mike from "@/public/about/mike.jpg";
-import Laz from "@/public/about/laz.jpg";
+import Afe from "@/public/about/afe.jpg";
 import Tatsuya from "@/public/about/tatsuya.jpg";
 import Hiroyuki from "@/public/about/hiroyuki.jpg";
 import Join from "@/public/about/join.jpg";
@@ -30,7 +30,7 @@ export default function AboutPage() {
     { name: "Emmanuel Omeogah", role: "Co-Founder & Tech Lead", imageUrl: Emma },
     { name: "Patric John", role: "Co-Founder & Design Lead", imageUrl: Patric },
     { name: "Michael Nwadiuto", role: "Co-Founder & Project Lead", imageUrl: Mike },
-    { name: "Lazarus Nwankwo", role: "Developer", imageUrl: Laz },
+    { name: "Afekhide Bot Gbadamosi", role: "Full Stack Developer", imageUrl: Afe },
     { name: "Prof. Tatsuya Suzuki", role: "Special Advisor", imageUrl: Tatsuya },
     { name: "Assoc. Prof Hiroyuki Okuda", role: "Technical Advisor", imageUrl: Hiroyuki },
   ];
@@ -243,8 +243,8 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="text-center mb-12 md:mb-16 lg:mb-20"
             >
-              <h2 className="font-bold text-3xl sm:text-4xl lg:text-[48px] text-white tracking-[-0.96px] mb-4">
-                Meet The Dream Team!
+              <h2 className="font-bold text-3xl sm:text-4xl lg:text-[32px] text-white tracking-[-0.6px] mb-4">
+                Our leadership
               </h2>
               <p className="text-neutral-400 text-base sm:text-lg">
                 The brilliant minds driving innovation at Fainzy Technologies
@@ -258,12 +258,12 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: index * 0.15, ease: "easeOut" }}
-                  whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+                  whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
                 >
                   <Card className="bg-[#0a0a0b] p-0 border-0 rounded-[16px] overflow-hidden h-full">
                     <CardContent className="p-0 relative">
-                      <div className="relative w-full h-[280px] sm:h-[300px] lg:h-[320px] bg-gradient-to-br from-[#2a2a2b] to-[#1a1a1b] overflow-hidden">
-                        <div className="absolute inset-0 h-full flex items-center justify-center text-neutral-700 text-xs">
+                      <div className="relative w-full h-[300px] sm:h-[320px] lg:h-[340px] bg-gradient-to-br from-[#2a2a2b] to-[#1a1a1b] overflow-hidden rounded-[16px]">
+                        <div className="absolute inset-0 h-full flex items-center justify-center">
                           <Image
                             src={member?.imageUrl ?? ""}
                             className="w-full h-full object-cover"
@@ -272,13 +272,12 @@ export default function AboutPage() {
                             width={1000}
                           />
                         </div>
-                        <div className="absolute bottom-0 left-0 right-0 h-[140px] bg-gradient-to-t from-[rgba(10,10,11,0.98)] via-[rgba(10,10,11,0.75)] to-transparent pointer-events-none" />
-                      </div>
-                      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 z-10">
-                        <h3 className="font-semibold text-base sm:text-lg text-white mb-1 leading-tight">
-                          {member.name}
-                        </h3>
-                        <p className="text-sm text-neutral-400 leading-snug">{member.role}</p>
+                        <div className="absolute bottom-0 left-0 right-0 p-4 w-full">
+                          <div className="px-4 py-3 rounded-[12px] bg-[rgba(10,10,11,0.6)] backdrop-blur-sm text-white">
+                            <div className="text-sm font-semibold leading-tight">{member.name}</div>
+                            <div className="text-[12px] text-neutral-300">{member.role}</div>
+                          </div>
+                        </div>
                       </div>
                     </CardContent>
                   </Card>

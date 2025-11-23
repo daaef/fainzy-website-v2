@@ -9,13 +9,13 @@ import Newsletter from "./Newsletter";
 
 function HeroSection() {
   return (
-    <section className="relative bg-[#0a0a0b] flex items-center min-h-[320px] py-20">
+    <section className="relative bg-background flex items-center min-h-[320px] py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-3xl mx-auto">
-          <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl text-white tracking-[-1.12px] mb-4">
+          <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl text-foreground tracking-[-1.12px] mb-4">
             Fainzy Blog
           </h1>
-          <p className="text-neutral-400 text-base sm:text-lg">
+          <p className="text-muted-foreground text-base sm:text-lg">
             Insights, stories, and updates from the world of autonomous robotics and delivery
             technology
           </p>
@@ -42,26 +42,26 @@ function FeaturedPost() {
             </div>
 
             <div className="flex flex-col justify-center p-6 md:p-10 space-y-6">
-              <Badge className="bg-[rgba(250,250,250,0.12)] text-neutral-50 border-0 hover:bg-[rgba(250,250,250,0.16)]">
+              <Badge className="bg-accent/20 text-foreground border-0 hover:bg-accent/30 w-fit">
                 Technology
               </Badge>
 
-              <h2 className="font-bold text-2xl md:text-3xl text-white leading-tight">
+              <h2 className="font-bold text-2xl md:text-3xl text-foreground leading-tight">
                 The Future of Autonomous Delivery: How ZiBot is Revolutionizing Last-Mile Logistics
               </h2>
 
-              <div className="flex items-center gap-6 text-sm text-neutral-400">
+              <div className="flex items-center gap-6 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-neutral-400" />
+                  <Calendar className="w-4 h-4 text-muted-foreground" />
                   <span>October 25, 2025</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-neutral-400" />
+                  <Clock className="w-4 h-4 text-muted-foreground" />
                   <span>8 min read</span>
                 </div>
               </div>
 
-              <p className="text-neutral-400 max-w-prose">
+              <p className="text-muted-foreground max-w-prose">
                 Discover how our flagship robot ZiBot is transforming the delivery industry with
                 cutting-edge AI technology, advanced sensors, and autonomous navigation. Learn about
                 the innovative features that make ZiBot the most reliable delivery solution for
@@ -69,7 +69,7 @@ function FeaturedPost() {
               </p>
 
               <Link href={`/blog/${blogPosts[0].id}`}>
-                <Button className="inline-flex items-center gap-3 bg-neutral-50 text-[#0a0a0b] hover:bg-neutral-200 rounded-[8px] px-4 py-2">
+                <Button className="inline-flex items-center gap-3 bg-primary text-primary-foreground hover:bg-primary/90 rounded-[8px] px-4 py-2">
                   <span className="font-bold text-sm tracking-[0.35px] uppercase">Read More</span>
                   <ArrowRight className="w-4 h-4" />
                 </Button>

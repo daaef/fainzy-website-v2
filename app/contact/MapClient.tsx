@@ -88,11 +88,15 @@ const DARK_STYLE = [
 // Minimal shapes for map/marker instances we interact with
 interface MapInstance {
   setCenter(center: { lat: number; lng: number }): void;
+
   setZoom(zoom: number): void; // added
 }
+
 interface MarkerInstance {
   setPosition(position: { lat: number; lng: number }): void;
+
   setMap(map: MapInstance | null): void;
+
   setIcon(
     icon:
       | string
@@ -102,6 +106,7 @@ interface MarkerInstance {
           labelOrigin?: { x: number; y: number };
         }
   ): void;
+
   setLabel(
     label: string | { text: string; color: string; fontSize: string; fontWeight: string }
   ): void;
@@ -248,13 +253,13 @@ export default function MapClient({
             icon: {
               url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
               scaledSize: { width: 32, height: 32 },
-              labelOrigin: { x: 60, y: 16 },
+              labelOrigin: { x: 160, y: 10 },
             },
             label: {
               text: markerTitle,
-              color: "#d59563",
-              fontSize: "14px",
-              fontWeight: "bold",
+              color: "#fd7868",
+              fontSize: "16px",
+              fontWeight: "600",
             },
           });
         } else {
@@ -263,13 +268,13 @@ export default function MapClient({
             markerRef.current.setIcon({
               url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
               scaledSize: { width: 32, height: 32 },
-              labelOrigin: { x: 60, y: 16 },
+              labelOrigin: { x: 160, y: 10 },
             });
             markerRef.current.setLabel({
               text: markerTitle,
-              color: "#d59563",
-              fontSize: "14px",
-              fontWeight: "bold",
+              color: "#fd7868",
+              fontSize: "16px",
+              fontWeight: "600",
             });
             markerRef.current.setMap(mapRef.current);
           } catch (err) {
@@ -331,23 +336,42 @@ export default function MapClient({
   // Google Maps URL with coordinates
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
 
+  // Directions URL
+  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+
   return (
     <div className="relative w-full">
-      {/* Address overlay - top left - clickable */}
-      <a
-        href={googleMapsUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="absolute top-4 left-4 z-10 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg px-4 py-3 max-w-[calc(100%-2rem)] md:max-w-md hover:bg-white hover:shadow-xl transition-all duration-200 cursor-pointer group"
-        aria-label={locale === "ja" ? "Google マップで開く" : "Open in Google Maps"}
-      >
-        <p className="text-xs md:text-sm text-gray-900 font-medium leading-relaxed group-hover:text-blue-600 transition-colors">
-          {displayAddress}
-        </p>
-        <p className="text-[10px] md:text-xs text-gray-500 mt-1 group-hover:text-blue-500">
-          {locale === "ja" ? "Google マップで開く →" : "View in Google Maps →"}
-        </p>
-      </a>
+      {/* Address overlay - top left */}
+      <div className="absolute top-4 left-4 z-10 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg max-w-[calc(100%-2rem)] md:max-w-md">
+        <div className="px-4 py-3 border-b border-gray-200">
+          <h3 className="text-sm md:text-base text-gray-900 font-semibold mb-1">
+            {locale === "ja"
+              ? "名古屋大学 インキュベーション施設"
+              : "Nagoya University Incubation Facility"}
+          </h3>
+          <p className="text-xs md:text-sm text-gray-600 leading-relaxed">{displayAddress}</p>
+        </div>
+        <div className="flex items-center divide-x divide-gray-200">
+          <a
+            href={directionsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 px-4 py-2.5 text-center text-sm text-blue-600 font-medium hover:bg-blue-50 transition-colors rounded-bl-lg"
+            aria-label={locale === "ja" ? "ルート案内" : "Get directions"}
+          >
+            {locale === "ja" ? "ルート案内" : "Directions"}
+          </a>
+          <a
+            href={googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 px-4 py-2.5 text-center text-sm text-blue-600 font-medium hover:bg-blue-50 transition-colors rounded-br-lg"
+            aria-label={locale === "ja" ? "拡大地図を表示" : "View larger map"}
+          >
+            {locale === "ja" ? "拡大地図を表示" : "View larger map"}
+          </a>
+        </div>
+      </div>
 
       {/* Map container - allow controls to be visible */}
       <div

@@ -14,6 +14,14 @@ import PricingSection from "@/components/zibot/PricingSection";
 import { Separator } from "@/components/ui/separator";
 import { motion } from "motion/react";
 
+// Generate static params for static generation at build time
+export async function generateStaticParams() {
+  return [
+    { id: "zibot" },
+    // Add more product IDs here when they have dedicated pages
+  ];
+}
+
 export default function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   // Unwrap params promise (Next.js 15+)
   const { id } = use(params);

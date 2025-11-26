@@ -82,7 +82,6 @@ export default function Footer() {
                     <Link
                       href="https://dashboard-v2-inky.vercel.app/"
                       className="text-foreground/80 hover:text-foreground transition-colors text-sm"
-                      target="_blank"
                       rel="noopener noreferrer"
                     >
                       Fainzy Business
@@ -142,7 +141,6 @@ export default function Footer() {
                 <li>
                   <Link
                     href="https://instagram.com"
-                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-foreground/80 hover:text-foreground transition-colors text-sm"
                   >
@@ -153,7 +151,6 @@ export default function Footer() {
                 <li>
                   <Link
                     href="https://twitter.com"
-                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-foreground/80 hover:text-foreground transition-colors text-sm"
                   >
@@ -163,7 +160,6 @@ export default function Footer() {
                 <li>
                   <Link
                     href="https://facebook.com"
-                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-foreground/80 hover:text-foreground transition-colors text-sm"
                   >
@@ -174,7 +170,6 @@ export default function Footer() {
                 <li>
                   <Link
                     href="https://linkedin.com"
-                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-foreground/80 hover:text-foreground transition-colors text-sm"
                   >

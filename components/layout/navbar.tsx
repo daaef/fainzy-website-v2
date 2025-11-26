@@ -380,7 +380,6 @@ export default function Navbar() {
             <div className="hidden sm:flex items-center gap-2">
               <Link
                 href="https://dashboard-v2-inky.vercel.app/support"
-                target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 hover:bg-secondary rounded-lg transition-colors"
                 aria-label="Support"
@@ -434,7 +433,6 @@ export default function Navbar() {
               </div>
               <Link
                 href="https://dashboard-v2-inky.vercel.app/login"
-                target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 hover:bg-secondary rounded-lg transition-colors"
                 aria-label="Profile"
@@ -594,7 +592,6 @@ export default function Navbar() {
                 <div className="flex sm:hidden items-center gap-4 pt-4 border-t border-border">
                   <Link
                     href="https://dashboard-v2-inky.vercel.app/support"
-                    target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 hover:bg-secondary rounded-lg transition-colors"
                     aria-label="Support"
@@ -648,7 +645,6 @@ export default function Navbar() {
                   </div>
                   <Link
                     href="https://dashboard-v2-inky.vercel.app/login"
-                    target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 hover:bg-secondary rounded-lg transition-colors"
                     aria-label="Profile"

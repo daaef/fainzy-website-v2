@@ -29,7 +29,6 @@ export default function ContactPageClient() {
                   <div className="flex items-center gap-4 mb-8">
                     <a
                       href="https://twitter.com"
-                      target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Twitter"
                       className="w-10 h-10 bg-[rgba(250,250,250,0.05)] rounded-md flex items-center justify-center border border-[rgba(38,38,38,0.15)] hover:bg-[rgba(250,250,250,0.08)]"
@@ -38,7 +37,6 @@ export default function ContactPageClient() {
                     </a>
                     <a
                       href="https://www.linkedin.com"
-                      target="_blank"
                       rel="noopener noreferrer"
                       aria-label="LinkedIn"
                       className="w-10 h-10 bg-[rgba(250,250,250,0.05)] rounded-md flex items-center justify-center border border-[rgba(38,38,38,0.15)] hover:bg-[rgba(250,250,250,0.08)]"
@@ -47,7 +45,6 @@ export default function ContactPageClient() {
                     </a>
                     <a
                       href="https://www.instagram.com"
-                      target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Instagram"
                       className="w-10 h-10 bg-[rgba(250,250,250,0.05)] rounded-md flex items-center justify-center border border-[rgba(38,38,38,0.15)] hover:bg-[rgba(250,250,250,0.08)]"

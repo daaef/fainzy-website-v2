@@ -193,7 +193,7 @@ function loadGoogleMaps(key: string, language: string = "en"): Promise<GoogleMap
 export default function MapClient({
   lat = 35.1538,
   lng = 136.9699,
-  address,
+  address = "FAINZY TECHNOLOGIES Co., Ltd.",
   lockToCoordinates = false,
 }: {
   lat?: number;
@@ -216,9 +216,7 @@ export default function MapClient({
     let mounted = true;
 
     const markerTitle =
-      locale === "ja"
-        ? "名古屋大学 インキュベーション施設"
-        : "Nagoya University Incubation Facility";
+      locale === "ja" ? "FAINZY TECHNOLOGIES Co., Ltd." : "FAINZY TECHNOLOGIES Co., Ltd.";
     const INITIAL_ZOOM = 17; // Detailed zoom level showing nearby POIs
     const mapLanguage = locale === "ja" ? "ja" : "en";
     loadGoogleMaps(key, mapLanguage)
@@ -330,14 +328,19 @@ export default function MapClient({
 
   const displayAddress =
     locale === "ja"
-      ? "〒464-0814 愛知県名古屋市千種区不老町 名古屋大学 インキュベーション施設"
-      : "Nagoya University Incubation Facility, Furo-cho, Chikusa Ward, Nagoya, Aichi 464-0814, Japan";
+      ? "〒464-0814 愛知県名古屋市千種区不老町 FAINZY TECHNOLOGIES Co., Ltd."
+      : "FAINZY TECHNOLOGIES Co., Ltd., Furo-cho, Chikusa Ward, Nagoya, Aichi 464-0814, Japan";
 
-  // Google Maps URL with coordinates
-  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+  // Google Maps URL with full address to show company name
+  const mapsSearchAddress =
+    locale === "ja"
+      ? "FAINZY TECHNOLOGIES Co., Ltd. 〒464-0814 愛知県名古屋市千種区不老町"
+      : "FAINZY TECHNOLOGIES Co., Ltd., Furo-cho, Chikusa Ward, Nagoya, Aichi 464-0814, Japan";
+
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsSearchAddress)}`;
 
   // Directions URL
-  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(mapsSearchAddress)}`;
 
   return (
     <div className="relative w-full">
@@ -345,9 +348,7 @@ export default function MapClient({
       <div className="absolute top-4 left-4 z-10 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg max-w-[calc(100%-2rem)] md:max-w-md">
         <div className="px-4 py-3 border-b border-gray-200">
           <h3 className="text-sm md:text-base text-gray-900 font-semibold mb-1">
-            {locale === "ja"
-              ? "名古屋大学 インキュベーション施設"
-              : "Nagoya University Incubation Facility"}
+            FAINZY TECHNOLOGIES Co., Ltd.
           </h3>
           <p className="text-xs md:text-sm text-gray-600 leading-relaxed">{displayAddress}</p>
         </div>

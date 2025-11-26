@@ -1,5 +1,109 @@
 # Project Changes Log
 
+## [Date: 2025-11-26 Current]
+
+### Summary
+
+Updated MapClient component to use "FAINZY TECHNOLOGIES Co., Ltd." as the address instead of GPS coordinates for automatic geocoding.
+
+### Files Modified
+
+- `app/contact/MapClient.tsx` - Updated to use company address for geocoding instead of hardcoded coordinates
+
+### Changes Include
+
+#### 1. Default Address Parameter
+
+- Changed default `address` parameter from `undefined` to `"FAINZY TECHNOLOGIES Co., Ltd."`
+- Component now automatically geocodes this address when loaded
+
+#### 2. Marker Title Updates
+
+- Updated marker title for both English and Japanese locales to show "FAINZY TECHNOLOGIES Co., Ltd."
+- Removed references to "Nagoya University Incubation Facility"
+
+#### 3. Display Address Updates
+
+- Simplified display address to show "FAINZY TECHNOLOGIES Co., Ltd." for both languages
+- Removed detailed Japanese address string
+- Cleaner, more focused display in the address overlay card
+
+#### 4. Google Maps URLs
+
+- Changed Google Maps search URL to use address instead of coordinates: `query=${encodeURIComponent(address)}`
+- Changed directions URL to use address: `destination=${encodeURIComponent(address)}`
+- Better search results when users click "View larger map" or "Directions"
+
+#### 5. Address Overlay Simplification
+
+- Removed redundant paragraph displaying address
+- Header now directly shows company name
+- Cleaner UI with less visual clutter
+
+### Technical Details
+
+**Geocoding Flow:**
+
+1. Component mounts with default address "FAINZY TECHNOLOGIES Co., Ltd."
+2. Google Maps loads with initial coordinates (35.1538, 136.9699)
+3. Geocoder automatically converts address to coordinates
+4. Map and marker update to show geocoded location
+5. User sees accurate location without manual coordinate entry
+
+**Address Parameter:**
+
+```typescript
+address = "FAINZY TECHNOLOGIES Co., Ltd.";
+```
+
+**Google Maps Integration:**
+
+```typescript
+// Search URL now uses address
+const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+
+// Directions URL now uses address
+const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`;
+```
+
+### Benefits
+
+1. **Automatic Location Finding**: Google Maps geocoder automatically finds the correct location for the company
+2. **Flexible Updates**: Easy to change address without looking up new coordinates
+3. **Better Search Results**: Users clicking map links get more relevant search results with company name
+4. **Cleaner UI**: Simplified address overlay focuses on company name
+5. **Accurate Mapping**: Geocoding API ensures the most accurate location based on the address
+
+### User Experience Improvements
+
+**Before:**
+
+- Used hardcoded GPS coordinates (35.1538, 136.9699)
+- Displayed "Nagoya University Incubation Facility" as location
+- Google Maps URLs used coordinates (less descriptive in search results)
+- Long address text in overlay
+
+**After:**
+
+- Uses "FAINZY TECHNOLOGIES Co., Ltd." address for geocoding
+- Map automatically finds company location via Google's geocoding service
+- Google Maps URLs use company name for better search context
+- Clean, focused company name display
+
+### Rationale
+
+Using the company address instead of hardcoded coordinates provides several advantages:
+
+1. More maintainable - no need to manually look up coordinates when address changes
+2. More accurate - Google's geocoding service finds the exact location
+3. Better user experience - clicking map links shows company name in Google Maps
+4. Cleaner UI - simplified display focuses on company identity
+5. Flexible - easy to update if company relocates
+
+The geocoding functionality was already implemented in the component, so this change simply leverages it properly by providing the company address as the default value.
+
+---
+
 ## [Date: 2025-11-17 19:00]
 
 ### Summary

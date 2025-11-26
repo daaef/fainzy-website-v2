@@ -114,7 +114,6 @@ export default function TeamSpotlight({
                   {member.linkedin && (
                     <a
                       href={member.linkedin}
-                      target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center border border-[rgba(255,255,255,0.2)] text-white hover:bg-white hover:text-black px-5 py-3 rounded-md text-sm font-semibold"
                     >

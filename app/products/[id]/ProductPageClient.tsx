@@ -17,7 +17,7 @@ interface ProductPageClientProps {
   productId: string;
 }
 
-export default function ProductPageClient({ productId }: ProductPageClientProps) {
+export default function ProductPageClient({ }: ProductPageClientProps) {
   // Section 4: Main Features (3 features for carousel)
   const mainFeatures = [
     {

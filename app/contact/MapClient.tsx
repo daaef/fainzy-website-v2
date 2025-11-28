@@ -324,7 +324,7 @@ export default function MapClient({
       }
       mapRef.current = null;
     };
-  }, [lat, lng, address, locale]);
+  }, [lat, lng, address, locale, lockToCoordinates]);
 
   const displayAddress =
     locale === "ja"

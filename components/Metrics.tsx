@@ -6,11 +6,13 @@ import { StatMetric, StaticStat } from "@/types";
 import StatsCounter from "@/components/StatsCounter";
 
 interface MetricsProps {
+  title?: string | null;
+  subtitle?: string | null;
   animatedStats?: StatMetric[];
   staticStats?: StaticStat[];
 }
 
-export default function Metrics({ animatedStats, staticStats }: MetricsProps) {
+export default function Metrics({ title, subtitle, animatedStats, staticStats }: MetricsProps) {
   const defaultAnimatedStats: StatMetric[] = animatedStats || [];
   const defaultStaticStats: StaticStat[] = staticStats || [];
 
@@ -25,10 +27,10 @@ export default function Metrics({ animatedStats, staticStats }: MetricsProps) {
       {/* Header */}
       <div className="flex flex-col gap-4 items-center text-center">
         <h2 className="font-bold leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-[56px] text-white tracking-[-1.12px]">
-          We&apos;ll keep making impact
+          {title || "We'll keep making impact"}
         </h2>
         <p className="font-normal leading-[1.5] text-base md:text-lg text-center text-neutral-500 max-w-[600px]">
-          Transforming industries with autonomous robotics technology
+          {subtitle || "Transforming industries with autonomous robotics technology"}
         </p>
       </div>
 

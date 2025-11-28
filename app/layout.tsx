@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Red_Hat_Display } from "next/font/google";
+import { Red_Hat_Display } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 import Navbar from "@/components/layout/navbar";

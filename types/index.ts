@@ -19,7 +19,7 @@ export interface Feature {
 export interface Product {
   title: string;
   description: string;
-  image: StaticImageData;
+  image: StaticImageData | string;
   features: Feature[];
   reverse?: boolean;
   link?: string;

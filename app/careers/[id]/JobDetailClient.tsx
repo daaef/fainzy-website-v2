@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { Job } from "@/app/careers/jobs";
+import { Job } from "@/lib/api/types";
 import JobBanner from "@/public/job/job-banner.jpg";
 import JoinImg from "@/public/careers/join-us.jpg";
 
@@ -116,8 +116,8 @@ export default function JobDetailClient({ job }: JobDetailClientProps) {
                   <div className="flex flex-col gap-3">
                     <h3 className="text-lg md:text-[18px] leading-[27px]">Responsibilities</h3>
                     <ul className="list-disc pl-5 space-y-2 text-neutral-400 text-[15px] md:text-[16px] leading-[25.6px]">
-                      {job.responsibilities.map((responsibility, index) => (
-                        <li key={index}>{responsibility}</li>
+                      {job.responsibilities.map((item, index) => (
+                        <li key={item.id || index}>{item.responsibility}</li>
                       ))}
                     </ul>
                   </div>
@@ -129,8 +129,8 @@ export default function JobDetailClient({ job }: JobDetailClientProps) {
                 <motion.div variants={variantsItem} className="flex flex-col gap-3">
                   <h3 className="text-lg md:text-[18px] leading-[27px]">Requirements</h3>
                   <ul className="list-disc pl-5 space-y-2 text-neutral-400 text-[15px] md:text-[16px] leading-[25.6px]">
-                    {job.requirements.map((requirement, index) => (
-                      <li key={index}>{requirement}</li>
+                    {job.requirements.map((item, index) => (
+                      <li key={item.id || index}>{item.requirement}</li>
                     ))}
                   </ul>
                 </motion.div>
@@ -141,8 +141,8 @@ export default function JobDetailClient({ job }: JobDetailClientProps) {
                 <motion.div variants={variantsItem} className="flex flex-col gap-3">
                   <h3 className="text-lg md:text-[18px] leading-[27px]">Qualifications</h3>
                   <ul className="list-disc pl-5 space-y-2 text-neutral-400 text-[15px] md:text-[16px] leading-[25.6px]">
-                    {job.qualifications.map((qualification, index) => (
-                      <li key={index}>{qualification}</li>
+                    {job.qualifications.map((item, index) => (
+                      <li key={item.id || index}>{item.qualification}</li>
                     ))}
                   </ul>
                 </motion.div>
@@ -153,8 +153,8 @@ export default function JobDetailClient({ job }: JobDetailClientProps) {
                 <motion.div variants={variantsItem} className="flex flex-col gap-3">
                   <h3 className="text-lg md:text-[18px] leading-[27px]">Benefits</h3>
                   <ul className="list-none pl-5 space-y-2 text-neutral-400 text-[15px] md:text-[16px] leading-[25.6px]">
-                    {job.benefits.map((benefit, index) => (
-                      <li key={index}>{benefit}</li>
+                    {job.benefits.map((item, index) => (
+                      <li key={item.id || index}>{item.benefit}</li>
                     ))}
                   </ul>
                 </motion.div>
@@ -231,13 +231,13 @@ export default function JobDetailClient({ job }: JobDetailClientProps) {
                 <div className="bg-[#111113] border border-[rgba(255,255,255,0.08)] rounded-2xl p-6 flex flex-col gap-4">
                   <h3 className="text-[18px] leading-[27px]">Tech Stack</h3>
                   <div className="flex flex-wrap gap-2">
-                    {job.techStack.map((tech, index) => (
+                    {job.techStack.map((item, index) => (
                       <Badge
-                        key={index}
+                        key={item.id || index}
                         variant="outline"
                         className="bg-[rgba(250,250,250,0.05)] border-[rgba(255,255,255,0.08)] text-neutral-400 px-3 py-1.5"
                       >
-                        {tech}
+                        {item.tech}
                       </Badge>
                     ))}
                   </div>

@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { jobs } from "../jobs";
+import { getCareersPageData, getJobBySlug } from "@/lib/api/careers";
 import JobDetailClient from "./JobDetailClient";
 
 interface PageProps {
@@ -8,12 +8,13 @@ interface PageProps {
   }>;
 }
 
-export default async function ProductDetailPage({ params }: PageProps) {
+export default async function JobDetailPage({ params }: PageProps) {
   // Await params to unwrap the Promise (Next.js 15+)
   const { id } = await params;
 
-  // Find the job by ID
-  const job = jobs.find((j) => j.id === id);
+  // Fetch the job by slug
+  const job = await getJobBySlug(id);
+  
   // If job not found, show 404
   if (!job) {
     notFound();
@@ -24,7 +25,13 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
 // Generate static params for all jobs at build time
 export async function generateStaticParams() {
-  return jobs.map((job) => ({
-    id: job.id,
+  const careersData = await getCareersPageData();
+  
+  if (!careersData || !careersData.jobs) {
+    return [];
+  }
+
+  return careersData.jobs.map((job) => ({
+    id: job?.id,
   }));
 }

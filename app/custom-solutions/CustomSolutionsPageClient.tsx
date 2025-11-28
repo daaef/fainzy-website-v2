@@ -6,6 +6,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { useMemo } from "react";
+import { getMediaUrl } from "@/lib/media-url";
+import { Media } from "@/lib/api/types";
 
 import {
   Select,
@@ -17,66 +20,43 @@ import {
 import { Calendar, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-export default function CustomSolutionsPage() {
-  const solutions = [
-    {
-      id: "consultancy",
-      category: "Custom Solution",
-      title: "Fainzy Consultancy",
-      description:
-        "The Last Mile Delivery System uses our robot to take food deliveries from restaurants to consumers' locations.",
-      images: [
-        {
-          src: "/slides/consultancy.png",
-          alt: "Fainzy Consultancy Robot",
-        },
-      ],
-      features: [
-        { title: "24/7 Operation", subtitle: "Always Available" },
-        { title: "Cost Effective", subtitle: "Reduced Labor" },
-        { title: "Eco-Friendly", subtitle: "Zero Emissions" },
-        { title: "Reliable", subtitle: "Consistent Service" },
-      ],
-    },
-    {
-      id: "customized-robots",
-      category: "Custom Solution",
-      title: "Customized Robots",
-      description:
-        "Fainzy Technologies can make customized robots suitable for your needs. Please contact us for more details.",
-      images: [
-        {
-          src: "/last-delivery.png",
-          alt: "Customized Robot",
-        },
-      ],
-      features: [
-        { title: "Health Robot", subtitle: "Always Available" },
-        { title: "Cost Effective", subtitle: "Reduced Labor" },
-        { title: "Eco-Friendly", subtitle: "Zero Emissions" },
-        { title: "Reliable", subtitle: "Consistent Service" },
-      ],
-    },
-    {
-      id: "iot-solutions",
-      category: "Custom Solution",
-      title: "IoT Solutions",
-      description:
-        "Web Development, Mobile Application Development, Deep learning Algorithm development, Autonomous driving software solutions",
-      images: [
-        {
-          src: "/glide.png",
-          alt: "IoT Solutions",
-        },
-      ],
-      features: [
-        { title: "Health Robot", subtitle: "Always Available" },
-        { title: "Cost Effective", subtitle: "Reduced Labor" },
-        { title: "Eco-Friendly", subtitle: "Zero Emissions" },
-        { title: "Reliable", subtitle: "Consistent Service" },
-      ],
-    },
-  ];
+interface CustomSolutionsPageClientProps {
+  customSolutions: Array<{
+    id: string;
+    category: string;
+    title: string;
+    description: string;
+    images?: Array<{
+      image: number | Media;
+      id?: string | null;
+    }> | null;
+    features?: Array<{
+      title: string;
+      subtitle: string;
+      id?: string | null;
+    }> | null;
+  }>;
+}
+
+export default function CustomSolutionsPageClient({ customSolutions }: CustomSolutionsPageClientProps) {
+  // Map CMS custom solutions to carousel format
+  const solutions = useMemo(() => {
+
+    return customSolutions.map((solution) => ({
+      id: solution.id,
+      category: solution.category,
+      title: solution.title,
+      description: solution.description,
+      images: (solution.images || []).map((img) => ({
+        src: getMediaUrl(img.image),
+        alt: solution.title,
+      })),
+      features: (solution.features || []).map((feature) => ({
+        title: feature.title,
+        subtitle: feature.subtitle,
+      })),
+    }));
+  }, [customSolutions]);
 
   return (
     <>

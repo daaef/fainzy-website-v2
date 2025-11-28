@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Bell, Globe, User, Menu, X, Headset, Check } from "lucide-react";
+import { Globe, User, Menu, X, Headset, Check } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {

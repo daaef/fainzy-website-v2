@@ -4,7 +4,16 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
-export default function ConsultancySlide() {
+type SlideProps = {
+  title?: string
+  subtitle?: string
+  cursiveText?: string
+  imageUrl?: string
+  ctaText?: string
+  ctaLink?: string
+}
+
+export default function ConsultancySlide({ title = "Fainzy Consultancy", imageUrl = "/slides/consultancy.png", ctaText = "Learn More", ctaLink = "/products#consultancy" }: SlideProps) {
   return (
     <div className="p-1">
       <div className="relative pt-[100px]">
@@ -14,10 +23,7 @@ export default function ConsultancySlide() {
           transition={{ duration: 1, ease: "easeOut" }}
           className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[101px] text-center text-white absolute w-full top-0"
         >
-          <h2 className="font-bold text-center leading-18">
-            Fainzy <br />
-            Consultancy
-          </h2>
+          <h2 className="font-bold text-center leading-18">{title}</h2>
         </motion.div>
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -25,9 +31,9 @@ export default function ConsultancySlide() {
           transition={{ duration: 1, delay: 0.3 }}
         >
           <Image
-            src="/slides/consultancy.png"
+            src={imageUrl}
             className="h-[35vh] w-full object-contain mt-10 relative"
-            alt="Consultancy"
+            alt={title || "Consultancy"}
             height={1000}
             width={3000}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
@@ -44,11 +50,11 @@ export default function ConsultancySlide() {
             asChild
           >
             <motion.a
-              href="/products#consultancy"
+              href={ctaLink}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Learn More
+              {ctaText}
             </motion.a>
           </Button>
         </motion.div>

@@ -1,152 +1,134 @@
 "use client";
 
 import { motion } from "motion/react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useState, useEffect } from "react";
+import { useLocale } from "@/contexts/LocaleContext";
+import { AboutPage } from "@/lib/api/types";
+import { getAboutPageData } from "@/lib/api/about";
+import { getMediaUrl } from "@/lib/media-url";
 
-import AboutBanner from "@/public/about/about-banner.jpg";
-import Founded from "@/public/about/founded.jpg";
-import PeopleBanner from "@/public/about/people-banner.jpg";
-import Vision from "@/public/about/vision.jpg";
-import Jude from "@/public/about/jude.jpg";
-import Emma from "@/public/about/emmanuel.jpg";
-import Patric from "@/public/about/patrick.jpg";
-import Mike from "@/public/about/mike.jpg";
-import Afe from "@/public/about/afe.jpg";
-import Tatsuya from "@/public/about/tatsuya.jpg";
-import Hiroyuki from "@/public/about/hiroyuki.jpg";
-import Join from "@/public/about/join.jpg";
-
-interface TeamMember {
-  name: string;
-  role: string;
-  imageUrl?: StaticImageData;
+interface AboutPageClientProps {
+  initialData: AboutPage;
 }
 
-export default function AboutPage() {
-  const teamMembers: TeamMember[] = [
-    { name: "Dr. Jude Nwadiuto", role: "Co-Founder & CEO", imageUrl: Jude },
-    { name: "Emmanuel Omeogah", role: "Co-Founder & Tech Lead", imageUrl: Emma },
-    { name: "Patric John", role: "Co-Founder & Design Lead", imageUrl: Patric },
-    { name: "Michael Nwadiuto", role: "Co-Founder & Project Lead", imageUrl: Mike },
-    { name: "Afekhide Bot Gbadamosi", role: "Full Stack Developer", imageUrl: Afe },
-    { name: "Prof. Tatsuya Suzuki", role: "Special Advisor", imageUrl: Tatsuya },
-    { name: "Assoc. Prof Hiroyuki Okuda", role: "Technical Advisor", imageUrl: Hiroyuki },
-  ];
+export default function AboutPageClient({ initialData }: AboutPageClientProps) {
+  const { locale } = useLocale();
+  const [data, setData] = useState<AboutPage>(initialData);
+
+  useEffect(() => {
+    getAboutPageData(locale as 'en' | 'ja')
+      .then((newData) => {
+        if (newData) setData(newData);
+      })
+      .catch((error) => {
+        console.error('Error refetching about page data:', error);
+      });
+  }, [locale]);
+
+  const hasHeroSection = data.heroSection?.title;
+  const hasFoundedSection = data.foundedSection?.title && (data.foundedSection?.paragraphs || []).length > 0;
+  const hasPeopleBanner = data.peopleBannerSection?.title && data.peopleBannerSection?.description;
+  const hasVisionSection = data.visionSection?.title && (data.visionSection?.paragraphs || []).length > 0;
+  const hasLeadershipSection = (data.leadershipSection?.teamMembers || []).length > 0;
+  const hasCtaSection = data.ctaSection?.title && data.ctaSection?.description;
 
   return (
     <>
-      <header>
-        <section className="relative min-h-[60vh] md:min-h-[70vh] lg:min-h-[802px] flex items-center justify-center overflow-hidden relative">
-          <Image
-            className="absolute w-full h-full object-cover"
-            src={AboutBanner}
-            height={1000}
-            width={1000}
-            alt="about banner"
-          />
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 opacity-20">
-              <div className="w-full h-full bg-[repeating-linear-gradient(90deg,rgba(255,255,255,0.03)_0px,rgba(255,255,255,0.03)_1px,transparent_1px,transparent_96px),repeating-linear-gradient(0deg,rgba(255,255,255,0.03)_0px,rgba(255,255,255,0.03)_1px,transparent_1px,transparent_96px)]" />
+      {hasHeroSection && (
+        <header>
+          <section className="relative min-h-[60vh] md:min-h-[70vh] lg:min-h-[802px] flex items-center justify-center overflow-hidden relative">
+            <Image
+              className="absolute w-full h-full object-cover"
+              src={getMediaUrl(data.heroSection?.bannerImage) || '/about/about-banner.jpg'}
+              height={1000}
+              width={1000}
+              alt={data.heroSection?.title || 'About banner'}
+            />
+            <div className="absolute inset-0">
+              <div className="absolute inset-0 opacity-20">
+                <div className="w-full h-full bg-[repeating-linear-gradient(90deg,rgba(255,255,255,0.03)_0px,rgba(255,255,255,0.03)_1px,transparent_1px,transparent_96px),repeating-linear-gradient(0deg,rgba(255,255,255,0.03)_0px,rgba(255,255,255,0.03)_1px,transparent_1px,transparent_96px)]" />
+              </div>
             </div>
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-[rgba(10,10,11,0.3)] via-[rgba(10,10,11,0.5)] to-[rgba(10,10,11,0.7)]" />
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative z-10 text-center px-4 sm:px-6 mt-24"
-          >
-            <h1 className="font-bold text-4xl sm:text-5xl md:text-6xl lg:text-[56px] text-white tracking-[-1.12px] mb-4">
-              About Us
-            </h1>
-            <p className="text-neutral-400 text-base sm:text-lg max-w-md mx-auto">
-              All you need to know about us
-            </p>
-          </motion.div>
-        </section>
-      </header>
+            <div className="absolute inset-0 bg-gradient-to-b from-[rgba(10,10,11,0.3)] via-[rgba(10,10,11,0.5)] to-[rgba(10,10,11,0.7)]" />
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="relative z-10 text-center px-4 sm:px-6 mt-24"
+            >
+              <h1 className="font-bold text-4xl sm:text-5xl md:text-6xl lg:text-[56px] text-white tracking-[-1.12px] mb-4">
+                {data.heroSection?.title}
+              </h1>
+              <p className="text-neutral-400 text-base sm:text-lg max-w-md mx-auto">
+                {data.heroSection?.subtitle}
+              </p>
+            </motion.div>
+          </section>
+        </header>
+      )}
       <main>
-        <section className="py-12 md:py-20 lg:py-[100px]">
-          <div className="container">
-            <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12 lg:gap-16">
-              <motion.div
-                initial={{ opacity: 0, x: -50, scale: 0.95 }}
-                whileInView={{ opacity: 1, x: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.7, ease: "easeOut" }}
-                className="w-full lg:w-[528px] lg:flex-shrink-0"
-              >
-                <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] rounded-[16px] overflow-hidden shadow-xl">
-                  <Image
-                    src={Founded}
-                    height={1000}
-                    width={1000}
-                    className="absolute inset-0 flex items-center justify-center text-neutral-600 text-sm object-cover"
-                    alt="Founded"
-                  />
-                </div>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-                className="flex-1 space-y-6"
-              >
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+        {hasFoundedSection && (
+          <section className="py-12 md:py-20 lg:py-[100px]">
+            <div className="container">
+              <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12 lg:gap-16">
+                <motion.div
+                  initial={{ opacity: 0, x: -50, scale: 0.95 }}
+                  whileInView={{ opacity: 1, x: 0, scale: 1 }}
                   viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  className="font-bold text-3xl sm:text-4xl lg:text-[40px] text-white tracking-[-0.8px] leading-tight"
+                  transition={{ duration: 0.7, ease: "easeOut" }}
+                  className="w-full lg:w-[528px] lg:flex-shrink-0"
                 >
-                  Founded in 2018. Headquartered in Nagoya.
-                </motion.h2>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] rounded-[16px] overflow-hidden shadow-xl">
+                    <Image
+                      src={getMediaUrl(data.foundedSection?.image) || '/about/founded.jpg'}
+                      height={1000}
+                      width={1000}
+                      className="absolute inset-0 flex items-center justify-center text-neutral-600 text-sm object-cover"
+                      alt="Founded"
+                    />
+                  </div>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  className="text-neutral-400 text-sm sm:text-base leading-relaxed"
+                  transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+                  className="flex-1 space-y-6"
                 >
-                  Founded in 2018 and headquartered in Moscow, Idaho, Fainzy Technologies is at the
-                  forefront of robotics and artificial intelligence innovation. We believe that the
-                  intersection of cutting-edge technology and human ingenuity holds the key to
-                  solving tomorrow&apos;s challenges.
-                </motion.p>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                  className="text-neutral-400 text-sm sm:text-base leading-relaxed"
-                >
-                  Our team of world-class engineers, researchers, and designers work tirelessly to
-                  create intelligent systems that enhance productivity, improve safety, and unlock
-                  new possibilities across industries.
-                </motion.p>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                  className="text-neutral-400 text-sm sm:text-base leading-relaxed"
-                >
-                  From autonomous robotics to advanced AI solutions, we&apos;re committed to
-                  building technology that makes a meaningful impact on the world. Our vision is to
-                  democratize access to cutting-edge automation and intelligence, empowering
-                  businesses and communities globally.
-                </motion.p>
-              </motion.div>
+                  <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    className="font-bold text-3xl sm:text-4xl lg:text-[40px] text-white tracking-[-0.8px] leading-tight"
+                  >
+                    {data.foundedSection?.title}
+                  </motion.h2>
+                  {(data.foundedSection?.paragraphs || []).map((paragraph, index) => (
+                    <motion.p
+                      key={paragraph.id || index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                      className="text-neutral-400 text-sm sm:text-base leading-relaxed"
+                    >
+                      {paragraph.text}
+                    </motion.p>
+                  ))}
+                </motion.div>
+              </div>
             </div>
-          </div>
-        </section>
-        <section className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[567px] flex items-end overflow-hidden relative">
+          </section>
+        )}
+        {hasPeopleBanner && (
+          <section className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[567px] flex items-end overflow-hidden relative">
           <Image
             className="absolute w-full h-full object-cover"
-            src={PeopleBanner}
+            src={getMediaUrl(data.peopleBannerSection?.bannerImage) || '/about/people-banner.jpg'}
             alt="people banner"
             width={1000}
             height={1000}
@@ -161,7 +143,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.7, ease: "easeOut" }}
                 className="font-bold text-3xl sm:text-4xl lg:text-[48px] text-white tracking-[-0.96px] leading-tight lg:max-w-[533px]"
               >
-                The People Behind The Innovation
+                {data.peopleBannerSection?.title}
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, x: 50 }}
@@ -170,15 +152,14 @@ export default function AboutPage() {
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
                 className="text-neutral-50 text-sm sm:text-base leading-relaxed flex-1 lg:max-w-[947px]"
               >
-                To revolutionize robotics and AI, we need exceptional talent. Based in Nagoya, our
-                team operates across multiple continents. With expertise spanning robotics, software
-                engineering, and AI research, we design, build, test and deploy our innovations
-                in-house.
+                {data.peopleBannerSection?.description}
               </motion.p>
             </div>
           </div>
         </section>
-        <section className="py-12 md:py-20 lg:py-[100px]">
+        )}
+        {hasVisionSection && (
+          <section className="py-12 md:py-20 lg:py-[100px]">
           <div className="container">
             <div className="flex flex-col lg:flex-row-reverse items-center gap-8 md:gap-12 lg:gap-16">
               <motion.div
@@ -189,7 +170,12 @@ export default function AboutPage() {
                 className="w-full lg:w-[528px] lg:flex-shrink-0"
               >
                 <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] rounded-[16px] bg-gradient-to-br from-[#1a1a1b] to-[#0a0a0b] overflow-hidden shadow-xl">
-                  <Image src={Vision} alt="Vision" height={1000} width={1000} />
+                  <Image 
+                    src={getMediaUrl(data.visionSection?.image) || '/about/vision.jpg'}
+                    alt="Vision" 
+                    height={1000} 
+                    width={1000} 
+                  />
                 </div>
               </motion.div>
               <motion.div
@@ -206,35 +192,27 @@ export default function AboutPage() {
                   transition={{ duration: 0.6, delay: 0.3 }}
                   className="font-bold text-3xl sm:text-4xl lg:text-[40px] text-white tracking-[-0.4px] leading-tight"
                 >
-                  Our Vision
+                  {data.visionSection?.title}
                 </motion.h2>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  className="text-neutral-400 text-sm sm:text-base leading-relaxed"
-                >
-                  We envision a world where intelligent machines work seamlessly alongside humans,
-                  amplifying our capabilities and freeing us to focus on what matters most -
-                  creativity, innovation, and meaningful human connection.
-                </motion.p>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                  className="text-neutral-400 text-sm sm:text-base leading-relaxed"
-                >
-                  Through continuous research and development, we&apos;re pushing the boundaries of
-                  what&apos;s possible in robotics and AI, creating solutions that are not just
-                  technologically advanced, but also accessible, reliable, and built to last.
-                </motion.p>
+                {(data.visionSection?.paragraphs || []).map((paragraph, index) => (
+                  <motion.p
+                    key={paragraph.id || index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                    className="text-neutral-400 text-sm sm:text-base leading-relaxed"
+                  >
+                    {paragraph.text}
+                  </motion.p>
+                ))}
               </motion.div>
             </div>
           </div>
         </section>
-        <section className="py-12 md:py-20 lg:py-[100px] bg-[#0a0a0b]">
+        )}
+        {hasLeadershipSection && (
+          <section className="py-12 md:py-20 lg:py-[100px] bg-[#0a0a0b]">
           <div className="container">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -244,16 +222,16 @@ export default function AboutPage() {
               className="text-center mb-12 md:mb-16 lg:mb-20"
             >
               <h2 className="font-bold text-3xl sm:text-4xl lg:text-[32px] text-white tracking-[-0.6px] mb-4">
-                Our leadership
+                {data.leadershipSection?.title}
               </h2>
               <p className="text-neutral-400 text-base sm:text-lg">
-                The brilliant minds driving innovation at Fainzy Technologies
+                {data.leadershipSection?.subtitle}
               </p>
             </motion.div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-              {teamMembers.map((member, index) => (
+              {(data.leadershipSection?.teamMembers || []).map((member, index) => (
                 <motion.div
-                  key={member.name}
+                  key={member.id || member.name}
                   initial={{ opacity: 0, y: 30, scale: 0.95 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, margin: "-50px" }}
@@ -265,7 +243,7 @@ export default function AboutPage() {
                       <div className="relative w-full h-[300px] sm:h-[320px] lg:h-[340px] bg-gradient-to-br from-[#2a2a2b] to-[#1a1a1b] overflow-hidden rounded-[16px]">
                         <div className="absolute inset-0 h-full flex items-center justify-center">
                           <Image
-                            src={member?.imageUrl ?? ""}
+                            src={getMediaUrl(member.imageUrl)}
                             className="w-full h-full object-cover"
                             alt={member.name}
                             height={1000}
@@ -286,9 +264,11 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-        <section className="min-h-[400px] relative md:min-h-[500px] lg:min-h-[551px] flex items-center justify-center overflow-hidden">
+        )}
+        {hasCtaSection && (
+          <section className="min-h-[400px] relative md:min-h-[500px] lg:min-h-[551px] flex items-center justify-center overflow-hidden">
           <Image
-            src={Join}
+            src={getMediaUrl(data.ctaSection?.bannerImage) || '/about/join.jpg'}
             alt="join us"
             className="w-full h-full object-cover absolute"
             height={1000}
@@ -304,7 +284,7 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="font-bold text-3xl sm:text-4xl lg:text-[48px] text-white tracking-[-0.96px] mb-6 max-w-4xl mx-auto leading-tight"
             >
-              Let&apos;s do great things together
+              {data.ctaSection?.title}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -313,8 +293,7 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-neutral-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-8 md:mb-10"
             >
-              We&apos;re looking for talented individuals who are passionate about robotics, AI, and
-              building the future. Explore opportunities to work on cutting-edge technology.
+              {data.ctaSection?.description}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -323,26 +302,26 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
-              <Button
-                className="bg-neutral-50 hover:bg-white text-[#0a0a0b] rounded-[8px] px-8 py-6 font-semibold text-[15px] transition-all duration-300 w-full sm:w-auto"
-                asChild
-              >
-                <motion.a href="/careers" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  View Open Positions
-                </motion.a>
-              </Button>
-              <Button
-                variant="outline"
-                className="bg-transparent group border-2 border-white text-white hover:bg-white rounded-[8px] px-8 py-6 font-semibold text-[15px] transition-all duration-300 w-full sm:w-auto"
-                asChild
-              >
-                <motion.a href="/contact" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  Get in Touch
-                </motion.a>
-              </Button>
+              {(data.ctaSection?.buttons || []).map((button, index) => (
+                <Button
+                  key={button.id || index}
+                  variant={button.variant === 'outline' ? 'outline' : 'default'}
+                  className={
+                    button.variant === 'outline'
+                      ? "bg-transparent group border-2 border-white text-white hover:bg-white rounded-[8px] px-8 py-6 font-semibold text-[15px] transition-all duration-300 w-full sm:w-auto"
+                      : "bg-neutral-50 hover:bg-white text-[#0a0a0b] rounded-[8px] px-8 py-6 font-semibold text-[15px] transition-all duration-300 w-full sm:w-auto"
+                  }
+                  asChild
+                >
+                  <motion.a href={button.link} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    {button.text}
+                  </motion.a>
+                </Button>
+              ))}
             </motion.div>
           </div>
         </section>
+        )}
       </main>
     </>
   );

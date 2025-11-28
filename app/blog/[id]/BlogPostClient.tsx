@@ -4,52 +4,35 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Eye, Share2, Calendar, Clock, ChevronRight } from "lucide-react";
+import { Eye, Calendar, Clock, ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
 import BackButtonClient from "./BackButtonClient";
-import LikeButton from "./LikeButton";
+import { BlogPost, Media } from "@/lib/api/types";
+import { LexicalContentRenderer } from "@/components/LexicalContentRenderer";
 
-const relatedArticles = [
-  {
-    id: 2,
-    category: "Technology",
-    title: "AI and Machine Learning: The Brain Behind Smart Delivery Robots",
-    image:
-      "https://images.unsplash.com/photo-1526378800651-c32d170fe6f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYWNoaW5lJTIwbGVhcm5pbmclMjBBSXxlbnwxfHx8fDE3NjI4OTM1NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    likes: "2.1k",
-    views: "58k",
-  },
-  {
-    id: 3,
-    category: "Case Study",
-    title: "How Restaurant Chain MiraX Increased Efficiency by 40%",
-    image:
-      "https://images.unsplash.com/photo-1758989388630-d629d4ea9806?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXN0YXVyYW50JTIwdGVjaG5vbG9neXxlbnwxfHx8fDE3NjI4OTM1NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    likes: "1.8k",
-    views: "45k",
-  },
-  {
-    id: 4,
-    category: "Technology",
-    title: "The Sensor Technology That Makes Autonomous Navigation Possible",
-    image:
-      "https://images.unsplash.com/photo-1688585931817-fdd211458b60?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhdXRvbm9tb3VzJTIwcm9ib3QlMjBuYXZpZ2F0aW9ufGVufDF8fHx8MTc2Mjg5MzU0NXww&ixlib=rb-4.1.0&q=80&w=1080",
-    likes: "3.2k",
-    views: "72k",
-  },
-];
+interface BlogPostClientProps {
+  post: BlogPost;
+  relatedPosts?: BlogPost[];
+}
 
-const tableOfContents = [
-  "Introduction",
-  "Revolutionizing Room Service",
-  "Enhanced Guest Experiences",
-  "Streamlined Operations",
-  "Cost Efficiency and ROI",
-  "24/7 Availability",
-  "Future of Hospitality",
-];
-
-export default function BlogPostClient() {
+export default function BlogPostClient({ post, relatedPosts = [] }: BlogPostClientProps) {
+  const imageUrl = 
+    typeof post.featuredImage === 'object' && post.featuredImage !== null
+      ? (post.featuredImage as Media).url
+      : null;
+  const categoryLabel = post.category.charAt(0).toUpperCase() + post.category.slice(1).replace('-', ' ');
+  
+  console.log('content is', post.content)
+  // Get author name from the post
+  const authorName = typeof post.author === 'object' && post.author !== null 
+    ? (post.author as { name?: string }).name || 'Fainzy Technologies'
+    : 'Fainzy Technologies';
+  
+  // Don't render if no featured image
+  if (!imageUrl) {
+    return null;
+  }
+  
   return (
     <>
       <div className="min-h-screen w-full bg-background">
@@ -61,8 +44,8 @@ export default function BlogPostClient() {
           className="relative w-full h-[500px] overflow-hidden"
         >
           <Image
-            src="https://images.unsplash.com/photo-1509082916244-3c5018ed3651?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyb2JvdCUyMGhvdGVsJTIwc2VydmljZSUyMGRlbGl2ZXJ5fGVufDF8fHx8MTc2MzA2NDIzOHww&ixlib=rb-4.1.0&q=80&w=1080"
-            alt="Hero"
+            src={imageUrl}
+            alt={typeof post.featuredImage === 'object' && post.featuredImage !== null ? (post.featuredImage as Media).alt || post.title : post.title}
             fill
             className="object-cover"
             priority
@@ -79,11 +62,11 @@ export default function BlogPostClient() {
                 <BackButtonClient />
 
                 <Badge className="mb-4 bg-accent/20 text-foreground border-0 hover:bg-accent/30">
-                  Business
+                  {categoryLabel}
                 </Badge>
 
                 <h1 className="font-bold text-foreground text-3xl sm:text-4xl lg:text-5xl max-w-4xl mb-6">
-                  5 Ways Autonomous Robots Are Transforming the Hospitality Industry
+                  {post.title}
                 </h1>
               </motion.div>
             </div>
@@ -106,318 +89,47 @@ export default function BlogPostClient() {
                   <div className="flex items-center gap-2">
                     <Calendar className="w-4 h-4 md:w-[18px] md:h-[18px] text-muted-foreground" />
                     <span className="text-sm md:text-base text-muted-foreground">
-                      October 20, 2025
+                      {new Date(post.publishedDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 md:w-[18px] md:h-[18px] text-muted-foreground" />
-                    <span className="text-sm md:text-base text-muted-foreground">6 min read</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Eye className="w-4 h-4 md:w-[18px] md:h-[18px] text-muted-foreground" />
-                    <span className="text-sm md:text-base text-muted-foreground">12.5k views</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3 md:gap-4">
-                  <LikeButton initialLikes={3542} />
-                  <button className="flex items-center gap-2 px-3 md:px-4 py-2 rounded-lg bg-accent/5 hover:bg-accent/10 transition-colors border border-border">
-                    <Share2 className="w-4 h-4 md:w-[18px] md:h-[18px] text-muted-foreground" />
-                    <span className="font-medium text-sm text-foreground">Share</span>
-                  </button>
+                  {post.readTime && (
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 md:w-[18px] md:h-[18px] text-muted-foreground" />
+                      <span className="text-sm md:text-base text-muted-foreground">{post.readTime}</span>
+                    </div>
+                  )}
                 </div>
               </motion.div>
 
-              {/* Introduction */}
-              <motion.section
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                className="mb-8 md:mb-12"
-                id="introduction"
-              >
-                <p className="text-base md:text-lg leading-relaxed text-foreground/90 mb-6">
-                  The hospitality industry is experiencing a technological revolution, with
-                  autonomous robots leading the charge in transforming guest experiences and
-                  operational efficiency. From luxury hotels to bustling restaurants, service robots
-                  like ZiBot are becoming integral parts of the modern hospitality landscape.
-                </p>
-                <p className="text-base md:text-lg leading-relaxed text-foreground/90">
-                  In this comprehensive guide, we&apos;ll explore five key ways autonomous delivery
-                  robots are reshaping the hospitality sector, improving both guest satisfaction and
-                  business outcomes.
-                </p>
-              </motion.section>
-
-              {/* Section 1 */}
-              <motion.section
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5 }}
-                className="mb-8 md:mb-12"
-                id="revolutionizing-room-service"
-              >
-                <h2 className="font-bold text-2xl md:text-3xl leading-tight text-foreground mb-6">
-                  1. Revolutionizing Room Service Delivery
-                </h2>
-                <p className="text-base md:text-lg leading-relaxed text-foreground/90 mb-6">
-                  Traditional room service often involves long wait times and requires significant
-                  staff resources. Autonomous robots like ZiBot are changing this dynamic by
-                  providing fast, reliable, and contactless delivery directly to guest rooms.
-                </p>
-                <div className="bg-card rounded-2xl p-6 md:p-8 border border-border mb-6">
-                  <h3 className="font-semibold text-lg md:text-xl text-foreground mb-4">
-                    Key Benefits:
-                  </h3>
-                  <ul className="space-y-3">
-                    {[
-                      "Delivery times reduced by up to 60%",
-                      "24/7 service availability without additional labor costs",
-                      "Contactless delivery ensures hygiene and safety",
-                      "Real-time tracking for both guests and management",
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <div className="size-1.5 rounded-full bg-primary mt-3 flex-shrink-0" />
-                        <span className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <p className="text-base md:text-lg leading-relaxed text-foreground/90">
-                  Hotels implementing robot delivery systems report guest satisfaction scores
-                  increasing by an average of 25%, with many guests specifically requesting robot
-                  delivery for its novelty and efficiency.
-                </p>
-              </motion.section>
-
-              {/* Section 2 */}
-              <motion.section
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5 }}
-                className="mb-8 md:mb-12"
-                id="enhanced-guest-experiences"
-              >
-                <h2 className="font-bold text-2xl md:text-3xl leading-tight text-foreground mb-6">
-                  2. Enhanced Guest Experiences Through Technology
-                </h2>
-                <div className="relative w-full h-64 md:h-80 lg:h-96 rounded-2xl overflow-hidden mb-6">
-                  <Image
-                    src="https://images.unsplash.com/photo-1654355628827-860147b38be3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMGxvYmJ5JTIwbW9kZXJufGVufDF8fHx8MTc2MzA2NDIzOXww&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="Modern hotel lobby"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <p className="text-base md:text-lg leading-relaxed text-foreground/90 mb-6">
-                  Today&apos;s travelers, especially millennials and Gen Z guests, actively seek out
-                  technology-enhanced experiences. Autonomous robots provide a unique,
-                  Instagram-worthy interaction that adds memorable moments to their stay.
-                </p>
-                <p className="text-base md:text-lg leading-relaxed text-foreground/90">
-                  Robots can be customized with hotel branding, programmed to greet guests in
-                  multiple languages, and even display promotional content during deliveries,
-                  creating opportunities for enhanced engagement and upselling.
-                </p>
-              </motion.section>
-
-              {/* Section 3 */}
-              <motion.section
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5 }}
-                className="mb-8 md:mb-12"
-                id="streamlined-operations"
-              >
-                <h2 className="font-bold text-2xl md:text-3xl leading-tight text-foreground mb-6">
-                  3. Streamlined Operations and Staff Optimization
-                </h2>
-                <p className="text-base md:text-lg leading-relaxed text-foreground/90 mb-6">
-                  Rather than replacing human staff, autonomous robots free up team members to focus
-                  on high-value tasks that require personal interaction and problem-solving. This
-                  optimization leads to better resource allocation and improved service quality.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="bg-card rounded-2xl p-6 border border-border"
-                  >
-                    <div className="size-12 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center mb-4">
-                      <span className="text-2xl text-primary-foreground font-bold">40%</span>
-                    </div>
-                    <h4 className="font-semibold text-lg text-foreground mb-2">
-                      Efficiency Increase
-                    </h4>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      Average improvement in delivery efficiency across hospitality venues
-                    </p>
-                  </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="bg-card rounded-2xl p-6 border border-border"
-                  >
-                    <div className="size-12 rounded-xl bg-gradient-to-br from-accent to-accent/80 flex items-center justify-center mb-4">
-                      <span className="text-2xl text-accent-foreground font-bold">85%</span>
-                    </div>
-                    <h4 className="font-semibold text-lg text-foreground mb-2">
-                      Staff Satisfaction
-                    </h4>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      Of staff report higher job satisfaction with robot assistance
-                    </p>
-                  </motion.div>
-                </div>
-                <p className="text-base md:text-lg leading-relaxed text-foreground/90">
-                  Staff can dedicate more time to personalized guest interactions, concierge
-                  services, and addressing complex requests, ultimately enhancing the overall
-                  service quality of the establishment.
-                </p>
-              </motion.section>
-
-              {/* Section 4 */}
-              <motion.section
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5 }}
-                className="mb-8 md:mb-12"
-                id="cost-efficiency-and-roi"
-              >
-                <h2 className="font-bold text-2xl md:text-3xl leading-tight text-foreground mb-6">
-                  4. Cost Efficiency and Strong ROI
-                </h2>
-                <p className="text-base md:text-lg leading-relaxed text-foreground/90 mb-6">
-                  While the initial investment in autonomous robots may seem significant, the return
-                  on investment is compelling. Hotels and restaurants typically see payback periods
-                  of 12-18 months, with ongoing operational savings continuing well beyond that
-                  timeframe.
-                </p>
-                <div className="relative w-full h-64 md:h-80 lg:h-96 rounded-2xl overflow-hidden mb-6">
-                  <Image
-                    src="https://images.unsplash.com/photo-1629248242732-592ecc9cc00f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXN0YXVyYW50JTIwcm9ib3QlMjB3YWl0ZXJ8ZW58MXx8fHwxNzYzMDY0MjM5fDA&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="Restaurant robot"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <p className="text-base md:text-lg leading-relaxed text-foreground/90">
-                  Energy-efficient designs, low maintenance requirements, and the ability to operate
-                  continuously without breaks make robots like ZiBot a cost-effective solution for
-                  modern hospitality businesses looking to optimize their operations.
-                </p>
-              </motion.section>
-
-              {/* Section 5 */}
-              <motion.section
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5 }}
-                className="mb-8 md:mb-12"
-                id="24-7-availability"
-              >
-                <h2 className="font-bold text-2xl md:text-3xl leading-tight text-foreground mb-6">
-                  5. 24/7 Availability and Consistency
-                </h2>
-                <p className="text-base md:text-lg leading-relaxed text-foreground/90 mb-6">
-                  One of the most significant advantages of autonomous robots is their ability to
-                  provide consistent, round-the-clock service. Whether it&apos;s a late-night room
-                  service request or early morning amenity delivery, robots are always ready to
-                  serve.
-                </p>
-                <p className="text-base md:text-lg leading-relaxed text-foreground/90">
-                  This reliability ensures that guest needs are met promptly regardless of the time
-                  of day, contributing to higher satisfaction ratings and positive reviews across
-                  booking platforms.
-                </p>
-              </motion.section>
-
-              {/* Conclusion */}
-              <motion.section
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5 }}
-                className="mb-8 md:mb-12"
-                id="future-of-hospitality"
-              >
-                <h2 className="font-bold text-2xl md:text-3xl leading-tight text-foreground mb-6">
-                  The Future of Hospitality is Here
-                </h2>
-                <p className="text-base md:text-lg leading-relaxed text-foreground/90 mb-6">
-                  As we look toward the future, it&apos;s clear that autonomous robots will play an
-                  increasingly central role in hospitality operations. The technology continues to
-                  evolve, with advancements in AI, navigation, and human-robot interaction making
-                  these systems more capable and user-friendly than ever before.
-                </p>
+              {/* Article Content from CMS */}
+              {post.content && (
                 <motion.div
-                  whileHover={{ scale: 1.01 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="bg-gradient-to-br from-accent to-accent/80 rounded-2xl p-6 md:p-8 mb-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                  className="prose prose-lg dark:prose-invert max-w-none mb-8 md:mb-12"
                 >
-                  <h3 className="font-bold text-xl md:text-2xl text-foreground mb-4">
-                    Ready to Transform Your Hospitality Business?
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-foreground/90 mb-6">
-                    Discover how ZiBot can revolutionize your guest experience and operational
-                    efficiency. Contact our team today for a personalized demonstration.
-                  </p>
-                  <Button className="bg-background text-foreground hover:bg-background/90 rounded-lg">
-                    Request a Demo
-                    <ChevronRight className="ml-2 size-4" />
-                  </Button>
+                  <LexicalContentRenderer content={post.content} />
                 </motion.div>
-                <p className="text-base md:text-lg leading-relaxed text-foreground/90">
-                  The hospitality industry is transforming, and those who embrace innovative
-                  technologies like autonomous delivery robots will be best positioned to thrive in
-                  this new era of service excellence.
-                </p>
-              </motion.section>
+              )}
             </div>
 
-            {/* Right Column - Table of Contents */}
+            {/* Right Column - Author Info */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6, duration: 0.5 }}
               className="sticky top-24 h-fit hidden lg:block"
             >
-              <div className="bg-card rounded-2xl p-6 border border-border">
-                <h3 className="font-bold text-lg text-foreground mb-6">Table of Contents</h3>
-                <nav className="space-y-4">
-                  {tableOfContents.map((item, index) => (
-                    <motion.a
-                      key={index}
-                      href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
-                      whileHover={{ x: 4 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                      className="group flex items-start gap-3 transition-colors hover:text-foreground"
-                    >
-                      <ChevronRight className="size-4 text-primary mt-1 flex-shrink-0" />
-                      <span className="text-sm leading-relaxed text-muted-foreground group-hover:text-foreground transition-colors">
-                        {item}
-                      </span>
-                    </motion.a>
-                  ))}
-                </nav>
-              </div>
-
               {/* Author Info */}
-              <div className="bg-card rounded-2xl p-6 border border-border mt-6">
+              <div className="bg-card rounded-2xl p-6 border border-border">
                 <h3 className="font-bold text-lg text-foreground mb-4">Author</h3>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="size-12 rounded-full bg-gradient-to-br from-accent to-accent/80 flex items-center justify-center">
-                    <span className="text-lg text-foreground font-bold">FT</span>
+                    <span className="text-lg text-foreground font-bold">{authorName.charAt(0).toUpperCase()}</span>
                   </div>
                   <div>
-                    <p className="font-semibold text-base text-foreground">Fainzy Technologies</p>
+                    <p className="font-semibold text-base text-foreground">{authorName}</p>
                     <p className="text-sm text-muted-foreground">Editorial Team</p>
                   </div>
                 </div>
@@ -430,67 +142,85 @@ export default function BlogPostClient() {
         </div>
 
         {/* Similar Articles Section */}
-        <div className="border-t border-border bg-card">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 md:mb-12 gap-4"
-            >
-              <h2 className="font-bold text-2xl md:text-3xl lg:text-4xl text-foreground">
-                Similar Articles
-              </h2>
-              <Button
-                variant="ghost"
-                className="text-primary hover:text-primary/80 hover:bg-accent"
+        {relatedPosts && relatedPosts.length > 0 && (
+          <div className="border-t border-border bg-card">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 md:mb-12 gap-4"
               >
-                View All Posts
-                <ChevronRight className="ml-2 size-4" />
-              </Button>
-            </motion.div>
+                <h2 className="font-bold text-2xl md:text-3xl lg:text-4xl text-foreground">
+                  Related Articles
+                </h2>
+                <Link href="/blog">
+                  <Button
+                    variant="ghost"
+                    className="text-primary hover:text-primary/80 hover:bg-accent"
+                  >
+                    View All Posts
+                    <ChevronRight className="ml-2 size-4" />
+                  </Button>
+                </Link>
+              </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {relatedArticles.map((article, index) => (
-                <motion.div
-                  key={article.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className="bg-background rounded-2xl overflow-hidden border border-border cursor-pointer"
-                >
-                  <Link href={`/blog/${article.id}`}>
-                    <div className="relative w-full h-48 md:h-52">
-                      <Image
-                        src={article.image}
-                        alt={article.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <Badge className="mb-3 bg-accent/20 text-foreground border-0">
-                        {article.category}
-                      </Badge>
-                      <h3 className="font-bold text-lg md:text-xl leading-tight text-foreground mb-4">
-                        {article.title}
-                      </h3>
-                      <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-2">
-                          <Eye className="size-4 text-muted-foreground" />
-                          <span className="text-sm text-muted-foreground">{article.views}</span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                {relatedPosts.slice(0, 3).map((article, index) => {
+                  const articleImageUrl = 
+                    typeof article.featuredImage === 'object' && article.featuredImage !== null
+                      ? (article.featuredImage as Media).url
+                      : null;
+                  const articleCategoryLabel = article.category.charAt(0).toUpperCase() + article.category.slice(1).replace('-', ' ');
+                  
+                  return (
+                    <motion.div
+                      key={article.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1, duration: 0.5 }}
+                      whileHover={{ y: -8, scale: 1.02 }}
+                      className="bg-background rounded-2xl overflow-hidden border border-border cursor-pointer"
+                    >
+                      <Link href={`/blog/${article.slug}`}>
+                        <div className="relative w-full h-48 md:h-52">
+                          {articleImageUrl && (
+                            <Image
+                              src={articleImageUrl}
+                              alt={typeof article.featuredImage === 'object' && article.featuredImage !== null ? (article.featuredImage as Media).alt || article.title : article.title}
+                              fill
+                              className="object-cover"
+                            />
+                          )}
                         </div>
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
+                        <div className="p-6">
+                          <Badge className="mb-3 bg-accent/20 text-foreground border-0">
+                            {articleCategoryLabel}
+                          </Badge>
+                          <h3 className="font-bold text-lg md:text-xl leading-tight text-foreground mb-4">
+                            {article.title}
+                          </h3>
+                          <div className="flex items-center gap-4">
+                            {article.views !== undefined && article.views !== null && (
+                              <div className="flex items-center gap-2">
+                                <Eye className="size-4 text-muted-foreground" />
+                                <span className="text-sm text-muted-foreground">
+                                  {article.views >= 1000 ? `${(article.views / 1000).toFixed(1)}k` : article.views}
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* CTA Section */}
         <motion.div

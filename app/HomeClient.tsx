@@ -46,9 +46,6 @@ export default function HomeClient({ initialData }: HomeClientProps) {
         })
         .catch((error) => {
           console.error('Error refetching home page data:', error);
-        })
-        .finally(() => {
-          setIsLoading(false);
         });
   }, [locale, data.locale]);
   // Map CMS products data to component format
